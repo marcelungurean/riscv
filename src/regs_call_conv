@@ -1,0 +1,14 @@
+
+
+x0  	- zero  	Hard wired zero 
+x1  	- x1		Return address 
+x2 		- sp 		Stack Pointer 
+x3 		- gp 		Global pointer 
+x4  	- tp 		Thread Pointer 
+x5-7 	- t0-2 		Temporaries 
+x8 		- s0/fp 	Saved register / Frame pointer 
+x9 		- s1 		Saved Register 
+x10-11 	- a0-1 		Function arguments / returned values 
+x12-17  - a2-7 		Function arguments
+x18-27  - s2-11 	Saved Registers 
+x28-32  - t3-6 		Temporaries   
