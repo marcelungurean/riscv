@@ -1,0 +1,73 @@
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Initial source changes: [0m
+[0m[[0mdebug[0m] [0m[naha] 	removed:Set(/home/marcel/Diploma/RiscV/Work/md_risc/src/consts.scala, /home/marcel/Diploma/RiscV/Work/md_risc/src/package.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] 	added: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	modified: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated products: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] External API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Modified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set(/home/marcel/Diploma/RiscV/Work/md_risc/src/consts.scala, /home/marcel/Diploma/RiscV/Work/md_risc/src/package.scala, /home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Sources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m[naha] 	product: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/marcel/Diploma/RiscV/Work/md_risc/src/consts.scala, /home/marcel/Diploma/RiscV/Work/md_risc/src/package.scala, /home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Recompiling all 2 sources: invalidated sources (3) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 2 Scala sources to /home/marcel/Diploma/RiscV/Work/md_risc/src/target/scala-2.11/classes...[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.11:component from component compiler for Scala 2.11.7[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.11:component from component compiler for Scala 2.11.7[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 108c6656, interfacing (CompilerInterface) with Scala compiler version 2.11.7[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/classes:/home/marcel/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/marcel/Diploma/RiscV/Work/md_risc/src/target/scala-2.11/classes:/home/marcel/.ivy2/cache/edu.berkeley.cs/chisel_2.11/jars/chisel_2.11-2.2.33.jar:/home/marcel/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.7.jar[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:6: not found: object Constants[0m
+[0m[[31merror[0m] [0mimport Constants._ [0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:13: not found: value ALU_OP_WIDTH[0m
+[0m[[31merror[0m] [0m		val op 	= UInt (INPUT , ALU_OP_WIDTH )[0m
+[0m[[31merror[0m] [0m		       	                ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:21: not found: value ALU_X[0m
+[0m[[31merror[0m] [0m	alu_out := MuxCase (ALU_X, Array ([0m
+[0m[[31merror[0m] [0m	                    ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:59: not found: value ALU_ADD[0m
+[0m[[31merror[0m] [0m		val result = if (int(i) == int(ALU_ADD)) 	{int(rnd0 + rnd1) }[0m
+[0m[[31merror[0m] [0m		                               ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:60: not found: value ALU_SUB[0m
+[0m[[31merror[0m] [0m				else if (int(i) == int(ALU_SUB)) 	{int(rnd0 - rnd1) }[0m
+[0m[[31merror[0m] [0m				                       ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:61: not found: value ALU_AND[0m
+[0m[[31merror[0m] [0m				else if (int(i) == int(ALU_AND)) 	{int(rnd0 & rnd1) }[0m
+[0m[[31merror[0m] [0m				                       ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:62: not found: value ALU_OR[0m
+[0m[[31merror[0m] [0m				else if (int(i) == int(ALU_OR)) 	{int(rnd0 | rnd1) }[0m
+[0m[[31merror[0m] [0m				                       ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:63: not found: value ALU_XOR[0m
+[0m[[31merror[0m] [0m				else if (int(i) == int(ALU_XOR)) 	{int(rnd0 ^ rnd1) }[0m
+[0m[[31merror[0m] [0m				                       ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:64: not found: value ALU_SLT[0m
+[0m[[31merror[0m] [0m				else if (int(i) == int(ALU_SLT))  	{int(rnd0 < rnd1) }[0m
+[0m[[31merror[0m] [0m				                       ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:65: not found: value ALU_SLTU[0m
+[0m[[31merror[0m] [0m				else if (int(i) == int(ALU_SLTU)) 	{int(int(rnd0) < int(rnd1)) }[0m
+[0m[[31merror[0m] [0m				                       ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:66: not found: value ALU_SLL[0m
+[0m[[31merror[0m] [0m				else if (int(i) == int(ALU_SLL)) 	{int(rnd0 <<  rnd1_shamt) }[0m
+[0m[[31merror[0m] [0m				                       ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:67: not found: value ALU_SRL[0m
+[0m[[31merror[0m] [0m				else if (int(i) == int(ALU_SRL)) 	{int(rnd0 >>> rnd1_shamt ) } 			// Evrika !! Beware ... Headaches ahead.[0m
+[0m[[31merror[0m] [0m				                       ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:68: not found: value ALU_SRA[0m
+[0m[[31merror[0m] [0m				else if (int(i) == int(ALU_SRA)) 	{int(rnd0 >>  rnd1_shamt) }[0m
+[0m[[31merror[0m] [0m				                       ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:69: not found: value ALU_COPYA[0m
+[0m[[31merror[0m] [0m				else if (int(i) ==	int(ALU_COPYA)) 	{int(rnd0) }[0m
+[0m[[31merror[0m] [0m				                  	    ^[0m
+[0m[[31merror[0m] [0m/home/marcel/Diploma/RiscV/Work/md_risc/src/Alu.scala:70: not found: value ALU_X[0m
+[0m[[31merror[0m] [0m				else { int(ALU_X) }[0m
+[0m[[31merror[0m] [0m				           ^[0m
+[0m[[31merror[0m] [0m15 errors found[0m
+[0m[[0mdebug[0m] [0mCompilation failed (CompilerInterface)[0m
+[0m[[31merror[0m] [0m(compile:[31mcompileIncremental[0m) Compilation failed[0m
