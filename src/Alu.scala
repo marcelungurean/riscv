@@ -10,17 +10,16 @@ class Alu ( val w: Int ) extends Module {
 	val io = new Bundle { 
 		val a 	= UInt (INPUT , width=w )
 		val b  	= UInt (INPUT , width=w )
-		val op 	= UInt (INPUT , ALU_OP_WIDTH )
-		val out  = UInt (dir = OUTPUT , width=w)
-		val zero = UInt (dir = OUTPUT , width=1 )
+		val op 	= UInt (INPUT , ALU_FUNC_WIDTH )
+		val out  = UInt ( OUTPUT , width=w)
+		val zero = Bool ( OUTPUT )
 	}
-
 	val alu_out = UInt (width=w)
 	val alu_shamt = io.b(4,0).toUInt  
 
 	alu_out := MuxCase (ALU_X, Array (
-					(io.op === ALU_ADD)	->	(io.a + io.b).toUInt,							//adition 
-					(io.op === ALU_SUB) -> 	(io.a - io.b).toUInt,							//substraction
+					(io.op === ALU_ADD)	->	(io.a + io.b).toUInt,					//adition 
+					(io.op === ALU_SUB) -> 	(io.a - io.b).toUInt,					//substraction
 					(io.op === ALU_AND) -> 	(io.a & io.b).toUInt,							
 					(io.op === ALU_OR ) -> 	(io.a | io.b).toUInt,
 					(io.op === ALU_XOR) ->  (io.a ^ io.b).toUInt,
@@ -42,11 +41,11 @@ class Alu ( val w: Int ) extends Module {
 
 } // end Alu 
 
-class AluTest (c:Alu) extends Tester (c) {
+class AluTest (c:Alu, steps:Int) extends Tester (c) {
 	var steps_cnt 		= 0 
 	var steps_passed	= 0 
 
-	for ( j <- 0 until 100) {
+	for ( j <- 0 until steps) {
 		val rnd0 = rnd.nextInt()
 		val rnd1 = rnd.nextInt()
 		val i 	 = rnd.nextInt(12)
