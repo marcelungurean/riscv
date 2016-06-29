@@ -25,12 +25,26 @@ object mainRisc {
     	 case "MuxWB"    => chiselMainTest(runArgs, () => Module(new MuxWB(32) )		){ c => new MuxWBTest(c,steps)}
     	 case "ImmGen"   => chiselMainTest(runArgs, () => Module(new ImmGen(32) )	){ c => new ImmGenTest(c,steps)}
     	 case "Decoder"  => chiselMainTest(runArgs, () => Module(new Decoder(32) ) ){ c => new DecoderTest(c,steps)}
+       case "InstructionMem"  => chiselMainTest(runArgs, () => Module(new InstructionMem(32,32))) { c => new InstructionMemTest(c,steps)}
+       case "DataMem"         => chiselMainTest(runArgs, () => Module(new DataMem(32,32)))        { c => new DataMemTest(c,steps)}
+       case "BranchLogic"     => chiselMainTest(runArgs, () => Module(new BranchLogic(32)))    { c => new BranchLogicTest(c,steps)}
+       case "Core"     => chiselMainTest(runArgs, () => Module(new Core(5, 32)))           { c => new CoreTest(c,steps)}
        case "all"		   => {	
-    					chiselMainTest(runArgs, () => Module(new Alu(32) 	)	){ c => new AluTest(c,steps)}
-   						chiselMainTest(runArgs, () => Module(new MuxOpA(32)	)	){ c => new MuxOpATest(c,steps)} 
-    					chiselMainTest(runArgs, () => Module(new MuxOpB(32) )	){ c => new MuxOpBTest(c,steps)}
-    					chiselMainTest(runArgs, () => Module(new RegFile(5,32) )){ c => new RegFileTest(c,100)}
-    					chiselMainTest(runArgs, () => Module(new MuxPC(32) )	){ c => new MuxPCTest(c,steps)}
+    					chiselMainTest(runArgs, () => Module(new Alu(32) 	)	)         { c => new AluTest(c,steps)}
+   						chiselMainTest(runArgs, () => Module(new MuxOpA(32)	)	)       { c => new MuxOpATest(c,steps)} 
+    					chiselMainTest(runArgs, () => Module(new MuxOpB(32) )	)       { c => new MuxOpBTest(c,steps)}
+    					chiselMainTest(runArgs, () => Module(new RegFile(5,32) ))     { c => new RegFileTest(c,100)}
+    					chiselMainTest(runArgs, () => Module(new MuxPC(32) )	)       { c => new MuxPCTest(c,steps)}
+              chiselMainTest(runArgs, () => Module(new MuxWB(32) )    )     { c => new MuxWBTest(c,steps)}
+              chiselMainTest(runArgs, () => Module(new ImmGen(32) ) )       { c => new ImmGenTest(c,steps)}
+              chiselMainTest(runArgs, () => Module(new Decoder(32) ) )      { c => new DecoderTest(c,steps)}
+
+              chiselMainTest(runArgs, () => Module(new InstructionMem(32,32))) { c => new InstructionMemTest(c,steps)}
+              chiselMainTest(runArgs, () => Module(new DataMem(32,32)))        { c => new DataMemTest(c,steps)}
+              chiselMainTest(runArgs, () => Module(new BranchLogic(32)))    { c => new BranchLogicTest(c,steps)}
+
+              chiselMainTest(runArgs, () => Module(new Core(5, 32)))           { c => new CoreTest(c,steps)}
+
     	}
     }
     println (s" $tests_passed / $tests_cnt tests PASSED !" )

@@ -46,7 +46,7 @@ class ImmGenTest ( c : ImmGen, val steps : Int ) extends Tester (c) {
 		peek(c.io.immb_sxt)
 		peek(c.io.immu_sxt)
 		peek(c.io.immj_sxt)
-
+		step(1)
 		//if ( expect (c.io.opa_alu_in, exp_out) ) steps_passed += 1
 	}//for
 	println (s"MuxOpATest: $steps_passed / $steps passed !" )
