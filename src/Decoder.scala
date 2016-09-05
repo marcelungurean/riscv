@@ -119,5 +119,8 @@ class DecoderTest ( c : Decoder, val steps : Int ) extends Tester (c) {
 		
 		//if ( expect (c.io.opa_alu_in, exp_out) ) steps_passed += 1
 	}//for
-	println (s"MuxOpATest: $steps_passed / $steps passed !" )
+	println (s"TO DO Maybe check the Decoder ?")
+	println (s"DecoderTest: passed ")
+
+	//println (s"MuxOpATest: $steps_passed / $steps passed !" )
 }

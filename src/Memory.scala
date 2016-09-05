@@ -48,7 +48,9 @@ class InstructionMemTest ( c : InstructionMem, val steps : Int ) extends Tester 
 		
 		//if ( expect (c.io.opa_alu_in, exp_out) ) steps_passed += 1
 	}//for
-	println (s"MuxOpATest: $steps_passed / $steps passed !" )
+	//println (s"InstructionMemTest: $steps_passed / $steps passed !" )
+	println (s"InstructionMemTest: 0 / 0 passed !" )
+
 }
 class DataMemTest ( c : DataMem, val steps : Int ) extends Tester (c) {
 
@@ -58,5 +60,7 @@ class DataMemTest ( c : DataMem, val steps : Int ) extends Tester (c) {
 		
 		//if ( expect (c.io.opa_alu_in, exp_out) ) steps_passed += 1
 	}//for
-	println (s"MuxOpATest: $steps_passed / $steps passed !" )
+	//println (s"DataMemTest: $steps_passed / $steps passed !" )
+	println (s"DataMemTest: 0 / 0 passed !" )
+
 }

@@ -75,17 +75,22 @@ class RegFileTest (c : RegFile, val steps : Int ) extends Tester (c) {
 			step(1)
 		} else {
 			val x = rnd.nextInt(32)
+			val y = rnd.nextInt(32)
 			poke(c.io.rf_ra1,x)
-			poke(c.io.rf_ra2,x)
-		if ( x!=0 ) { 
-			expect(c.io.rf_rd1,regs(x))
-			expect(c.io.rf_rd2,regs(x))
-		} else {
-			expect(c.io.rf_rd1,0)
-			expect(c.io.rf_rd2,0)
-		}
+			poke(c.io.rf_ra2,y)
+			if ( x!=0 ) { 
+				if(expect(c.io.rf_rd1,regs(x))) steps_passed += 1
+			} else {
+				if(expect(c.io.rf_rd1,0))		steps_passed += 1
+			}
+			if ( y!=0 ) { 
+				if(expect(c.io.rf_rd2,regs(y)))	steps_passed += 1
+			} else {
+				if(expect(c.io.rf_rd2,0))		steps_passed += 1
+			}
 		step(1)
 		}
 	}//for  
+
 	println (s"RegFileTest: $steps_passed / $steps passed !" )
-}
+1}

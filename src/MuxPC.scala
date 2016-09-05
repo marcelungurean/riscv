@@ -53,5 +53,5 @@ class MuxPCTest ( c : MuxPC, val steps : Int ) extends Tester (c) {
 				   else { 0 }
 		if ( expect (c.io.pc_out, exp_out) ) steps_passed += 1
 	}//for 
-	println (s"MuxOpATest: $steps_passed / $steps passed !" )
+	println (s"MuxPCTest: $steps_passed / $steps passed !" )
 }

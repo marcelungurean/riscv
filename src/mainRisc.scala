@@ -47,6 +47,6 @@ object mainRisc {
 
     	}
     }
-    println (s" $tests_passed / $tests_cnt tests PASSED !" )
+    // println (s" $tests_passed / $tests_cnt tests PASSED !" )
   }
 }
