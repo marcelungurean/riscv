@@ -1,0 +1,2064 @@
+[0m[[0minfo[0m] [0mSet current project to src (in build file:/home/marcel/Diploma/RiscV/Work/md_risc/src/)[0m
+[0m[[0minfo[0m] [0mCompiling 6 Scala sources to /home/marcel/Diploma/RiscV/Work/md_risc/src/target/scala-2.11/classes...[0m
+[0m[[33mwarn[0m] [0mthere were 208 feature warnings; re-run with -feature for details[0m
+[0m[[33mwarn[0m] [0mone warning found[0m
+[0m[[0minfo[0m] [0mRunning MDRisc.mainRisc all --backend c --targetDir ../emulator --compile --test --genHarness[0m
+CPP elaborate
+[[35minfo[0m] [0.097] // COMPILING < (class MDRisc.Alu)>(0)
+[[35minfo[0m] [0.129] giving names
+[[35minfo[0m] [0.149] executing custom transforms
+[[35minfo[0m] [0.150] convert masked writes of inline mems
+[[35minfo[0m] [0.157] adding clocks and resets
+[[35minfo[0m] [0.167] inferring widths
+[[35minfo[0m] [0.188] checking widths
+[[35minfo[0m] [0.199] lowering complex nodes to primitives
+[[35minfo[0m] [0.199] removing type nodes
+[[35minfo[0m] [0.207] compiling 121 nodes
+[[35minfo[0m] [0.207] computing memory ports
+[[35minfo[0m] [0.215] resolving nodes to the components
+[[35minfo[0m] [0.246] creating clock domains
+[[35minfo[0m] [0.247] pruning unconnected IOs
+[[35minfo[0m] [0.250] checking for combinational loops
+[[35minfo[0m] [0.256] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.324] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.360] generating cpp files
+CppBackend: createCppFile Alu.cpp
+[[35minfo[0m] [1.112] g++ -c -o ../emulator/Alu-emulator.o  -I../ -I/csrc/  ../emulator/Alu-emulator.cpp RET 0
+[[35minfo[0m] [1.746] g++ -c -o ../emulator/Alu.o  -I../ -I/csrc/  ../emulator/Alu.cpp RET 0
+[[35minfo[0m] [1.827] g++   -o ../emulator/Alu ../emulator/Alu.o ../emulator/Alu-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:11:40 2016
+inChannelName: 00009577.in
+outChannelName: 00009577.out
+cmdChannelName: 00009577.cmd
+SEED 1472501498626
+STARTING ../emulator/Alu 
+
+  POKE Alu.io_a <- 0x3121a172
+  POKE Alu.io_b <- 0xbb4966bc
+  POKE Alu.io_op <- 0xa
+STEP 1 -> 1
+  EXPECT Alu.io_out -> 0x1 == 0x1 PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0x339181d0
+  POKE Alu.io_b <- 0x89d740fd
+  POKE Alu.io_op <- 0x3
+STEP 1 -> 2
+  EXPECT Alu.io_out -> 0x19100d0 == 0x19100d0 PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0x8b349946
+  POKE Alu.io_b <- 0x80a87e0b
+  POKE Alu.io_op <- 0x7
+STEP 1 -> 3
+  EXPECT Alu.io_out -> 0x0 == 0x0 PASS
+  EXPECT Alu.io_zero -> 0x1 == 0x1 PASS
+
+  POKE Alu.io_a <- 0x727ae040
+  POKE Alu.io_b <- 0xe158860f
+  POKE Alu.io_op <- 0xa
+STEP 1 -> 4
+  EXPECT Alu.io_out -> 0x1 == 0x1 PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0x5b4aec44
+  POKE Alu.io_b <- 0x9048bd18
+  POKE Alu.io_op <- 0x1
+STEP 1 -> 5
+  EXPECT Alu.io_out -> 0xeb93a95c == 0xeb93a95c PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0x2cd733e2
+  POKE Alu.io_b <- 0x36bea0cb
+  POKE Alu.io_op <- 0x3
+STEP 1 -> 6
+  EXPECT Alu.io_out -> 0x249620c2 == 0x249620c2 PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0xa055524a
+  POKE Alu.io_b <- 0x2e5b7dc1
+  POKE Alu.io_op <- 0xb
+STEP 1 -> 7
+  EXPECT Alu.io_out -> 0x1 == 0x1 PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0x25b51309
+  POKE Alu.io_b <- 0x9705c97d
+  POKE Alu.io_op <- 0x8
+STEP 1 -> 8
+  EXPECT Alu.io_out -> 0x0 == 0x0 PASS
+  EXPECT Alu.io_zero -> 0x1 == 0x1 PASS
+
+  POKE Alu.io_a <- 0x646b3ed4
+  POKE Alu.io_b <- 0xf8214090
+  POKE Alu.io_op <- 0x0
+STEP 1 -> 9
+  EXPECT Alu.io_out -> 0x0 == 0x0 PASS
+  EXPECT Alu.io_zero -> 0x1 == 0x1 PASS
+
+  POKE Alu.io_a <- 0x1eec3669
+  POKE Alu.io_b <- 0xfa468d51
+  POKE Alu.io_op <- 0x8
+STEP 1 -> 10
+  EXPECT Alu.io_out -> 0x0 == 0x0 PASS
+  EXPECT Alu.io_zero -> 0x1 == 0x1 PASS
+
+  POKE Alu.io_a <- 0x84890faa
+  POKE Alu.io_b <- 0xdd4b2a74
+  POKE Alu.io_op <- 0x2
+STEP 1 -> 11
+  EXPECT Alu.io_out -> 0xa73de536 == 0xa73de536 PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0x9c871e37
+  POKE Alu.io_b <- 0xad84d0a
+  POKE Alu.io_op <- 0x2
+STEP 1 -> 12
+  EXPECT Alu.io_out -> 0x91aed12d == 0x91aed12d PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0xafd691b
+  POKE Alu.io_b <- 0xb927fbc8
+  POKE Alu.io_op <- 0x5
+STEP 1 -> 13
+  EXPECT Alu.io_out -> 0xb3da92d3 == 0xb3da92d3 PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0x693ecd30
+  POKE Alu.io_b <- 0x2e8798db
+  POKE Alu.io_op <- 0xb
+STEP 1 -> 14
+  EXPECT Alu.io_out -> 0x1 == 0x1 PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0xe7ff3b71
+  POKE Alu.io_b <- 0xf11d7e0b
+  POKE Alu.io_op <- 0x1
+STEP 1 -> 15
+  EXPECT Alu.io_out -> 0xd91cb97c == 0xd91cb97c PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0x68d5f28d
+  POKE Alu.io_b <- 0x357ae88c
+  POKE Alu.io_op <- 0x2
+STEP 1 -> 16
+  EXPECT Alu.io_out -> 0x335b0a01 == 0x335b0a01 PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0xc2cfa9
+  POKE Alu.io_b <- 0x1e413add
+  POKE Alu.io_op <- 0xa
+STEP 1 -> 17
+  EXPECT Alu.io_out -> 0x0 == 0x0 PASS
+  EXPECT Alu.io_zero -> 0x1 == 0x1 PASS
+
+  POKE Alu.io_a <- 0x3105d342
+  POKE Alu.io_b <- 0xa800f56c
+  POKE Alu.io_op <- 0x4
+STEP 1 -> 18
+  EXPECT Alu.io_out -> 0xb905f76e == 0xb905f76e PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+
+  POKE Alu.io_a <- 0x8c14098f
+  POKE Alu.io_b <- 0xa8d87a18
+  POKE Alu.io_op <- 0xa
+STEP 1 -> 19
+  EXPECT Alu.io_out -> 0x0 == 0x0 PASS
+  EXPECT Alu.io_zero -> 0x1 == 0x1 PASS
+
+  POKE Alu.io_a <- 0xf1ee802f
+  POKE Alu.io_b <- 0x5f788fc1
+  POKE Alu.io_op <- 0x4
+STEP 1 -> 20
+  EXPECT Alu.io_out -> 0xfffe8fef == 0xfffe8fef PASS
+  EXPECT Alu.io_zero -> 0x0 == 0x0 PASS
+AluTest: 20 / 20 passed !
+RAN 20 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.006] // COMPILING < (class MDRisc.MuxOpA)>(0)
+[[35minfo[0m] [0.007] giving names
+[[35minfo[0m] [0.009] executing custom transforms
+[[35minfo[0m] [0.010] convert masked writes of inline mems
+[[35minfo[0m] [0.010] adding clocks and resets
+[[35minfo[0m] [0.011] inferring widths
+[[35minfo[0m] [0.013] checking widths
+[[35minfo[0m] [0.014] lowering complex nodes to primitives
+[[35minfo[0m] [0.014] removing type nodes
+[[35minfo[0m] [0.015] compiling 19 nodes
+[[35minfo[0m] [0.015] computing memory ports
+[[35minfo[0m] [0.016] resolving nodes to the components
+[[35minfo[0m] [0.019] creating clock domains
+[[35minfo[0m] [0.019] pruning unconnected IOs
+[[35minfo[0m] [0.019] checking for combinational loops
+[[35minfo[0m] [0.020] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.027] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.029] generating cpp files
+CppBackend: createCppFile MuxOpA.cpp
+[[35minfo[0m] [0.695] g++ -c -o ../emulator/MuxOpA-emulator.o  -I../ -I/csrc/  ../emulator/MuxOpA-emulator.cpp RET 0
+[[35minfo[0m] [1.272] g++ -c -o ../emulator/MuxOpA.o  -I../ -I/csrc/  ../emulator/MuxOpA.cpp RET 0
+[[35minfo[0m] [1.355] g++   -o ../emulator/MuxOpA ../emulator/MuxOpA.o ../emulator/MuxOpA-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:11:42 2016
+inChannelName: 00009603.in
+outChannelName: 00009603.out
+cmdChannelName: 00009603.cmd
+SEED 1472501498626
+STARTING ../emulator/MuxOpA 
+  POKE MuxOpA.io_opa_sel <- 0x0
+  POKE MuxOpA.io_opa_rsa <- 0xbb4966bc
+  POKE MuxOpA.io_opa_imz <- 0x339181d0
+  POKE MuxOpA.io_opa_imu <- 0xe5d8fc1c
+STEP 1 -> 1
+  EXPECT MuxOpA.io_opa_alu_in -> 0xbb4966bc == 0xbb4966bc PASS
+  POKE MuxOpA.io_opa_sel <- 0x2
+  POKE MuxOpA.io_opa_rsa <- 0xb79c7897
+  POKE MuxOpA.io_opa_imz <- 0x80a87e0b
+  POKE MuxOpA.io_opa_imu <- 0x8b349946
+STEP 1 -> 2
+  EXPECT MuxOpA.io_opa_alu_in -> 0x80a87e0b == 0x80a87e0b PASS
+  POKE MuxOpA.io_opa_sel <- 0x3
+  POKE MuxOpA.io_opa_rsa <- 0x727ae040
+  POKE MuxOpA.io_opa_imz <- 0x6c19a9cd
+  POKE MuxOpA.io_opa_imu <- 0xe158860f
+STEP 1 -> 3
+  EXPECT MuxOpA.io_opa_alu_in -> 0x0 == 0x0 PASS
+  POKE MuxOpA.io_opa_sel <- 0x1
+  POKE MuxOpA.io_opa_rsa <- 0x9048bd18
+  POKE MuxOpA.io_opa_imz <- 0x2cd733e2
+  POKE MuxOpA.io_opa_imu <- 0x4b6439fb
+STEP 1 -> 4
+  EXPECT MuxOpA.io_opa_alu_in -> 0x4b6439fb == 0x4b6439fb PASS
+  POKE MuxOpA.io_opa_sel <- 0x0
+  POKE MuxOpA.io_opa_rsa <- 0xbfe2ca86
+  POKE MuxOpA.io_opa_imz <- 0x2e5b7dc1
+  POKE MuxOpA.io_opa_imu <- 0xa055524a
+STEP 1 -> 5
+  EXPECT MuxOpA.io_opa_alu_in -> 0xbfe2ca86 == 0xbfe2ca86 PASS
+  POKE MuxOpA.io_opa_sel <- 0x0
+  POKE MuxOpA.io_opa_rsa <- 0x25b51309
+  POKE MuxOpA.io_opa_imz <- 0x177756b8
+  POKE MuxOpA.io_opa_imu <- 0x9705c97d
+STEP 1 -> 6
+  EXPECT MuxOpA.io_opa_alu_in -> 0x25b51309 == 0x25b51309 PASS
+  POKE MuxOpA.io_opa_sel <- 0x1
+  POKE MuxOpA.io_opa_rsa <- 0xf8214090
+  POKE MuxOpA.io_opa_imz <- 0x1eec3669
+  POKE MuxOpA.io_opa_imu <- 0x2f57a319
+STEP 1 -> 7
+  EXPECT MuxOpA.io_opa_alu_in -> 0x2f57a319 == 0x2f57a319 PASS
+  POKE MuxOpA.io_opa_sel <- 0x3
+  POKE MuxOpA.io_opa_rsa <- 0xb4891e09
+  POKE MuxOpA.io_opa_imz <- 0xdd4b2a74
+  POKE MuxOpA.io_opa_imu <- 0x84890faa
+STEP 1 -> 8
+  EXPECT MuxOpA.io_opa_alu_in -> 0x0 == 0x0 PASS
+  POKE MuxOpA.io_opa_sel <- 0x1
+  POKE MuxOpA.io_opa_rsa <- 0x9c871e37
+  POKE MuxOpA.io_opa_imz <- 0x7de86b75
+  POKE MuxOpA.io_opa_imu <- 0xad84d0a
+STEP 1 -> 9
+  EXPECT MuxOpA.io_opa_alu_in -> 0xad84d0a == 0xad84d0a PASS
+  POKE MuxOpA.io_opa_sel <- 0x0
+  POKE MuxOpA.io_opa_rsa <- 0xb927fbc8
+  POKE MuxOpA.io_opa_imz <- 0x693ecd30
+  POKE MuxOpA.io_opa_imu <- 0x9f4ec6e3
+STEP 1 -> 10
+  EXPECT MuxOpA.io_opa_alu_in -> 0xb927fbc8 == 0xb927fbc8 PASS
+  POKE MuxOpA.io_opa_sel <- 0x0
+  POKE MuxOpA.io_opa_rsa <- 0x4395c6a6
+  POKE MuxOpA.io_opa_imz <- 0xf11d7e0b
+  POKE MuxOpA.io_opa_imu <- 0xe7ff3b71
+STEP 1 -> 11
+  EXPECT MuxOpA.io_opa_alu_in -> 0x4395c6a6 == 0x4395c6a6 PASS
+  POKE MuxOpA.io_opa_sel <- 0x3
+  POKE MuxOpA.io_opa_rsa <- 0x68d5f28d
+  POKE MuxOpA.io_opa_imz <- 0x8dadc9bc
+  POKE MuxOpA.io_opa_imu <- 0x357ae88c
+STEP 1 -> 12
+  EXPECT MuxOpA.io_opa_alu_in -> 0x0 == 0x0 PASS
+  POKE MuxOpA.io_opa_sel <- 0x0
+  POKE MuxOpA.io_opa_rsa <- 0x1e413add
+  POKE MuxOpA.io_opa_imz <- 0x3105d342
+  POKE MuxOpA.io_opa_imu <- 0x8ffe04e5
+STEP 1 -> 13
+  EXPECT MuxOpA.io_opa_alu_in -> 0x1e413add == 0x1e413add PASS
+  POKE MuxOpA.io_opa_sel <- 0x2
+  POKE MuxOpA.io_opa_rsa <- 0x6f756fb0
+  POKE MuxOpA.io_opa_imz <- 0xa8d87a18
+  POKE MuxOpA.io_opa_imu <- 0x8c14098f
+STEP 1 -> 14
+  EXPECT MuxOpA.io_opa_alu_in -> 0xa8d87a18 == 0xa8d87a18 PASS
+  POKE MuxOpA.io_opa_sel <- 0x0
+  POKE MuxOpA.io_opa_rsa <- 0xf1ee802f
+  POKE MuxOpA.io_opa_imz <- 0xf221dea8
+  POKE MuxOpA.io_opa_imu <- 0x5f788fc1
+STEP 1 -> 15
+  EXPECT MuxOpA.io_opa_alu_in -> 0xf1ee802f == 0xf1ee802f PASS
+  POKE MuxOpA.io_opa_sel <- 0x0
+  POKE MuxOpA.io_opa_rsa <- 0xf755621
+  POKE MuxOpA.io_opa_imz <- 0x7cb339fd
+  POKE MuxOpA.io_opa_imu <- 0xf001c6da
+STEP 1 -> 16
+  EXPECT MuxOpA.io_opa_alu_in -> 0xf755621 == 0xf755621 PASS
+  POKE MuxOpA.io_opa_sel <- 0x2
+  POKE MuxOpA.io_opa_rsa <- 0xa46856c4
+  POKE MuxOpA.io_opa_imz <- 0x4b77fcbd
+  POKE MuxOpA.io_opa_imu <- 0xf7adc6a4
+STEP 1 -> 17
+  EXPECT MuxOpA.io_opa_alu_in -> 0x4b77fcbd == 0x4b77fcbd PASS
+  POKE MuxOpA.io_opa_sel <- 0x0
+  POKE MuxOpA.io_opa_rsa <- 0x1aca9ce0
+  POKE MuxOpA.io_opa_imz <- 0x7d796955
+  POKE MuxOpA.io_opa_imu <- 0x1abc41dc
+STEP 1 -> 18
+  EXPECT MuxOpA.io_opa_alu_in -> 0x1aca9ce0 == 0x1aca9ce0 PASS
+  POKE MuxOpA.io_opa_sel <- 0x2
+  POKE MuxOpA.io_opa_rsa <- 0x24444018
+  POKE MuxOpA.io_opa_imz <- 0x6a451d75
+  POKE MuxOpA.io_opa_imu <- 0xf3525cf1
+STEP 1 -> 19
+  EXPECT MuxOpA.io_opa_alu_in -> 0x6a451d75 == 0x6a451d75 PASS
+  POKE MuxOpA.io_opa_sel <- 0x2
+  POKE MuxOpA.io_opa_rsa <- 0x7d0f3d82
+  POKE MuxOpA.io_opa_imz <- 0x1dae3ebf
+  POKE MuxOpA.io_opa_imu <- 0xa9bead0c
+STEP 1 -> 20
+  EXPECT MuxOpA.io_opa_alu_in -> 0x1dae3ebf == 0x1dae3ebf PASS
+MuxOpATest: 20 / 20 passed !
+RAN 20 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.006] // COMPILING < (class MDRisc.MuxOpB)>(0)
+[[35minfo[0m] [0.008] giving names
+[[35minfo[0m] [0.010] executing custom transforms
+[[35minfo[0m] [0.010] convert masked writes of inline mems
+[[35minfo[0m] [0.011] adding clocks and resets
+[[35minfo[0m] [0.012] inferring widths
+[[35minfo[0m] [0.014] checking widths
+[[35minfo[0m] [0.015] lowering complex nodes to primitives
+[[35minfo[0m] [0.015] removing type nodes
+[[35minfo[0m] [0.016] compiling 24 nodes
+[[35minfo[0m] [0.016] computing memory ports
+[[35minfo[0m] [0.018] resolving nodes to the components
+[[35minfo[0m] [0.023] creating clock domains
+[[35minfo[0m] [0.023] pruning unconnected IOs
+[[35minfo[0m] [0.023] checking for combinational loops
+[[35minfo[0m] [0.024] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.032] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.034] generating cpp files
+CppBackend: createCppFile MuxOpB.cpp
+[[35minfo[0m] [0.711] g++ -c -o ../emulator/MuxOpB-emulator.o  -I../ -I/csrc/  ../emulator/MuxOpB-emulator.cpp RET 0
+[[35minfo[0m] [1.306] g++ -c -o ../emulator/MuxOpB.o  -I../ -I/csrc/  ../emulator/MuxOpB.cpp RET 0
+[[35minfo[0m] [1.375] g++   -o ../emulator/MuxOpB ../emulator/MuxOpB.o ../emulator/MuxOpB-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:11:44 2016
+inChannelName: 00009627.in
+outChannelName: 00009627.out
+cmdChannelName: 00009627.cmd
+SEED 1472501498626
+STARTING ../emulator/MuxOpB 
+  POKE MuxOpB.io_opb_sel <- 0x0
+  POKE MuxOpB.io_opb_rsb <- 0xbb4966bc
+  POKE MuxOpB.io_opb_imi <- 0xe5d8fc1c
+  POKE MuxOpB.io_opb_ims <- 0x339181d0
+  POKE MuxOpB.io_opb_pc <- 0x89d740fd
+STEP 1 -> 1
+  EXPECT MuxOpB.io_opb_alu_in -> 0xbb4966bc == 0xbb4966bc PASS
+  POKE MuxOpB.io_opb_sel <- 0x2
+  POKE MuxOpB.io_opb_rsb <- 0x8b349946
+  POKE MuxOpB.io_opb_imi <- 0x80a87e0b
+  POKE MuxOpB.io_opb_ims <- 0xce9f5b6f
+  POKE MuxOpB.io_opb_pc <- 0x727ae040
+STEP 1 -> 2
+  EXPECT MuxOpB.io_opb_alu_in -> 0x80a87e0b == 0x80a87e0b PASS
+  POKE MuxOpB.io_opb_sel <- 0x3
+  POKE MuxOpB.io_opb_rsb <- 0x6c19a9cd
+  POKE MuxOpB.io_opb_imi <- 0x5b4aec44
+  POKE MuxOpB.io_opb_ims <- 0x9048bd18
+  POKE MuxOpB.io_opb_pc <- 0x4b6439fb
+STEP 1 -> 3
+  EXPECT MuxOpB.io_opb_alu_in -> 0x9048bd18 == 0x9048bd18 PASS
+  POKE MuxOpB.io_opb_sel <- 0x0
+  POKE MuxOpB.io_opb_rsb <- 0x36bea0cb
+  POKE MuxOpB.io_opb_imi <- 0xbfe2ca86
+  POKE MuxOpB.io_opb_ims <- 0xa055524a
+  POKE MuxOpB.io_opb_pc <- 0x2e5b7dc1
+STEP 1 -> 4
+  EXPECT MuxOpB.io_opb_alu_in -> 0x36bea0cb == 0x36bea0cb PASS
+  POKE MuxOpB.io_opb_sel <- 0x0
+  POKE MuxOpB.io_opb_rsb <- 0x25b51309
+  POKE MuxOpB.io_opb_imi <- 0x9705c97d
+  POKE MuxOpB.io_opb_ims <- 0x177756b8
+  POKE MuxOpB.io_opb_pc <- 0x646b3ed4
+STEP 1 -> 5
+  EXPECT MuxOpB.io_opb_alu_in -> 0x25b51309 == 0x25b51309 PASS
+  POKE MuxOpB.io_opb_sel <- 0x3
+  POKE MuxOpB.io_opb_rsb <- 0x2f57a319
+  POKE MuxOpB.io_opb_imi <- 0x1eec3669
+  POKE MuxOpB.io_opb_ims <- 0xfa468d51
+  POKE MuxOpB.io_opb_pc <- 0xb4891e09
+STEP 1 -> 6
+  EXPECT MuxOpB.io_opb_alu_in -> 0xfa468d51 == 0xfa468d51 PASS
+  POKE MuxOpB.io_opb_sel <- 0x2
+  POKE MuxOpB.io_opb_rsb <- 0xdd4b2a74
+  POKE MuxOpB.io_opb_imi <- 0x56b8d27d
+  POKE MuxOpB.io_opb_ims <- 0x9c871e37
+  POKE MuxOpB.io_opb_pc <- 0xad84d0a
+STEP 1 -> 7
+  EXPECT MuxOpB.io_opb_alu_in -> 0x56b8d27d == 0x56b8d27d PASS
+  POKE MuxOpB.io_opb_sel <- 0x1
+  POKE MuxOpB.io_opb_rsb <- 0xafd691b
+  POKE MuxOpB.io_opb_imi <- 0xb927fbc8
+  POKE MuxOpB.io_opb_ims <- 0x9f4ec6e3
+  POKE MuxOpB.io_opb_pc <- 0x693ecd30
+STEP 1 -> 8
+  EXPECT MuxOpB.io_opb_alu_in -> 0x693ecd30 == 0x693ecd30 PASS
+  POKE MuxOpB.io_opb_sel <- 0x0
+  POKE MuxOpB.io_opb_rsb <- 0x4395c6a6
+  POKE MuxOpB.io_opb_imi <- 0xe7ff3b71
+  POKE MuxOpB.io_opb_ims <- 0xf11d7e0b
+  POKE MuxOpB.io_opb_pc <- 0xdf6f52ba
+STEP 1 -> 9
+  EXPECT MuxOpB.io_opb_alu_in -> 0x4395c6a6 == 0x4395c6a6 PASS
+  POKE MuxOpB.io_opb_sel <- 0x1
+  POKE MuxOpB.io_opb_rsb <- 0x357ae88c
+  POKE MuxOpB.io_opb_imi <- 0x8dadc9bc
+  POKE MuxOpB.io_opb_ims <- 0xc2cfa9
+  POKE MuxOpB.io_opb_pc <- 0x1e413add
+STEP 1 -> 10
+  EXPECT MuxOpB.io_opb_alu_in -> 0x1e413add == 0x1e413add PASS
+  POKE MuxOpB.io_opb_sel <- 0x2
+  POKE MuxOpB.io_opb_rsb <- 0x3105d342
+  POKE MuxOpB.io_opb_imi <- 0xa800f56c
+  POKE MuxOpB.io_opb_ims <- 0x6f756fb0
+  POKE MuxOpB.io_opb_pc <- 0x8c14098f
+STEP 1 -> 11
+  EXPECT MuxOpB.io_opb_alu_in -> 0xa800f56c == 0xa800f56c PASS
+  POKE MuxOpB.io_opb_sel <- 0x2
+  POKE MuxOpB.io_opb_rsb <- 0x20daa5c5
+  POKE MuxOpB.io_opb_imi <- 0xf1ee802f
+  POKE MuxOpB.io_opb_ims <- 0x5f788fc1
+  POKE MuxOpB.io_opb_pc <- 0xf221dea8
+STEP 1 -> 12
+  EXPECT MuxOpB.io_opb_alu_in -> 0xf1ee802f == 0xf1ee802f PASS
+  POKE MuxOpB.io_opb_sel <- 0x0
+  POKE MuxOpB.io_opb_rsb <- 0xf755621
+  POKE MuxOpB.io_opb_imi <- 0xf001c6da
+  POKE MuxOpB.io_opb_ims <- 0x7cb339fd
+  POKE MuxOpB.io_opb_pc <- 0xb95bbbb0
+STEP 1 -> 13
+  EXPECT MuxOpB.io_opb_alu_in -> 0xf755621 == 0xf755621 PASS
+  POKE MuxOpB.io_opb_sel <- 0x2
+  POKE MuxOpB.io_opb_rsb <- 0xf7adc6a4
+  POKE MuxOpB.io_opb_imi <- 0x4b77fcbd
+  POKE MuxOpB.io_opb_ims <- 0x1c56f86b
+  POKE MuxOpB.io_opb_pc <- 0x1aca9ce0
+STEP 1 -> 14
+  EXPECT MuxOpB.io_opb_alu_in -> 0x4b77fcbd == 0x4b77fcbd PASS
+  POKE MuxOpB.io_opb_sel <- 0x0
+  POKE MuxOpB.io_opb_rsb <- 0x7d796955
+  POKE MuxOpB.io_opb_imi <- 0xa2c63412
+  POKE MuxOpB.io_opb_ims <- 0x24444018
+  POKE MuxOpB.io_opb_pc <- 0xf3525cf1
+STEP 1 -> 15
+  EXPECT MuxOpB.io_opb_alu_in -> 0x7d796955 == 0x7d796955 PASS
+  POKE MuxOpB.io_opb_sel <- 0x1
+  POKE MuxOpB.io_opb_rsb <- 0xb90b3e25
+  POKE MuxOpB.io_opb_imi <- 0x7d0f3d82
+  POKE MuxOpB.io_opb_ims <- 0xa9bead0c
+  POKE MuxOpB.io_opb_pc <- 0x1dae3ebf
+STEP 1 -> 16
+  EXPECT MuxOpB.io_opb_alu_in -> 0x1dae3ebf == 0x1dae3ebf PASS
+  POKE MuxOpB.io_opb_sel <- 0x2
+  POKE MuxOpB.io_opb_rsb <- 0x8d71d57a
+  POKE MuxOpB.io_opb_imi <- 0xfd4fa350
+  POKE MuxOpB.io_opb_ims <- 0x9a283eba
+  POKE MuxOpB.io_opb_pc <- 0xdb8c8c9
+STEP 1 -> 17
+  EXPECT MuxOpB.io_opb_alu_in -> 0xfd4fa350 == 0xfd4fa350 PASS
+  POKE MuxOpB.io_opb_sel <- 0x0
+  POKE MuxOpB.io_opb_rsb <- 0x780ee862
+  POKE MuxOpB.io_opb_imi <- 0x9756a0c
+  POKE MuxOpB.io_opb_ims <- 0xaa30b485
+  POKE MuxOpB.io_opb_pc <- 0xe6ee6e8e
+STEP 1 -> 18
+  EXPECT MuxOpB.io_opb_alu_in -> 0x780ee862 == 0x780ee862 PASS
+  POKE MuxOpB.io_opb_sel <- 0x1
+  POKE MuxOpB.io_opb_rsb <- 0x8852b6e8
+  POKE MuxOpB.io_opb_imi <- 0x3c1c1588
+  POKE MuxOpB.io_opb_ims <- 0xc5d646ae
+  POKE MuxOpB.io_opb_pc <- 0x816c2ddc
+STEP 1 -> 19
+  EXPECT MuxOpB.io_opb_alu_in -> 0x816c2ddc == 0x816c2ddc PASS
+  POKE MuxOpB.io_opb_sel <- 0x3
+  POKE MuxOpB.io_opb_rsb <- 0x73640116
+  POKE MuxOpB.io_opb_imi <- 0xbbd717cc
+  POKE MuxOpB.io_opb_ims <- 0x1e860032
+  POKE MuxOpB.io_opb_pc <- 0x2f874f50
+STEP 1 -> 20
+  EXPECT MuxOpB.io_opb_alu_in -> 0x1e860032 == 0x1e860032 PASS
+MuxOpATest: 20 / 20 passed !
+RAN 20 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.041] // COMPILING < (class MDRisc.RegFile)>(0)
+[[35minfo[0m] [0.046] giving names
+[[35minfo[0m] [0.049] executing custom transforms
+[[35minfo[0m] [0.049] convert masked writes of inline mems
+[[35minfo[0m] [0.055] adding clocks and resets
+[[35minfo[0m] [0.058] inferring widths
+[[35minfo[0m] [0.065] checking widths
+[[35minfo[0m] [0.066] lowering complex nodes to primitives
+[[35minfo[0m] [0.066] removing type nodes
+[[35minfo[0m] [0.071] compiling 22 nodes
+[[35minfo[0m] [0.072] computing memory ports
+[[35minfo[0m] [0.090] resolving nodes to the components
+[[35minfo[0m] [0.098] creating clock domains
+[[35minfo[0m] [0.099] pruning unconnected IOs
+[[35minfo[0m] [0.099] checking for combinational loops
+[[35minfo[0m] [0.100] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.108] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.133] generating cpp files
+CppBackend: createCppFile RegFile.cpp
+[[35minfo[0m] [0.892] g++ -c -o ../emulator/RegFile-emulator.o  -I../ -I/csrc/  ../emulator/RegFile-emulator.cpp RET 0
+[[35minfo[0m] [1.549] g++ -c -o ../emulator/RegFile.o  -I../ -I/csrc/  ../emulator/RegFile.cpp RET 0
+[[35minfo[0m] [1.630] g++   -o ../emulator/RegFile ../emulator/RegFile.o ../emulator/RegFile-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:11:46 2016
+inChannelName: 00009658.in
+outChannelName: 00009658.out
+cmdChannelName: 00009658.cmd
+SEED 1472501498626
+STARTING ../emulator/RegFile 
+  POKE RegFile.io_rf_wa <- 0x0
+  POKE RegFile.io_rf_wd <- 0x3121a172
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 1
+  POKE RegFile.io_rf_wa <- 0x1
+  POKE RegFile.io_rf_wd <- 0xbb4966bc
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 2
+  POKE RegFile.io_rf_wa <- 0x2
+  POKE RegFile.io_rf_wd <- 0xe5d8fc1c
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 3
+  POKE RegFile.io_rf_wa <- 0x3
+  POKE RegFile.io_rf_wd <- 0x339181d0
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 4
+  POKE RegFile.io_rf_wa <- 0x4
+  POKE RegFile.io_rf_wd <- 0x89d740fd
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 5
+  POKE RegFile.io_rf_wa <- 0x5
+  POKE RegFile.io_rf_wd <- 0xb79c7897
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 6
+  POKE RegFile.io_rf_wa <- 0x6
+  POKE RegFile.io_rf_wd <- 0x8b349946
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 7
+  POKE RegFile.io_rf_wa <- 0x7
+  POKE RegFile.io_rf_wd <- 0x80a87e0b
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 8
+  POKE RegFile.io_rf_wa <- 0x8
+  POKE RegFile.io_rf_wd <- 0xce9f5b6f
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 9
+  POKE RegFile.io_rf_wa <- 0x9
+  POKE RegFile.io_rf_wd <- 0x727ae040
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 10
+  POKE RegFile.io_rf_wa <- 0xa
+  POKE RegFile.io_rf_wd <- 0xe158860f
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 11
+  POKE RegFile.io_rf_wa <- 0xb
+  POKE RegFile.io_rf_wd <- 0x6c19a9cd
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 12
+  POKE RegFile.io_rf_wa <- 0xc
+  POKE RegFile.io_rf_wd <- 0x5b4aec44
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 13
+  POKE RegFile.io_rf_wa <- 0xd
+  POKE RegFile.io_rf_wd <- 0x9048bd18
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 14
+  POKE RegFile.io_rf_wa <- 0xe
+  POKE RegFile.io_rf_wd <- 0x4b6439fb
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 15
+  POKE RegFile.io_rf_wa <- 0xf
+  POKE RegFile.io_rf_wd <- 0x2cd733e2
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 16
+  POKE RegFile.io_rf_wa <- 0x10
+  POKE RegFile.io_rf_wd <- 0x36bea0cb
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 17
+  POKE RegFile.io_rf_wa <- 0x11
+  POKE RegFile.io_rf_wd <- 0xbfe2ca86
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 18
+  POKE RegFile.io_rf_wa <- 0x12
+  POKE RegFile.io_rf_wd <- 0xa055524a
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 19
+  POKE RegFile.io_rf_wa <- 0x13
+  POKE RegFile.io_rf_wd <- 0x2e5b7dc1
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 20
+  POKE RegFile.io_rf_wa <- 0x14
+  POKE RegFile.io_rf_wd <- 0x1f0dfb06
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 21
+  POKE RegFile.io_rf_wa <- 0x15
+  POKE RegFile.io_rf_wd <- 0x25b51309
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 22
+  POKE RegFile.io_rf_wa <- 0x16
+  POKE RegFile.io_rf_wd <- 0x9705c97d
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 23
+  POKE RegFile.io_rf_wa <- 0x17
+  POKE RegFile.io_rf_wd <- 0x177756b8
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 24
+  POKE RegFile.io_rf_wa <- 0x18
+  POKE RegFile.io_rf_wd <- 0x646b3ed4
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 25
+  POKE RegFile.io_rf_wa <- 0x19
+  POKE RegFile.io_rf_wd <- 0xf8214090
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 26
+  POKE RegFile.io_rf_wa <- 0x1a
+  POKE RegFile.io_rf_wd <- 0x2f57a319
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 27
+  POKE RegFile.io_rf_wa <- 0x1b
+  POKE RegFile.io_rf_wd <- 0x1eec3669
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 28
+  POKE RegFile.io_rf_wa <- 0x1c
+  POKE RegFile.io_rf_wd <- 0xfa468d51
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 29
+  POKE RegFile.io_rf_wa <- 0x1d
+  POKE RegFile.io_rf_wd <- 0xb4891e09
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 30
+  POKE RegFile.io_rf_wa <- 0x1e
+  POKE RegFile.io_rf_wd <- 0x84890faa
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 31
+  POKE RegFile.io_rf_wa <- 0x1f
+  POKE RegFile.io_rf_wd <- 0xdd4b2a74
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 32
+  POKE RegFile.io_rf_ra1 <- 0x0
+  POKE RegFile.io_rf_ra2 <- 0x0
+  EXPECT RegFile.io_rf_rd1 -> 0x0 == 0x0 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x0 == 0x0 PASS
+STEP 1 -> 33
+  POKE RegFile.io_rf_ra1 <- 0x1
+  POKE RegFile.io_rf_ra2 <- 0x1
+  EXPECT RegFile.io_rf_rd1 -> 0xbb4966bc == 0xbb4966bc PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xbb4966bc == 0xbb4966bc PASS
+STEP 1 -> 34
+  POKE RegFile.io_rf_ra1 <- 0x2
+  POKE RegFile.io_rf_ra2 <- 0x2
+  EXPECT RegFile.io_rf_rd1 -> 0xe5d8fc1c == 0xe5d8fc1c PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xe5d8fc1c == 0xe5d8fc1c PASS
+STEP 1 -> 35
+  POKE RegFile.io_rf_ra1 <- 0x3
+  POKE RegFile.io_rf_ra2 <- 0x3
+  EXPECT RegFile.io_rf_rd1 -> 0x339181d0 == 0x339181d0 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x339181d0 == 0x339181d0 PASS
+STEP 1 -> 36
+  POKE RegFile.io_rf_ra1 <- 0x4
+  POKE RegFile.io_rf_ra2 <- 0x4
+  EXPECT RegFile.io_rf_rd1 -> 0x89d740fd == 0x89d740fd PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x89d740fd == 0x89d740fd PASS
+STEP 1 -> 37
+  POKE RegFile.io_rf_ra1 <- 0x5
+  POKE RegFile.io_rf_ra2 <- 0x5
+  EXPECT RegFile.io_rf_rd1 -> 0xb79c7897 == 0xb79c7897 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xb79c7897 == 0xb79c7897 PASS
+STEP 1 -> 38
+  POKE RegFile.io_rf_ra1 <- 0x6
+  POKE RegFile.io_rf_ra2 <- 0x6
+  EXPECT RegFile.io_rf_rd1 -> 0x8b349946 == 0x8b349946 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x8b349946 == 0x8b349946 PASS
+STEP 1 -> 39
+  POKE RegFile.io_rf_ra1 <- 0x7
+  POKE RegFile.io_rf_ra2 <- 0x7
+  EXPECT RegFile.io_rf_rd1 -> 0x80a87e0b == 0x80a87e0b PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x80a87e0b == 0x80a87e0b PASS
+STEP 1 -> 40
+  POKE RegFile.io_rf_ra1 <- 0x8
+  POKE RegFile.io_rf_ra2 <- 0x8
+  EXPECT RegFile.io_rf_rd1 -> 0xce9f5b6f == 0xce9f5b6f PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xce9f5b6f == 0xce9f5b6f PASS
+STEP 1 -> 41
+  POKE RegFile.io_rf_ra1 <- 0x9
+  POKE RegFile.io_rf_ra2 <- 0x9
+  EXPECT RegFile.io_rf_rd1 -> 0x727ae040 == 0x727ae040 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x727ae040 == 0x727ae040 PASS
+STEP 1 -> 42
+  POKE RegFile.io_rf_ra1 <- 0xa
+  POKE RegFile.io_rf_ra2 <- 0xa
+  EXPECT RegFile.io_rf_rd1 -> 0xe158860f == 0xe158860f PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xe158860f == 0xe158860f PASS
+STEP 1 -> 43
+  POKE RegFile.io_rf_ra1 <- 0xb
+  POKE RegFile.io_rf_ra2 <- 0xb
+  EXPECT RegFile.io_rf_rd1 -> 0x6c19a9cd == 0x6c19a9cd PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x6c19a9cd == 0x6c19a9cd PASS
+STEP 1 -> 44
+  POKE RegFile.io_rf_ra1 <- 0xc
+  POKE RegFile.io_rf_ra2 <- 0xc
+  EXPECT RegFile.io_rf_rd1 -> 0x5b4aec44 == 0x5b4aec44 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x5b4aec44 == 0x5b4aec44 PASS
+STEP 1 -> 45
+  POKE RegFile.io_rf_ra1 <- 0xd
+  POKE RegFile.io_rf_ra2 <- 0xd
+  EXPECT RegFile.io_rf_rd1 -> 0x9048bd18 == 0x9048bd18 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x9048bd18 == 0x9048bd18 PASS
+STEP 1 -> 46
+  POKE RegFile.io_rf_ra1 <- 0xe
+  POKE RegFile.io_rf_ra2 <- 0xe
+  EXPECT RegFile.io_rf_rd1 -> 0x4b6439fb == 0x4b6439fb PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x4b6439fb == 0x4b6439fb PASS
+STEP 1 -> 47
+  POKE RegFile.io_rf_ra1 <- 0xf
+  POKE RegFile.io_rf_ra2 <- 0xf
+  EXPECT RegFile.io_rf_rd1 -> 0x2cd733e2 == 0x2cd733e2 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x2cd733e2 == 0x2cd733e2 PASS
+STEP 1 -> 48
+  POKE RegFile.io_rf_ra1 <- 0x10
+  POKE RegFile.io_rf_ra2 <- 0x10
+  EXPECT RegFile.io_rf_rd1 -> 0x36bea0cb == 0x36bea0cb PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x36bea0cb == 0x36bea0cb PASS
+STEP 1 -> 49
+  POKE RegFile.io_rf_ra1 <- 0x11
+  POKE RegFile.io_rf_ra2 <- 0x11
+  EXPECT RegFile.io_rf_rd1 -> 0xbfe2ca86 == 0xbfe2ca86 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xbfe2ca86 == 0xbfe2ca86 PASS
+STEP 1 -> 50
+  POKE RegFile.io_rf_ra1 <- 0x12
+  POKE RegFile.io_rf_ra2 <- 0x12
+  EXPECT RegFile.io_rf_rd1 -> 0xa055524a == 0xa055524a PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xa055524a == 0xa055524a PASS
+STEP 1 -> 51
+  POKE RegFile.io_rf_ra1 <- 0x13
+  POKE RegFile.io_rf_ra2 <- 0x13
+  EXPECT RegFile.io_rf_rd1 -> 0x2e5b7dc1 == 0x2e5b7dc1 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x2e5b7dc1 == 0x2e5b7dc1 PASS
+STEP 1 -> 52
+  POKE RegFile.io_rf_ra1 <- 0x14
+  POKE RegFile.io_rf_ra2 <- 0x14
+  EXPECT RegFile.io_rf_rd1 -> 0x1f0dfb06 == 0x1f0dfb06 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x1f0dfb06 == 0x1f0dfb06 PASS
+STEP 1 -> 53
+  POKE RegFile.io_rf_ra1 <- 0x15
+  POKE RegFile.io_rf_ra2 <- 0x15
+  EXPECT RegFile.io_rf_rd1 -> 0x25b51309 == 0x25b51309 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x25b51309 == 0x25b51309 PASS
+STEP 1 -> 54
+  POKE RegFile.io_rf_ra1 <- 0x16
+  POKE RegFile.io_rf_ra2 <- 0x16
+  EXPECT RegFile.io_rf_rd1 -> 0x9705c97d == 0x9705c97d PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x9705c97d == 0x9705c97d PASS
+STEP 1 -> 55
+  POKE RegFile.io_rf_ra1 <- 0x17
+  POKE RegFile.io_rf_ra2 <- 0x17
+  EXPECT RegFile.io_rf_rd1 -> 0x177756b8 == 0x177756b8 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x177756b8 == 0x177756b8 PASS
+STEP 1 -> 56
+  POKE RegFile.io_rf_ra1 <- 0x18
+  POKE RegFile.io_rf_ra2 <- 0x18
+  EXPECT RegFile.io_rf_rd1 -> 0x646b3ed4 == 0x646b3ed4 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x646b3ed4 == 0x646b3ed4 PASS
+STEP 1 -> 57
+  POKE RegFile.io_rf_ra1 <- 0x19
+  POKE RegFile.io_rf_ra2 <- 0x19
+  EXPECT RegFile.io_rf_rd1 -> 0xf8214090 == 0xf8214090 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xf8214090 == 0xf8214090 PASS
+STEP 1 -> 58
+  POKE RegFile.io_rf_ra1 <- 0x1a
+  POKE RegFile.io_rf_ra2 <- 0x1a
+  EXPECT RegFile.io_rf_rd1 -> 0x2f57a319 == 0x2f57a319 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x2f57a319 == 0x2f57a319 PASS
+STEP 1 -> 59
+  POKE RegFile.io_rf_ra1 <- 0x1b
+  POKE RegFile.io_rf_ra2 <- 0x1b
+  EXPECT RegFile.io_rf_rd1 -> 0x1eec3669 == 0x1eec3669 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x1eec3669 == 0x1eec3669 PASS
+STEP 1 -> 60
+  POKE RegFile.io_rf_ra1 <- 0x1c
+  POKE RegFile.io_rf_ra2 <- 0x1c
+  EXPECT RegFile.io_rf_rd1 -> 0xfa468d51 == 0xfa468d51 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xfa468d51 == 0xfa468d51 PASS
+STEP 1 -> 61
+  POKE RegFile.io_rf_ra1 <- 0x1d
+  POKE RegFile.io_rf_ra2 <- 0x1d
+  EXPECT RegFile.io_rf_rd1 -> 0xb4891e09 == 0xb4891e09 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xb4891e09 == 0xb4891e09 PASS
+STEP 1 -> 62
+  POKE RegFile.io_rf_ra1 <- 0x1e
+  POKE RegFile.io_rf_ra2 <- 0x1e
+  EXPECT RegFile.io_rf_rd1 -> 0x84890faa == 0x84890faa PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x84890faa == 0x84890faa PASS
+STEP 1 -> 63
+  POKE RegFile.io_rf_ra1 <- 0x1f
+  POKE RegFile.io_rf_ra2 <- 0x1f
+  EXPECT RegFile.io_rf_rd1 -> 0xdd4b2a74 == 0xdd4b2a74 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xdd4b2a74 == 0xdd4b2a74 PASS
+STEP 1 -> 64
+  POKE RegFile.io_rf_ra1 <- 0x13
+  POKE RegFile.io_rf_ra2 <- 0x1
+  EXPECT RegFile.io_rf_rd1 -> 0x2e5b7dc1 == 0x2e5b7dc1 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xbb4966bc == 0xbb4966bc PASS
+STEP 1 -> 65
+  POKE RegFile.io_rf_ra1 <- 0x1
+  POKE RegFile.io_rf_ra2 <- 0x17
+  EXPECT RegFile.io_rf_rd1 -> 0xbb4966bc == 0xbb4966bc PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x177756b8 == 0x177756b8 PASS
+STEP 1 -> 66
+  POKE RegFile.io_rf_ra1 <- 0xd
+  POKE RegFile.io_rf_ra2 <- 0x5
+  EXPECT RegFile.io_rf_rd1 -> 0x9048bd18 == 0x9048bd18 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xb79c7897 == 0xb79c7897 PASS
+STEP 1 -> 67
+  POKE RegFile.io_rf_wa <- 0x1c
+  POKE RegFile.io_rf_wd <- 0xf11d7e0b
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 68
+  POKE RegFile.io_rf_wa <- 0xd
+  POKE RegFile.io_rf_wd <- 0x357ae88c
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 69
+  POKE RegFile.io_rf_wa <- 0x0
+  POKE RegFile.io_rf_wd <- 0x1e413add
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 70
+  POKE RegFile.io_rf_ra1 <- 0x6
+  POKE RegFile.io_rf_ra2 <- 0x15
+  EXPECT RegFile.io_rf_rd1 -> 0x8b349946 == 0x8b349946 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x25b51309 == 0x25b51309 PASS
+STEP 1 -> 71
+  POKE RegFile.io_rf_wa <- 0x11
+  POKE RegFile.io_rf_wd <- 0xa8d87a18
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 72
+  POKE RegFile.io_rf_ra1 <- 0x1e
+  POKE RegFile.io_rf_ra2 <- 0xb
+  EXPECT RegFile.io_rf_rd1 -> 0x84890faa == 0x84890faa PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x6c19a9cd == 0x6c19a9cd PASS
+STEP 1 -> 73
+  POKE RegFile.io_rf_wa <- 0x7
+  POKE RegFile.io_rf_wd <- 0xf755621
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 74
+  POKE RegFile.io_rf_wa <- 0xf
+  POKE RegFile.io_rf_wd <- 0xb95bbbb0
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 75
+  POKE RegFile.io_rf_wa <- 0x1e
+  POKE RegFile.io_rf_wd <- 0x4b77fcbd
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 76
+  POKE RegFile.io_rf_ra1 <- 0x3
+  POKE RegFile.io_rf_ra2 <- 0x3
+  EXPECT RegFile.io_rf_rd1 -> 0x339181d0 == 0x339181d0 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x339181d0 == 0x339181d0 PASS
+STEP 1 -> 77
+  POKE RegFile.io_rf_ra1 <- 0x14
+  POKE RegFile.io_rf_ra2 <- 0x4
+  EXPECT RegFile.io_rf_rd1 -> 0x1f0dfb06 == 0x1f0dfb06 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x89d740fd == 0x89d740fd PASS
+STEP 1 -> 78
+  POKE RegFile.io_rf_ra1 <- 0xd
+  POKE RegFile.io_rf_ra2 <- 0x17
+  EXPECT RegFile.io_rf_rd1 -> 0x357ae88c == 0x357ae88c PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x177756b8 == 0x177756b8 PASS
+STEP 1 -> 79
+  POKE RegFile.io_rf_wa <- 0x15
+  POKE RegFile.io_rf_wd <- 0x1dae3ebf
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 80
+  POKE RegFile.io_rf_ra1 <- 0x11
+  POKE RegFile.io_rf_ra2 <- 0x1f
+  EXPECT RegFile.io_rf_rd1 -> 0xa8d87a18 == 0xa8d87a18 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xdd4b2a74 == 0xdd4b2a74 PASS
+STEP 1 -> 81
+  POKE RegFile.io_rf_wa <- 0x1
+  POKE RegFile.io_rf_wd <- 0x382072b3
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 82
+  POKE RegFile.io_rf_wa <- 0x1
+  POKE RegFile.io_rf_wd <- 0xaa30b485
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 83
+  POKE RegFile.io_rf_wa <- 0xf
+  POKE RegFile.io_rf_wd <- 0x8852b6e8
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 84
+  POKE RegFile.io_rf_wa <- 0x18
+  POKE RegFile.io_rf_wd <- 0x816c2ddc
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 85
+  POKE RegFile.io_rf_ra1 <- 0xe
+  POKE RegFile.io_rf_ra2 <- 0x17
+  EXPECT RegFile.io_rf_rd1 -> 0x4b6439fb == 0x4b6439fb PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x177756b8 == 0x177756b8 PASS
+STEP 1 -> 86
+  POKE RegFile.io_rf_wa <- 0x5
+  POKE RegFile.io_rf_wd <- 0xab16cb77
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 87
+  POKE RegFile.io_rf_ra1 <- 0x12
+  POKE RegFile.io_rf_ra2 <- 0xd
+  EXPECT RegFile.io_rf_rd1 -> 0xa055524a == 0xa055524a PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x357ae88c == 0x357ae88c PASS
+STEP 1 -> 88
+  POKE RegFile.io_rf_wa <- 0x3
+  POKE RegFile.io_rf_wd <- 0x26f22d8
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 89
+  POKE RegFile.io_rf_ra1 <- 0xd
+  POKE RegFile.io_rf_ra2 <- 0x1c
+  EXPECT RegFile.io_rf_rd1 -> 0x357ae88c == 0x357ae88c PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xf11d7e0b == 0xf11d7e0b PASS
+STEP 1 -> 90
+  POKE RegFile.io_rf_ra1 <- 0x5
+  POKE RegFile.io_rf_ra2 <- 0x11
+  EXPECT RegFile.io_rf_rd1 -> 0xab16cb77 == 0xab16cb77 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xa8d87a18 == 0xa8d87a18 PASS
+STEP 1 -> 91
+  POKE RegFile.io_rf_wa <- 0x19
+  POKE RegFile.io_rf_wd <- 0xfd2393d1
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 92
+  POKE RegFile.io_rf_ra1 <- 0x7
+  POKE RegFile.io_rf_ra2 <- 0x1f
+  EXPECT RegFile.io_rf_rd1 -> 0xf755621 == 0xf755621 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xdd4b2a74 == 0xdd4b2a74 PASS
+STEP 1 -> 93
+  POKE RegFile.io_rf_wa <- 0x1f
+  POKE RegFile.io_rf_wd <- 0xcd498215
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 94
+  POKE RegFile.io_rf_wa <- 0x1e
+  POKE RegFile.io_rf_wd <- 0x5d281201
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 95
+  POKE RegFile.io_rf_ra1 <- 0x18
+  POKE RegFile.io_rf_ra2 <- 0x1b
+  EXPECT RegFile.io_rf_rd1 -> 0x816c2ddc == 0x816c2ddc PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x1eec3669 == 0x1eec3669 PASS
+STEP 1 -> 96
+  POKE RegFile.io_rf_ra1 <- 0xe
+  POKE RegFile.io_rf_ra2 <- 0xc
+  EXPECT RegFile.io_rf_rd1 -> 0x4b6439fb == 0x4b6439fb PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x5b4aec44 == 0x5b4aec44 PASS
+STEP 1 -> 97
+  POKE RegFile.io_rf_ra1 <- 0x16
+  POKE RegFile.io_rf_ra2 <- 0xd
+  EXPECT RegFile.io_rf_rd1 -> 0x9705c97d == 0x9705c97d PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x357ae88c == 0x357ae88c PASS
+STEP 1 -> 98
+  POKE RegFile.io_rf_wa <- 0x11
+  POKE RegFile.io_rf_wd <- 0x90de1c04
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 99
+  POKE RegFile.io_rf_ra1 <- 0x1a
+  POKE RegFile.io_rf_ra2 <- 0x15
+  EXPECT RegFile.io_rf_rd1 -> 0x2f57a319 == 0x2f57a319 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x1dae3ebf == 0x1dae3ebf PASS
+STEP 1 -> 100
+  POKE RegFile.io_rf_wa <- 0x9
+  POKE RegFile.io_rf_wd <- 0x719d4ef9
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 101
+  POKE RegFile.io_rf_ra1 <- 0x17
+  POKE RegFile.io_rf_ra2 <- 0x13
+  EXPECT RegFile.io_rf_rd1 -> 0x177756b8 == 0x177756b8 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x2e5b7dc1 == 0x2e5b7dc1 PASS
+STEP 1 -> 102
+  POKE RegFile.io_rf_wa <- 0x16
+  POKE RegFile.io_rf_wd <- 0x47151887
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 103
+  POKE RegFile.io_rf_ra1 <- 0x13
+  POKE RegFile.io_rf_ra2 <- 0x10
+  EXPECT RegFile.io_rf_rd1 -> 0x2e5b7dc1 == 0x2e5b7dc1 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x36bea0cb == 0x36bea0cb PASS
+STEP 1 -> 104
+  POKE RegFile.io_rf_wa <- 0x10
+  POKE RegFile.io_rf_wd <- 0xcee72166
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 105
+  POKE RegFile.io_rf_ra1 <- 0x12
+  POKE RegFile.io_rf_ra2 <- 0x2
+  EXPECT RegFile.io_rf_rd1 -> 0xa055524a == 0xa055524a PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xe5d8fc1c == 0xe5d8fc1c PASS
+STEP 1 -> 106
+  POKE RegFile.io_rf_wa <- 0x4
+  POKE RegFile.io_rf_wd <- 0x42626496
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 107
+  POKE RegFile.io_rf_ra1 <- 0xa
+  POKE RegFile.io_rf_ra2 <- 0x17
+  EXPECT RegFile.io_rf_rd1 -> 0xe158860f == 0xe158860f PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x177756b8 == 0x177756b8 PASS
+STEP 1 -> 108
+  POKE RegFile.io_rf_ra1 <- 0x1b
+  POKE RegFile.io_rf_ra2 <- 0x12
+  EXPECT RegFile.io_rf_rd1 -> 0x1eec3669 == 0x1eec3669 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xa055524a == 0xa055524a PASS
+STEP 1 -> 109
+  POKE RegFile.io_rf_ra1 <- 0x1f
+  POKE RegFile.io_rf_ra2 <- 0x17
+  EXPECT RegFile.io_rf_rd1 -> 0xcd498215 == 0xcd498215 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x177756b8 == 0x177756b8 PASS
+STEP 1 -> 110
+  POKE RegFile.io_rf_wa <- 0xf
+  POKE RegFile.io_rf_wd <- 0xa2720970
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 111
+  POKE RegFile.io_rf_wa <- 0x4
+  POKE RegFile.io_rf_wd <- 0x94e37853
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 112
+  POKE RegFile.io_rf_ra1 <- 0x5
+  POKE RegFile.io_rf_ra2 <- 0x1c
+  EXPECT RegFile.io_rf_rd1 -> 0xab16cb77 == 0xab16cb77 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xf11d7e0b == 0xf11d7e0b PASS
+STEP 1 -> 113
+  POKE RegFile.io_rf_wa <- 0x1b
+  POKE RegFile.io_rf_wd <- 0x6edb84ee
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 114
+  POKE RegFile.io_rf_wa <- 0x1c
+  POKE RegFile.io_rf_wd <- 0x6d2dd9f3
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 115
+  POKE RegFile.io_rf_ra1 <- 0x1e
+  POKE RegFile.io_rf_ra2 <- 0x7
+  EXPECT RegFile.io_rf_rd1 -> 0x5d281201 == 0x5d281201 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xf755621 == 0xf755621 PASS
+STEP 1 -> 116
+  POKE RegFile.io_rf_ra1 <- 0xe
+  POKE RegFile.io_rf_ra2 <- 0x8
+  EXPECT RegFile.io_rf_rd1 -> 0x4b6439fb == 0x4b6439fb PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xce9f5b6f == 0xce9f5b6f PASS
+STEP 1 -> 117
+  POKE RegFile.io_rf_ra1 <- 0x17
+  POKE RegFile.io_rf_ra2 <- 0x8
+  EXPECT RegFile.io_rf_rd1 -> 0x177756b8 == 0x177756b8 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xce9f5b6f == 0xce9f5b6f PASS
+STEP 1 -> 118
+  POKE RegFile.io_rf_wa <- 0xe
+  POKE RegFile.io_rf_wd <- 0xa6c1d448
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 119
+  POKE RegFile.io_rf_wa <- 0x0
+  POKE RegFile.io_rf_wd <- 0xc135db08
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 120
+  POKE RegFile.io_rf_wa <- 0x1
+  POKE RegFile.io_rf_wd <- 0xe0c1fdbf
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 121
+  POKE RegFile.io_rf_ra1 <- 0x7
+  POKE RegFile.io_rf_ra2 <- 0x14
+  EXPECT RegFile.io_rf_rd1 -> 0xf755621 == 0xf755621 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x1f0dfb06 == 0x1f0dfb06 PASS
+STEP 1 -> 122
+  POKE RegFile.io_rf_ra1 <- 0x1f
+  POKE RegFile.io_rf_ra2 <- 0xe
+  EXPECT RegFile.io_rf_rd1 -> 0xcd498215 == 0xcd498215 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xa6c1d448 == 0xa6c1d448 PASS
+STEP 1 -> 123
+  POKE RegFile.io_rf_wa <- 0x7
+  POKE RegFile.io_rf_wd <- 0xaf639d60
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 124
+  POKE RegFile.io_rf_ra1 <- 0x16
+  POKE RegFile.io_rf_ra2 <- 0x12
+  EXPECT RegFile.io_rf_rd1 -> 0x47151887 == 0x47151887 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xa055524a == 0xa055524a PASS
+STEP 1 -> 125
+  POKE RegFile.io_rf_wa <- 0x1d
+  POKE RegFile.io_rf_wd <- 0xace027ae
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 126
+  POKE RegFile.io_rf_ra1 <- 0x4
+  POKE RegFile.io_rf_ra2 <- 0x1e
+  EXPECT RegFile.io_rf_rd1 -> 0x94e37853 == 0x94e37853 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x5d281201 == 0x5d281201 PASS
+STEP 1 -> 127
+  POKE RegFile.io_rf_ra1 <- 0x4
+  POKE RegFile.io_rf_ra2 <- 0x8
+  EXPECT RegFile.io_rf_rd1 -> 0x94e37853 == 0x94e37853 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xce9f5b6f == 0xce9f5b6f PASS
+STEP 1 -> 128
+  POKE RegFile.io_rf_wa <- 0x1b
+  POKE RegFile.io_rf_wd <- 0x17508393
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 129
+  POKE RegFile.io_rf_wa <- 0x1a
+  POKE RegFile.io_rf_wd <- 0x93f33d9c
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 130
+  POKE RegFile.io_rf_ra1 <- 0xc
+  POKE RegFile.io_rf_ra2 <- 0x16
+  EXPECT RegFile.io_rf_rd1 -> 0x5b4aec44 == 0x5b4aec44 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x47151887 == 0x47151887 PASS
+STEP 1 -> 131
+  POKE RegFile.io_rf_wa <- 0x1a
+  POKE RegFile.io_rf_wd <- 0xc9bfc724
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 132
+  POKE RegFile.io_rf_wa <- 0xb
+  POKE RegFile.io_rf_wd <- 0xb8bf4fe6
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 133
+  POKE RegFile.io_rf_wa <- 0x13
+  POKE RegFile.io_rf_wd <- 0x436e91e3
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 134
+  POKE RegFile.io_rf_wa <- 0xb
+  POKE RegFile.io_rf_wd <- 0xbcdfc8a4
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 135
+  POKE RegFile.io_rf_wa <- 0x1d
+  POKE RegFile.io_rf_wd <- 0x3e1b29f1
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 136
+  POKE RegFile.io_rf_wa <- 0xb
+  POKE RegFile.io_rf_wd <- 0x7a316a75
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 137
+  POKE RegFile.io_rf_ra1 <- 0x18
+  POKE RegFile.io_rf_ra2 <- 0x1f
+  EXPECT RegFile.io_rf_rd1 -> 0x816c2ddc == 0x816c2ddc PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xcd498215 == 0xcd498215 PASS
+STEP 1 -> 138
+  POKE RegFile.io_rf_ra1 <- 0x4
+  POKE RegFile.io_rf_ra2 <- 0xf
+  EXPECT RegFile.io_rf_rd1 -> 0x94e37853 == 0x94e37853 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xa2720970 == 0xa2720970 PASS
+STEP 1 -> 139
+  POKE RegFile.io_rf_ra1 <- 0x1
+  POKE RegFile.io_rf_ra2 <- 0xd
+  EXPECT RegFile.io_rf_rd1 -> 0xe0c1fdbf == 0xe0c1fdbf PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x357ae88c == 0x357ae88c PASS
+STEP 1 -> 140
+  POKE RegFile.io_rf_ra1 <- 0x5
+  POKE RegFile.io_rf_ra2 <- 0x7
+  EXPECT RegFile.io_rf_rd1 -> 0xab16cb77 == 0xab16cb77 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xaf639d60 == 0xaf639d60 PASS
+STEP 1 -> 141
+  POKE RegFile.io_rf_wa <- 0x11
+  POKE RegFile.io_rf_wd <- 0x4b9fd786
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 142
+  POKE RegFile.io_rf_wa <- 0xf
+  POKE RegFile.io_rf_wd <- 0xbc443874
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 143
+  POKE RegFile.io_rf_ra1 <- 0x5
+  POKE RegFile.io_rf_ra2 <- 0x10
+  EXPECT RegFile.io_rf_rd1 -> 0xab16cb77 == 0xab16cb77 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xcee72166 == 0xcee72166 PASS
+STEP 1 -> 144
+  POKE RegFile.io_rf_wa <- 0x2
+  POKE RegFile.io_rf_wd <- 0x8d81d1a3
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 145
+  POKE RegFile.io_rf_ra1 <- 0xf
+  POKE RegFile.io_rf_ra2 <- 0xa
+  EXPECT RegFile.io_rf_rd1 -> 0xbc443874 == 0xbc443874 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xe158860f == 0xe158860f PASS
+STEP 1 -> 146
+  POKE RegFile.io_rf_ra1 <- 0x9
+  POKE RegFile.io_rf_ra2 <- 0x18
+  EXPECT RegFile.io_rf_rd1 -> 0x719d4ef9 == 0x719d4ef9 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x816c2ddc == 0x816c2ddc PASS
+STEP 1 -> 147
+  POKE RegFile.io_rf_ra1 <- 0x0
+  POKE RegFile.io_rf_ra2 <- 0x1b
+  EXPECT RegFile.io_rf_rd1 -> 0x0 == 0x0 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x17508393 == 0x17508393 PASS
+STEP 1 -> 148
+  POKE RegFile.io_rf_ra1 <- 0x1d
+  POKE RegFile.io_rf_ra2 <- 0x13
+  EXPECT RegFile.io_rf_rd1 -> 0x3e1b29f1 == 0x3e1b29f1 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x436e91e3 == 0x436e91e3 PASS
+STEP 1 -> 149
+  POKE RegFile.io_rf_ra1 <- 0x1f
+  POKE RegFile.io_rf_ra2 <- 0x4
+  EXPECT RegFile.io_rf_rd1 -> 0xcd498215 == 0xcd498215 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x94e37853 == 0x94e37853 PASS
+STEP 1 -> 150
+  POKE RegFile.io_rf_ra1 <- 0x13
+  POKE RegFile.io_rf_ra2 <- 0x2
+  EXPECT RegFile.io_rf_rd1 -> 0x436e91e3 == 0x436e91e3 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x8d81d1a3 == 0x8d81d1a3 PASS
+STEP 1 -> 151
+  POKE RegFile.io_rf_ra1 <- 0x6
+  POKE RegFile.io_rf_ra2 <- 0xc
+  EXPECT RegFile.io_rf_rd1 -> 0x8b349946 == 0x8b349946 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x5b4aec44 == 0x5b4aec44 PASS
+STEP 1 -> 152
+  POKE RegFile.io_rf_ra1 <- 0xc
+  POKE RegFile.io_rf_ra2 <- 0x4
+  EXPECT RegFile.io_rf_rd1 -> 0x5b4aec44 == 0x5b4aec44 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x94e37853 == 0x94e37853 PASS
+STEP 1 -> 153
+  POKE RegFile.io_rf_wa <- 0x11
+  POKE RegFile.io_rf_wd <- 0xa4929080
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 154
+  POKE RegFile.io_rf_wa <- 0xb
+  POKE RegFile.io_rf_wd <- 0x2966c5a2
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 155
+  POKE RegFile.io_rf_wa <- 0xc
+  POKE RegFile.io_rf_wd <- 0x51712123
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 156
+  POKE RegFile.io_rf_wa <- 0x1c
+  POKE RegFile.io_rf_wd <- 0xab6c3ae5
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 157
+  POKE RegFile.io_rf_ra1 <- 0xe
+  POKE RegFile.io_rf_ra2 <- 0xa
+  EXPECT RegFile.io_rf_rd1 -> 0xa6c1d448 == 0xa6c1d448 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xe158860f == 0xe158860f PASS
+STEP 1 -> 158
+  POKE RegFile.io_rf_wa <- 0x3
+  POKE RegFile.io_rf_wd <- 0x7a1cd45f
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 159
+  POKE RegFile.io_rf_ra1 <- 0x18
+  POKE RegFile.io_rf_ra2 <- 0x14
+  EXPECT RegFile.io_rf_rd1 -> 0x816c2ddc == 0x816c2ddc PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x1f0dfb06 == 0x1f0dfb06 PASS
+STEP 1 -> 160
+  POKE RegFile.io_rf_wa <- 0xb
+  POKE RegFile.io_rf_wd <- 0x3167fd66
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 161
+  POKE RegFile.io_rf_ra1 <- 0x1b
+  POKE RegFile.io_rf_ra2 <- 0xc
+  EXPECT RegFile.io_rf_rd1 -> 0x17508393 == 0x17508393 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0x51712123 == 0x51712123 PASS
+STEP 1 -> 162
+  POKE RegFile.io_rf_wa <- 0x17
+  POKE RegFile.io_rf_wd <- 0xf6b1622f
+  POKE RegFile.io_rf_wen <- 0x1
+STEP 1 -> 163
+  POKE RegFile.io_rf_ra1 <- 0x7
+  POKE RegFile.io_rf_ra2 <- 0x1f
+  EXPECT RegFile.io_rf_rd1 -> 0xaf639d60 == 0xaf639d60 PASS
+  EXPECT RegFile.io_rf_rd2 -> 0xcd498215 == 0xcd498215 PASS
+STEP 1 -> 164
+RegFileTest: 102 / 100 passed !
+RAN 164 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.006] // COMPILING < (class MDRisc.MuxPC)>(0)
+[[35minfo[0m] [0.008] giving names
+[[35minfo[0m] [0.009] executing custom transforms
+[[35minfo[0m] [0.010] convert masked writes of inline mems
+[[35minfo[0m] [0.010] adding clocks and resets
+[[35minfo[0m] [0.011] inferring widths
+[[35minfo[0m] [0.014] checking widths
+[[35minfo[0m] [0.014] lowering complex nodes to primitives
+[[35minfo[0m] [0.015] removing type nodes
+[[35minfo[0m] [0.016] compiling 28 nodes
+[[35minfo[0m] [0.016] computing memory ports
+[[35minfo[0m] [0.017] resolving nodes to the components
+[[35minfo[0m] [0.021] creating clock domains
+[[35minfo[0m] [0.021] pruning unconnected IOs
+[[35minfo[0m] [0.021] checking for combinational loops
+[[35minfo[0m] [0.022] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.028] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.031] generating cpp files
+CppBackend: createCppFile MuxPC.cpp
+[[35minfo[0m] [0.710] g++ -c -o ../emulator/MuxPC-emulator.o  -I../ -I/csrc/  ../emulator/MuxPC-emulator.cpp RET 0
+[[35minfo[0m] [1.314] g++ -c -o ../emulator/MuxPC.o  -I../ -I/csrc/  ../emulator/MuxPC.cpp RET 0
+[[35minfo[0m] [1.391] g++   -o ../emulator/MuxPC ../emulator/MuxPC.o ../emulator/MuxPC-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:11:48 2016
+inChannelName: 00009682.in
+outChannelName: 00009682.out
+cmdChannelName: 00009682.cmd
+SEED 1472501498626
+STARTING ../emulator/MuxPC 
+  POKE MuxPC.io_pc_sel <- 0x3
+  POKE MuxPC.io_pc_pc4 <- 0xbb4966bc
+  POKE MuxPC.io_pc_jalr <- 0xe5d8fc1c
+  POKE MuxPC.io_pc_br <- 0x339181d0
+  POKE MuxPC.io_pc_jmp <- 0x89d740fd
+  POKE MuxPC.io_pc_excp <- 0xb79c7897
+STEP 1 -> 1
+  EXPECT MuxPC.io_pc_out -> 0x89d740fd == 0x89d740fd PASS
+  POKE MuxPC.io_pc_sel <- 0x3
+  POKE MuxPC.io_pc_pc4 <- 0x80a87e0b
+  POKE MuxPC.io_pc_jalr <- 0xce9f5b6f
+  POKE MuxPC.io_pc_br <- 0x727ae040
+  POKE MuxPC.io_pc_jmp <- 0xe158860f
+  POKE MuxPC.io_pc_excp <- 0x6c19a9cd
+STEP 1 -> 2
+  EXPECT MuxPC.io_pc_out -> 0xe158860f == 0xe158860f PASS
+  POKE MuxPC.io_pc_sel <- 0x2
+  POKE MuxPC.io_pc_pc4 <- 0x9048bd18
+  POKE MuxPC.io_pc_jalr <- 0x4b6439fb
+  POKE MuxPC.io_pc_br <- 0x2cd733e2
+  POKE MuxPC.io_pc_jmp <- 0x36bea0cb
+  POKE MuxPC.io_pc_excp <- 0xbfe2ca86
+STEP 1 -> 3
+  EXPECT MuxPC.io_pc_out -> 0x2cd733e2 == 0x2cd733e2 PASS
+  POKE MuxPC.io_pc_sel <- 0x1
+  POKE MuxPC.io_pc_pc4 <- 0x2e5b7dc1
+  POKE MuxPC.io_pc_jalr <- 0x1f0dfb06
+  POKE MuxPC.io_pc_br <- 0x25b51309
+  POKE MuxPC.io_pc_jmp <- 0x9705c97d
+  POKE MuxPC.io_pc_excp <- 0x177756b8
+STEP 1 -> 4
+  EXPECT MuxPC.io_pc_out -> 0x1f0dfb06 == 0x1f0dfb06 PASS
+  POKE MuxPC.io_pc_sel <- 0x2
+  POKE MuxPC.io_pc_pc4 <- 0xf8214090
+  POKE MuxPC.io_pc_jalr <- 0x2f57a319
+  POKE MuxPC.io_pc_br <- 0x1eec3669
+  POKE MuxPC.io_pc_jmp <- 0xfa468d51
+  POKE MuxPC.io_pc_excp <- 0xb4891e09
+STEP 1 -> 5
+  EXPECT MuxPC.io_pc_out -> 0x1eec3669 == 0x1eec3669 PASS
+  POKE MuxPC.io_pc_sel <- 0x5
+  POKE MuxPC.io_pc_pc4 <- 0xdd4b2a74
+  POKE MuxPC.io_pc_jalr <- 0x56b8d27d
+  POKE MuxPC.io_pc_br <- 0x9c871e37
+  POKE MuxPC.io_pc_jmp <- 0xad84d0a
+  POKE MuxPC.io_pc_excp <- 0x7de86b75
+STEP 1 -> 6
+  EXPECT MuxPC.io_pc_out -> 0x0 == 0x0 PASS
+  POKE MuxPC.io_pc_sel <- 0x5
+  POKE MuxPC.io_pc_pc4 <- 0xb927fbc8
+  POKE MuxPC.io_pc_jalr <- 0x9f4ec6e3
+  POKE MuxPC.io_pc_br <- 0x693ecd30
+  POKE MuxPC.io_pc_jmp <- 0x2e8798db
+  POKE MuxPC.io_pc_excp <- 0x4395c6a6
+STEP 1 -> 7
+  EXPECT MuxPC.io_pc_out -> 0x0 == 0x0 PASS
+  POKE MuxPC.io_pc_sel <- 0x0
+  POKE MuxPC.io_pc_pc4 <- 0xf11d7e0b
+  POKE MuxPC.io_pc_jalr <- 0xdf6f52ba
+  POKE MuxPC.io_pc_br <- 0x68d5f28d
+  POKE MuxPC.io_pc_jmp <- 0x357ae88c
+  POKE MuxPC.io_pc_excp <- 0x8dadc9bc
+STEP 1 -> 8
+  EXPECT MuxPC.io_pc_out -> 0xf11d7e0b == 0xf11d7e0b PASS
+  POKE MuxPC.io_pc_sel <- 0x4
+  POKE MuxPC.io_pc_pc4 <- 0x1e413add
+  POKE MuxPC.io_pc_jalr <- 0x8ffe04e5
+  POKE MuxPC.io_pc_br <- 0x3105d342
+  POKE MuxPC.io_pc_jmp <- 0xa800f56c
+  POKE MuxPC.io_pc_excp <- 0x6f756fb0
+STEP 1 -> 9
+  EXPECT MuxPC.io_pc_out -> 0x6f756fb0 == 0x6f756fb0 PASS
+  POKE MuxPC.io_pc_sel <- 0x1
+  POKE MuxPC.io_pc_pc4 <- 0xa8d87a18
+  POKE MuxPC.io_pc_jalr <- 0x20daa5c5
+  POKE MuxPC.io_pc_br <- 0xf1ee802f
+  POKE MuxPC.io_pc_jmp <- 0x5f788fc1
+  POKE MuxPC.io_pc_excp <- 0xf221dea8
+STEP 1 -> 10
+  EXPECT MuxPC.io_pc_out -> 0x20daa5c5 == 0x20daa5c5 PASS
+  POKE MuxPC.io_pc_sel <- 0x0
+  POKE MuxPC.io_pc_pc4 <- 0xf755621
+  POKE MuxPC.io_pc_jalr <- 0xf001c6da
+  POKE MuxPC.io_pc_br <- 0x7cb339fd
+  POKE MuxPC.io_pc_jmp <- 0xb95bbbb0
+  POKE MuxPC.io_pc_excp <- 0xa46856c4
+STEP 1 -> 11
+  EXPECT MuxPC.io_pc_out -> 0xf755621 == 0xf755621 PASS
+  POKE MuxPC.io_pc_sel <- 0x4
+  POKE MuxPC.io_pc_pc4 <- 0x4b77fcbd
+  POKE MuxPC.io_pc_jalr <- 0x1c56f86b
+  POKE MuxPC.io_pc_br <- 0x1aca9ce0
+  POKE MuxPC.io_pc_jmp <- 0x1abc41dc
+  POKE MuxPC.io_pc_excp <- 0x7d796955
+STEP 1 -> 12
+  EXPECT MuxPC.io_pc_out -> 0x7d796955 == 0x7d796955 PASS
+  POKE MuxPC.io_pc_sel <- 0x5
+  POKE MuxPC.io_pc_pc4 <- 0x24444018
+  POKE MuxPC.io_pc_jalr <- 0xf3525cf1
+  POKE MuxPC.io_pc_br <- 0x6a451d75
+  POKE MuxPC.io_pc_jmp <- 0xb90b3e25
+  POKE MuxPC.io_pc_excp <- 0x7d0f3d82
+STEP 1 -> 13
+  EXPECT MuxPC.io_pc_out -> 0x0 == 0x0 PASS
+  POKE MuxPC.io_pc_sel <- 0x2
+  POKE MuxPC.io_pc_pc4 <- 0x1dae3ebf
+  POKE MuxPC.io_pc_jalr <- 0x8b065435
+  POKE MuxPC.io_pc_br <- 0x8d71d57a
+  POKE MuxPC.io_pc_jmp <- 0xfd4fa350
+  POKE MuxPC.io_pc_excp <- 0x9a283eba
+STEP 1 -> 14
+  EXPECT MuxPC.io_pc_out -> 0x8d71d57a == 0x8d71d57a PASS
+  POKE MuxPC.io_pc_sel <- 0x0
+  POKE MuxPC.io_pc_pc4 <- 0x382072b3
+  POKE MuxPC.io_pc_jalr <- 0x780ee862
+  POKE MuxPC.io_pc_br <- 0x9756a0c
+  POKE MuxPC.io_pc_jmp <- 0xaa30b485
+  POKE MuxPC.io_pc_excp <- 0xe6ee6e8e
+STEP 1 -> 15
+  EXPECT MuxPC.io_pc_out -> 0x382072b3 == 0x382072b3 PASS
+  POKE MuxPC.io_pc_sel <- 0x3
+  POKE MuxPC.io_pc_pc4 <- 0x8852b6e8
+  POKE MuxPC.io_pc_jalr <- 0x3c1c1588
+  POKE MuxPC.io_pc_br <- 0xc5d646ae
+  POKE MuxPC.io_pc_jmp <- 0x816c2ddc
+  POKE MuxPC.io_pc_excp <- 0xd66d86c5
+STEP 1 -> 16
+  EXPECT MuxPC.io_pc_out -> 0x816c2ddc == 0x816c2ddc PASS
+  POKE MuxPC.io_pc_sel <- 0x5
+  POKE MuxPC.io_pc_pc4 <- 0xbbd717cc
+  POKE MuxPC.io_pc_jalr <- 0x1e860032
+  POKE MuxPC.io_pc_br <- 0x2f874f50
+  POKE MuxPC.io_pc_jmp <- 0xab16cb77
+  POKE MuxPC.io_pc_excp <- 0xcaae71c7
+STEP 1 -> 17
+  EXPECT MuxPC.io_pc_out -> 0x0 == 0x0 PASS
+  POKE MuxPC.io_pc_sel <- 0x1
+  POKE MuxPC.io_pc_pc4 <- 0x68765ea2
+  POKE MuxPC.io_pc_jalr <- 0xeaf24a1e
+  POKE MuxPC.io_pc_br <- 0x1f52d8fe
+  POKE MuxPC.io_pc_jmp <- 0x26f22d8
+  POKE MuxPC.io_pc_excp <- 0x9f22eb5
+STEP 1 -> 18
+  EXPECT MuxPC.io_pc_out -> 0xeaf24a1e == 0xeaf24a1e PASS
+  POKE MuxPC.io_pc_sel <- 0x2
+  POKE MuxPC.io_pc_pc4 <- 0xe68488e2
+  POKE MuxPC.io_pc_jalr <- 0x9562fc43
+  POKE MuxPC.io_pc_br <- 0x2f0cfc14
+  POKE MuxPC.io_pc_jmp <- 0x8d33e476
+  POKE MuxPC.io_pc_excp <- 0x600f4bc6
+STEP 1 -> 19
+  EXPECT MuxPC.io_pc_out -> 0x2f0cfc14 == 0x2f0cfc14 PASS
+  POKE MuxPC.io_pc_sel <- 0x3
+  POKE MuxPC.io_pc_pc4 <- 0xfd2393d1
+  POKE MuxPC.io_pc_jalr <- 0xdd7883a5
+  POKE MuxPC.io_pc_br <- 0x39b17bf8
+  POKE MuxPC.io_pc_jmp <- 0xfd08abbe
+  POKE MuxPC.io_pc_excp <- 0x6a278cbc
+STEP 1 -> 20
+  EXPECT MuxPC.io_pc_out -> 0xfd08abbe == 0xfd08abbe PASS
+MuxPCTest: 20 / 20 passed !
+RAN 20 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.015] // COMPILING < (class MDRisc.MuxWB)>(0)
+[[35minfo[0m] [0.017] giving names
+[[35minfo[0m] [0.023] executing custom transforms
+[[35minfo[0m] [0.024] convert masked writes of inline mems
+[[35minfo[0m] [0.024] adding clocks and resets
+[[35minfo[0m] [0.034] inferring widths
+[[35minfo[0m] [0.039] checking widths
+[[35minfo[0m] [0.040] lowering complex nodes to primitives
+[[35minfo[0m] [0.040] removing type nodes
+[[35minfo[0m] [0.041] compiling 23 nodes
+[[35minfo[0m] [0.041] computing memory ports
+[[35minfo[0m] [0.043] resolving nodes to the components
+[[35minfo[0m] [0.069] creating clock domains
+[[35minfo[0m] [0.069] pruning unconnected IOs
+[[35minfo[0m] [0.069] checking for combinational loops
+[[35minfo[0m] [0.070] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.085] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.104] generating cpp files
+CppBackend: createCppFile MuxWB.cpp
+[[35minfo[0m] [0.857] g++ -c -o ../emulator/MuxWB-emulator.o  -I../ -I/csrc/  ../emulator/MuxWB-emulator.cpp RET 0
+[[35minfo[0m] [1.438] g++ -c -o ../emulator/MuxWB.o  -I../ -I/csrc/  ../emulator/MuxWB.cpp RET 0
+[[35minfo[0m] [1.511] g++   -o ../emulator/MuxWB ../emulator/MuxWB.o ../emulator/MuxWB-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:11:50 2016
+inChannelName: 00009706.in
+outChannelName: 00009706.out
+cmdChannelName: 00009706.cmd
+SEED 1472501498626
+STARTING ../emulator/MuxWB 
+  POKE MuxWB.io_wb_sel <- 0x0
+  POKE MuxWB.io_wb_alu <- 0xbb4966bc
+  POKE MuxWB.io_wb_pc4 <- 0xe5d8fc1c
+  POKE MuxWB.io_wb_csr <- 0x339181d0
+  POKE MuxWB.io_wb_mem <- 0x89d740fd
+STEP 1 -> 1
+  EXPECT MuxWB.io_wb_wd -> 0xbb4966bc == 0xbb4966bc PASS
+  POKE MuxWB.io_wb_sel <- 0x2
+  POKE MuxWB.io_wb_alu <- 0x8b349946
+  POKE MuxWB.io_wb_pc4 <- 0x80a87e0b
+  POKE MuxWB.io_wb_csr <- 0xce9f5b6f
+  POKE MuxWB.io_wb_mem <- 0x727ae040
+STEP 1 -> 2
+  EXPECT MuxWB.io_wb_wd -> 0x80a87e0b == 0x80a87e0b PASS
+  POKE MuxWB.io_wb_sel <- 0x3
+  POKE MuxWB.io_wb_alu <- 0x6c19a9cd
+  POKE MuxWB.io_wb_pc4 <- 0x5b4aec44
+  POKE MuxWB.io_wb_csr <- 0x9048bd18
+  POKE MuxWB.io_wb_mem <- 0x4b6439fb
+STEP 1 -> 3
+  EXPECT MuxWB.io_wb_wd -> 0x4b6439fb == 0x4b6439fb PASS
+  POKE MuxWB.io_wb_sel <- 0x0
+  POKE MuxWB.io_wb_alu <- 0x36bea0cb
+  POKE MuxWB.io_wb_pc4 <- 0xbfe2ca86
+  POKE MuxWB.io_wb_csr <- 0xa055524a
+  POKE MuxWB.io_wb_mem <- 0x2e5b7dc1
+STEP 1 -> 4
+  EXPECT MuxWB.io_wb_wd -> 0x36bea0cb == 0x36bea0cb PASS
+  POKE MuxWB.io_wb_sel <- 0x0
+  POKE MuxWB.io_wb_alu <- 0x25b51309
+  POKE MuxWB.io_wb_pc4 <- 0x9705c97d
+  POKE MuxWB.io_wb_csr <- 0x177756b8
+  POKE MuxWB.io_wb_mem <- 0x646b3ed4
+STEP 1 -> 5
+  EXPECT MuxWB.io_wb_wd -> 0x25b51309 == 0x25b51309 PASS
+  POKE MuxWB.io_wb_sel <- 0x3
+  POKE MuxWB.io_wb_alu <- 0x2f57a319
+  POKE MuxWB.io_wb_pc4 <- 0x1eec3669
+  POKE MuxWB.io_wb_csr <- 0xfa468d51
+  POKE MuxWB.io_wb_mem <- 0xb4891e09
+STEP 1 -> 6
+  EXPECT MuxWB.io_wb_wd -> 0xb4891e09 == 0xb4891e09 PASS
+  POKE MuxWB.io_wb_sel <- 0x2
+  POKE MuxWB.io_wb_alu <- 0xdd4b2a74
+  POKE MuxWB.io_wb_pc4 <- 0x56b8d27d
+  POKE MuxWB.io_wb_csr <- 0x9c871e37
+  POKE MuxWB.io_wb_mem <- 0xad84d0a
+STEP 1 -> 7
+  EXPECT MuxWB.io_wb_wd -> 0x56b8d27d == 0x56b8d27d PASS
+  POKE MuxWB.io_wb_sel <- 0x1
+  POKE MuxWB.io_wb_alu <- 0xafd691b
+  POKE MuxWB.io_wb_pc4 <- 0xb927fbc8
+  POKE MuxWB.io_wb_csr <- 0x9f4ec6e3
+  POKE MuxWB.io_wb_mem <- 0x693ecd30
+STEP 1 -> 8
+  EXPECT MuxWB.io_wb_wd -> 0x9f4ec6e3 == 0x9f4ec6e3 PASS
+  POKE MuxWB.io_wb_sel <- 0x0
+  POKE MuxWB.io_wb_alu <- 0x4395c6a6
+  POKE MuxWB.io_wb_pc4 <- 0xe7ff3b71
+  POKE MuxWB.io_wb_csr <- 0xf11d7e0b
+  POKE MuxWB.io_wb_mem <- 0xdf6f52ba
+STEP 1 -> 9
+  EXPECT MuxWB.io_wb_wd -> 0x4395c6a6 == 0x4395c6a6 PASS
+  POKE MuxWB.io_wb_sel <- 0x1
+  POKE MuxWB.io_wb_alu <- 0x357ae88c
+  POKE MuxWB.io_wb_pc4 <- 0x8dadc9bc
+  POKE MuxWB.io_wb_csr <- 0xc2cfa9
+  POKE MuxWB.io_wb_mem <- 0x1e413add
+STEP 1 -> 10
+  EXPECT MuxWB.io_wb_wd -> 0xc2cfa9 == 0xc2cfa9 PASS
+  POKE MuxWB.io_wb_sel <- 0x2
+  POKE MuxWB.io_wb_alu <- 0x3105d342
+  POKE MuxWB.io_wb_pc4 <- 0xa800f56c
+  POKE MuxWB.io_wb_csr <- 0x6f756fb0
+  POKE MuxWB.io_wb_mem <- 0x8c14098f
+STEP 1 -> 11
+  EXPECT MuxWB.io_wb_wd -> 0xa800f56c == 0xa800f56c PASS
+  POKE MuxWB.io_wb_sel <- 0x2
+  POKE MuxWB.io_wb_alu <- 0x20daa5c5
+  POKE MuxWB.io_wb_pc4 <- 0xf1ee802f
+  POKE MuxWB.io_wb_csr <- 0x5f788fc1
+  POKE MuxWB.io_wb_mem <- 0xf221dea8
+STEP 1 -> 12
+  EXPECT MuxWB.io_wb_wd -> 0xf1ee802f == 0xf1ee802f PASS
+  POKE MuxWB.io_wb_sel <- 0x0
+  POKE MuxWB.io_wb_alu <- 0xf755621
+  POKE MuxWB.io_wb_pc4 <- 0xf001c6da
+  POKE MuxWB.io_wb_csr <- 0x7cb339fd
+  POKE MuxWB.io_wb_mem <- 0xb95bbbb0
+STEP 1 -> 13
+  EXPECT MuxWB.io_wb_wd -> 0xf755621 == 0xf755621 PASS
+  POKE MuxWB.io_wb_sel <- 0x2
+  POKE MuxWB.io_wb_alu <- 0xf7adc6a4
+  POKE MuxWB.io_wb_pc4 <- 0x4b77fcbd
+  POKE MuxWB.io_wb_csr <- 0x1c56f86b
+  POKE MuxWB.io_wb_mem <- 0x1aca9ce0
+STEP 1 -> 14
+  EXPECT MuxWB.io_wb_wd -> 0x4b77fcbd == 0x4b77fcbd PASS
+  POKE MuxWB.io_wb_sel <- 0x0
+  POKE MuxWB.io_wb_alu <- 0x7d796955
+  POKE MuxWB.io_wb_pc4 <- 0xa2c63412
+  POKE MuxWB.io_wb_csr <- 0x24444018
+  POKE MuxWB.io_wb_mem <- 0xf3525cf1
+STEP 1 -> 15
+  EXPECT MuxWB.io_wb_wd -> 0x7d796955 == 0x7d796955 PASS
+  POKE MuxWB.io_wb_sel <- 0x1
+  POKE MuxWB.io_wb_alu <- 0xb90b3e25
+  POKE MuxWB.io_wb_pc4 <- 0x7d0f3d82
+  POKE MuxWB.io_wb_csr <- 0xa9bead0c
+  POKE MuxWB.io_wb_mem <- 0x1dae3ebf
+STEP 1 -> 16
+  EXPECT MuxWB.io_wb_wd -> 0xa9bead0c == 0xa9bead0c PASS
+  POKE MuxWB.io_wb_sel <- 0x2
+  POKE MuxWB.io_wb_alu <- 0x8d71d57a
+  POKE MuxWB.io_wb_pc4 <- 0xfd4fa350
+  POKE MuxWB.io_wb_csr <- 0x9a283eba
+  POKE MuxWB.io_wb_mem <- 0xdb8c8c9
+STEP 1 -> 17
+  EXPECT MuxWB.io_wb_wd -> 0xfd4fa350 == 0xfd4fa350 PASS
+  POKE MuxWB.io_wb_sel <- 0x0
+  POKE MuxWB.io_wb_alu <- 0x780ee862
+  POKE MuxWB.io_wb_pc4 <- 0x9756a0c
+  POKE MuxWB.io_wb_csr <- 0xaa30b485
+  POKE MuxWB.io_wb_mem <- 0xe6ee6e8e
+STEP 1 -> 18
+  EXPECT MuxWB.io_wb_wd -> 0x780ee862 == 0x780ee862 PASS
+  POKE MuxWB.io_wb_sel <- 0x1
+  POKE MuxWB.io_wb_alu <- 0x8852b6e8
+  POKE MuxWB.io_wb_pc4 <- 0x3c1c1588
+  POKE MuxWB.io_wb_csr <- 0xc5d646ae
+  POKE MuxWB.io_wb_mem <- 0x816c2ddc
+STEP 1 -> 19
+  EXPECT MuxWB.io_wb_wd -> 0xc5d646ae == 0xc5d646ae PASS
+  POKE MuxWB.io_wb_sel <- 0x3
+  POKE MuxWB.io_wb_alu <- 0x73640116
+  POKE MuxWB.io_wb_pc4 <- 0xbbd717cc
+  POKE MuxWB.io_wb_csr <- 0x1e860032
+  POKE MuxWB.io_wb_mem <- 0x2f874f50
+STEP 1 -> 20
+  EXPECT MuxWB.io_wb_wd -> 0x2f874f50 == 0x2f874f50 PASS
+MuxWBTest: 20 / 20 passed !
+RAN 20 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.016] // COMPILING < (class MDRisc.ImmGen)>(0)
+[[35minfo[0m] [0.024] giving names
+[[35minfo[0m] [0.027] executing custom transforms
+[[35minfo[0m] [0.027] convert masked writes of inline mems
+[[35minfo[0m] [0.030] adding clocks and resets
+[[35minfo[0m] [0.032] inferring widths
+[[35minfo[0m] [0.037] checking widths
+[[35minfo[0m] [0.039] lowering complex nodes to primitives
+[[35minfo[0m] [0.039] removing type nodes
+[[35minfo[0m] [0.042] compiling 84 nodes
+[[35minfo[0m] [0.042] computing memory ports
+[[35minfo[0m] [0.045] resolving nodes to the components
+[[35minfo[0m] [0.086] creating clock domains
+[[35minfo[0m] [0.086] pruning unconnected IOs
+[[35minfo[0m] [0.086] checking for combinational loops
+[[35minfo[0m] [0.088] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.107] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.119] generating cpp files
+CppBackend: createCppFile ImmGen.cpp
+[[35minfo[0m] [0.852] g++ -c -o ../emulator/ImmGen-emulator.o  -I../ -I/csrc/  ../emulator/ImmGen-emulator.cpp RET 0
+[[35minfo[0m] [1.419] g++ -c -o ../emulator/ImmGen.o  -I../ -I/csrc/  ../emulator/ImmGen.cpp RET 0
+[[35minfo[0m] [1.489] g++   -o ../emulator/ImmGen ../emulator/ImmGen.o ../emulator/ImmGen-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:11:52 2016
+inChannelName: 00009730.in
+outChannelName: 00009730.out
+cmdChannelName: 00009730.cmd
+SEED 1472501498626
+STARTING ../emulator/ImmGen 
+  POKE ImmGen.io_instr <- 0x3121a172
+  PEEK ImmGen.io_immi_sxt <- 0x312
+  PEEK ImmGen.io_imms_sxt <- 0x302
+  PEEK ImmGen.io_immb_sxt <- 0x0
+  PEEK ImmGen.io_immu_sxt <- 0x3121a000
+  PEEK ImmGen.io_immj_sxt <- 0xd189
+STEP 1 -> 1
+  POKE ImmGen.io_instr <- 0xbb4966bc
+  PEEK ImmGen.io_immi_sxt <- 0xfffffbb4
+  PEEK ImmGen.io_imms_sxt <- 0xfffffbad
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0xbb496000
+  PEEK ImmGen.io_immj_sxt <- 0x7ffcb1da
+STEP 1 -> 2
+  POKE ImmGen.io_instr <- 0xe5d8fc1c
+  PEEK ImmGen.io_immi_sxt <- 0xfffffe5d
+  PEEK ImmGen.io_imms_sxt <- 0xfffffe58
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0xe5d8f000
+  PEEK ImmGen.io_immj_sxt <- 0x7ffc7f2e
+STEP 1 -> 3
+  POKE ImmGen.io_instr <- 0x339181d0
+  PEEK ImmGen.io_immi_sxt <- 0x339
+  PEEK ImmGen.io_imms_sxt <- 0x323
+  PEEK ImmGen.io_immb_sxt <- 0x0
+  PEEK ImmGen.io_immu_sxt <- 0x33918000
+  PEEK ImmGen.io_immj_sxt <- 0xc59c
+STEP 1 -> 4
+  POKE ImmGen.io_instr <- 0x89d740fd
+  PEEK ImmGen.io_immi_sxt <- 0xfffff89d
+  PEEK ImmGen.io_imms_sxt <- 0xfffff881
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0x89d74000
+  PEEK ImmGen.io_immj_sxt <- 0x7ffba44e
+STEP 1 -> 5
+  POKE ImmGen.io_instr <- 0xb79c7897
+  PEEK ImmGen.io_immi_sxt <- 0xfffffb79
+  PEEK ImmGen.io_imms_sxt <- 0xfffffb71
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0xb79c7000
+  PEEK ImmGen.io_immj_sxt <- 0x7ffe3dbc
+STEP 1 -> 6
+  POKE ImmGen.io_instr <- 0x8b349946
+  PEEK ImmGen.io_immi_sxt <- 0xfffff8b3
+  PEEK ImmGen.io_imms_sxt <- 0xfffff8b2
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0x8b349000
+  PEEK ImmGen.io_immj_sxt <- 0x7ffa4c59
+STEP 1 -> 7
+  POKE ImmGen.io_instr <- 0x80a87e0b
+  PEEK ImmGen.io_immi_sxt <- 0xfffff80a
+  PEEK ImmGen.io_imms_sxt <- 0xfffff81c
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0x80a87000
+  PEEK ImmGen.io_immj_sxt <- 0x7ffc3805
+STEP 1 -> 8
+  POKE ImmGen.io_instr <- 0xce9f5b6f
+  PEEK ImmGen.io_immi_sxt <- 0xfffffce9
+  PEEK ImmGen.io_imms_sxt <- 0xfffffcf6
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0xce9f5000
+  PEEK ImmGen.io_immj_sxt <- 0x7fffae74
+STEP 1 -> 9
+  POKE ImmGen.io_instr <- 0x727ae040
+  PEEK ImmGen.io_immi_sxt <- 0x727
+  PEEK ImmGen.io_imms_sxt <- 0x720
+  PEEK ImmGen.io_immb_sxt <- 0x0
+  PEEK ImmGen.io_immu_sxt <- 0x727ae000
+  PEEK ImmGen.io_immj_sxt <- 0x57793
+STEP 1 -> 10
+  POKE ImmGen.io_instr <- 0xe158860f
+  PEEK ImmGen.io_immi_sxt <- 0xfffffe15
+  PEEK ImmGen.io_imms_sxt <- 0xfffffe0c
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0xe1588000
+  PEEK ImmGen.io_immj_sxt <- 0x7ffc470a
+STEP 1 -> 11
+  POKE ImmGen.io_instr <- 0x6c19a9cd
+  PEEK ImmGen.io_immi_sxt <- 0x6c1
+  PEEK ImmGen.io_imms_sxt <- 0x6d3
+  PEEK ImmGen.io_immb_sxt <- 0x0
+  PEEK ImmGen.io_immu_sxt <- 0x6c19a000
+  PEEK ImmGen.io_immj_sxt <- 0x4d760
+STEP 1 -> 12
+  POKE ImmGen.io_instr <- 0x5b4aec44
+  PEEK ImmGen.io_immi_sxt <- 0x5b4
+  PEEK ImmGen.io_imms_sxt <- 0x5b8
+  PEEK ImmGen.io_immb_sxt <- 0x0
+  PEEK ImmGen.io_immu_sxt <- 0x5b4ae000
+  PEEK ImmGen.io_immj_sxt <- 0x572da
+STEP 1 -> 13
+  POKE ImmGen.io_instr <- 0x9048bd18
+  PEEK ImmGen.io_immi_sxt <- 0xfffff904
+  PEEK ImmGen.io_imms_sxt <- 0xfffff91a
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0x9048b000
+  PEEK ImmGen.io_immj_sxt <- 0x7ffc5882
+STEP 1 -> 14
+  POKE ImmGen.io_instr <- 0x4b6439fb
+  PEEK ImmGen.io_immi_sxt <- 0x4b6
+  PEEK ImmGen.io_imms_sxt <- 0x4b3
+  PEEK ImmGen.io_immb_sxt <- 0x0
+  PEEK ImmGen.io_immu_sxt <- 0x4b643000
+  PEEK ImmGen.io_immj_sxt <- 0x21a5b
+STEP 1 -> 15
+  POKE ImmGen.io_instr <- 0x2cd733e2
+  PEEK ImmGen.io_immi_sxt <- 0x2cd
+  PEEK ImmGen.io_imms_sxt <- 0x2c7
+  PEEK ImmGen.io_immb_sxt <- 0x0
+  PEEK ImmGen.io_immu_sxt <- 0x2cd73000
+  PEEK ImmGen.io_immj_sxt <- 0x39d66
+STEP 1 -> 16
+  POKE ImmGen.io_instr <- 0x36bea0cb
+  PEEK ImmGen.io_immi_sxt <- 0x36b
+  PEEK ImmGen.io_imms_sxt <- 0x361
+  PEEK ImmGen.io_immb_sxt <- 0x0
+  PEEK ImmGen.io_immu_sxt <- 0x36bea000
+  PEEK ImmGen.io_immj_sxt <- 0x755b5
+STEP 1 -> 17
+  POKE ImmGen.io_instr <- 0xbfe2ca86
+  PEEK ImmGen.io_immi_sxt <- 0xfffffbfe
+  PEEK ImmGen.io_imms_sxt <- 0xfffffbf5
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0xbfe2c000
+  PEEK ImmGen.io_immj_sxt <- 0x7ff961ff
+STEP 1 -> 18
+  POKE ImmGen.io_instr <- 0xa055524a
+  PEEK ImmGen.io_immi_sxt <- 0xfffffa05
+  PEEK ImmGen.io_imms_sxt <- 0xfffffa04
+  PEEK ImmGen.io_immb_sxt <- 0xffffe
+  PEEK ImmGen.io_immu_sxt <- 0xa0555000
+  PEEK ImmGen.io_immj_sxt <- 0x7ffaad02
+STEP 1 -> 19
+  POKE ImmGen.io_instr <- 0x2e5b7dc1
+  PEEK ImmGen.io_immi_sxt <- 0x2e5
+  PEEK ImmGen.io_imms_sxt <- 0x2fb
+  PEEK ImmGen.io_immb_sxt <- 0x0
+  PEEK ImmGen.io_immu_sxt <- 0x2e5b7000
+  PEEK ImmGen.io_immj_sxt <- 0x5bd72
+STEP 1 -> 20
+TO DO Maybe check the ImmGen ?
+ImmGenTest: passed 
+RAN 20 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.096] // COMPILING < (class MDRisc.Decoder)>(0)
+[[35minfo[0m] [0.117] giving names
+[[35minfo[0m] [0.138] executing custom transforms
+[[35minfo[0m] [0.138] convert masked writes of inline mems
+[[35minfo[0m] [0.150] adding clocks and resets
+[[35minfo[0m] [0.161] inferring widths
+[[35minfo[0m] [0.197] checking widths
+[[35minfo[0m] [0.207] lowering complex nodes to primitives
+[[35minfo[0m] [0.207] removing type nodes
+[[35minfo[0m] [0.217] compiling 430 nodes
+[[35minfo[0m] [0.217] computing memory ports
+[[35minfo[0m] [0.229] resolving nodes to the components
+[[35minfo[0m] [0.268] creating clock domains
+[[35minfo[0m] [0.268] pruning unconnected IOs
+[[35minfo[0m] [0.268] checking for combinational loops
+[[35minfo[0m] [0.276] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.288] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.348] generating cpp files
+CppBackend: createCppFile Decoder.cpp
+[[35minfo[0m] [1.051] g++ -c -o ../emulator/Decoder-emulator.o  -I../ -I/csrc/  ../emulator/Decoder-emulator.cpp RET 0
+[[35minfo[0m] [1.789] g++ -c -o ../emulator/Decoder.o  -I../ -I/csrc/  ../emulator/Decoder.cpp RET 0
+[[35minfo[0m] [1.867] g++   -o ../emulator/Decoder ../emulator/Decoder.o ../emulator/Decoder-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:11:54 2016
+inChannelName: 00009755.in
+outChannelName: 00009755.out
+cmdChannelName: 00009755.cmd
+SEED 1472501498626
+STARTING ../emulator/Decoder 
+  POKE Decoder.io_dec_instr <- 0xffffff37
+  PEEK Decoder.io_ctl_val_inst <- 0x1
+  PEEK Decoder.io_ctl_br_type <- 0x0
+  PEEK Decoder.io_ctl_opa_sel <- 0x1
+  PEEK Decoder.io_ctl_opb_sel <- 0x0
+  PEEK Decoder.io_ctl_alu_func <- 0xf
+  PEEK Decoder.io_ctl_wb_sel <- 0x0
+  PEEK Decoder.io_ctl_rf_wen <- 0x1
+  PEEK Decoder.io_ctl_mem_en <- 0x0
+  PEEK Decoder.io_ctl_mem_func <- 0x0
+  PEEK Decoder.io_ctl_msk_sel <- 0x2
+  PEEK Decoder.io_ctl_csr_cmd <- 0x0
+STEP 1 -> 1
+  POKE Decoder.io_dec_instr <- 0xffffff17
+  PEEK Decoder.io_ctl_val_inst <- 0x1
+  PEEK Decoder.io_ctl_br_type <- 0x0
+  PEEK Decoder.io_ctl_opa_sel <- 0x1
+  PEEK Decoder.io_ctl_opb_sel <- 0x0
+  PEEK Decoder.io_ctl_alu_func <- 0x1
+  PEEK Decoder.io_ctl_wb_sel <- 0x0
+  PEEK Decoder.io_ctl_rf_wen <- 0x1
+  PEEK Decoder.io_ctl_mem_en <- 0x0
+  PEEK Decoder.io_ctl_mem_func <- 0x0
+  PEEK Decoder.io_ctl_msk_sel <- 0x2
+  PEEK Decoder.io_ctl_csr_cmd <- 0x0
+STEP 1 -> 2
+  POKE Decoder.io_dec_instr <- 0xffffff6f
+  PEEK Decoder.io_ctl_val_inst <- 0x1
+  PEEK Decoder.io_ctl_br_type <- 0x7
+  PEEK Decoder.io_ctl_opa_sel <- 0x0
+  PEEK Decoder.io_ctl_opb_sel <- 0x0
+  PEEK Decoder.io_ctl_alu_func <- 0x0
+  PEEK Decoder.io_ctl_wb_sel <- 0x2
+  PEEK Decoder.io_ctl_rf_wen <- 0x1
+  PEEK Decoder.io_ctl_mem_en <- 0x0
+  PEEK Decoder.io_ctl_mem_func <- 0x0
+  PEEK Decoder.io_ctl_msk_sel <- 0x2
+  PEEK Decoder.io_ctl_csr_cmd <- 0x0
+STEP 1 -> 3
+  POKE Decoder.io_dec_instr <- 0xffff0f67
+  PEEK Decoder.io_ctl_val_inst <- 0x1
+  PEEK Decoder.io_ctl_br_type <- 0x8
+  PEEK Decoder.io_ctl_opa_sel <- 0x0
+  PEEK Decoder.io_ctl_opb_sel <- 0x2
+  PEEK Decoder.io_ctl_alu_func <- 0x0
+  PEEK Decoder.io_ctl_wb_sel <- 0x2
+  PEEK Decoder.io_ctl_rf_wen <- 0x1
+  PEEK Decoder.io_ctl_mem_en <- 0x0
+  PEEK Decoder.io_ctl_mem_func <- 0x0
+  PEEK Decoder.io_ctl_msk_sel <- 0x2
+  PEEK Decoder.io_ctl_csr_cmd <- 0x0
+STEP 1 -> 4
+  POKE Decoder.io_dec_instr <- 0xffff1f63
+  PEEK Decoder.io_ctl_val_inst <- 0x1
+  PEEK Decoder.io_ctl_br_type <- 0x2
+  PEEK Decoder.io_ctl_opa_sel <- 0x0
+  PEEK Decoder.io_ctl_opb_sel <- 0x0
+  PEEK Decoder.io_ctl_alu_func <- 0x0
+  PEEK Decoder.io_ctl_wb_sel <- 0x0
+  PEEK Decoder.io_ctl_rf_wen <- 0x0
+  PEEK Decoder.io_ctl_mem_en <- 0x0
+  PEEK Decoder.io_ctl_mem_func <- 0x0
+  PEEK Decoder.io_ctl_msk_sel <- 0x2
+  PEEK Decoder.io_ctl_csr_cmd <- 0x0
+STEP 1 -> 5
+  POKE Decoder.io_dec_instr <- 0xffff4f63
+  PEEK Decoder.io_ctl_val_inst <- 0x1
+  PEEK Decoder.io_ctl_br_type <- 0x5
+  PEEK Decoder.io_ctl_opa_sel <- 0x0
+  PEEK Decoder.io_ctl_opb_sel <- 0x0
+  PEEK Decoder.io_ctl_alu_func <- 0x0
+  PEEK Decoder.io_ctl_wb_sel <- 0x0
+  PEEK Decoder.io_ctl_rf_wen <- 0x0
+  PEEK Decoder.io_ctl_mem_en <- 0x0
+  PEEK Decoder.io_ctl_mem_func <- 0x0
+  PEEK Decoder.io_ctl_msk_sel <- 0x2
+  PEEK Decoder.io_ctl_csr_cmd <- 0x0
+STEP 1 -> 6
+  POKE Decoder.io_dec_instr <- 0xffff
+  PEEK Decoder.io_ctl_val_inst <- 0x0
+  PEEK Decoder.io_ctl_br_type <- 0x0
+  PEEK Decoder.io_ctl_opa_sel <- 0x0
+  PEEK Decoder.io_ctl_opb_sel <- 0x0
+  PEEK Decoder.io_ctl_alu_func <- 0x0
+  PEEK Decoder.io_ctl_wb_sel <- 0x0
+  PEEK Decoder.io_ctl_rf_wen <- 0x0
+  PEEK Decoder.io_ctl_mem_en <- 0x0
+  PEEK Decoder.io_ctl_mem_func <- 0x0
+  PEEK Decoder.io_ctl_msk_sel <- 0x2
+  PEEK Decoder.io_ctl_csr_cmd <- 0x0
+STEP 1 -> 7
+TO DO Maybe check the Decoder ?
+DecoderTest: passed 
+RAN 7 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.003] // COMPILING < (class MDRisc.InstructionMem)>(0)
+[[35minfo[0m] [0.004] giving names
+[[35minfo[0m] [0.005] executing custom transforms
+[[35minfo[0m] [0.005] convert masked writes of inline mems
+[[35minfo[0m] [0.005] adding clocks and resets
+[[35minfo[0m] [0.006] inferring widths
+[[35minfo[0m] [0.006] checking widths
+[[35minfo[0m] [0.006] lowering complex nodes to primitives
+[[35minfo[0m] [0.007] removing type nodes
+[[35minfo[0m] [0.007] compiling 7 nodes
+[[35minfo[0m] [0.007] computing memory ports
+[[35minfo[0m] [0.008] resolving nodes to the components
+[[35minfo[0m] [0.009] creating clock domains
+[[35minfo[0m] [0.009] pruning unconnected IOs
+[[35minfo[0m] [0.009] checking for combinational loops
+[[35minfo[0m] [0.013] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.019] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.021] generating cpp files
+CppBackend: createCppFile InstructionMem.cpp
+[[35minfo[0m] [0.720] g++ -c -o ../emulator/InstructionMem-emulator.o  -I../ -I/csrc/  ../emulator/InstructionMem-emulator.cpp RET 0
+[[35minfo[0m] [1.355] g++ -c -o ../emulator/InstructionMem.o  -I../ -I/csrc/  ../emulator/InstructionMem.cpp RET 0
+[[35minfo[0m] [1.432] g++   -o ../emulator/InstructionMem ../emulator/InstructionMem.o ../emulator/InstructionMem-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:11:56 2016
+inChannelName: 00009779.in
+outChannelName: 00009779.out
+cmdChannelName: 00009779.cmd
+SEED 1472501498626
+STARTING ../emulator/InstructionMem 
+InstructionMemTest: 0 / 0 passed !
+RAN 0 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.016] // COMPILING < (class MDRisc.DataMem)>(0)
+[[35minfo[0m] [0.017] giving names
+[[35minfo[0m] [0.023] executing custom transforms
+[[35minfo[0m] [0.023] convert masked writes of inline mems
+[[35minfo[0m] [0.023] adding clocks and resets
+[[35minfo[0m] [0.024] inferring widths
+[[35minfo[0m] [0.025] checking widths
+[[35minfo[0m] [0.025] lowering complex nodes to primitives
+[[35minfo[0m] [0.025] removing type nodes
+[[35minfo[0m] [0.026] compiling 22 nodes
+[[35minfo[0m] [0.026] computing memory ports
+[[35minfo[0m] [0.027] resolving nodes to the components
+[[35minfo[0m] [0.041] creating clock domains
+[[35minfo[0m] [0.042] pruning unconnected IOs
+[[35minfo[0m] [0.047] checking for combinational loops
+[[35minfo[0m] [0.066] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.081] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.087] generating cpp files
+CppBackend: createCppFile DataMem.cpp
+[[35minfo[0m] [0.907] g++ -c -o ../emulator/DataMem-emulator.o  -I../ -I/csrc/  ../emulator/DataMem-emulator.cpp RET 0
+[[35minfo[0m] [1.583] g++ -c -o ../emulator/DataMem.o  -I../ -I/csrc/  ../emulator/DataMem.cpp RET 0
+[[35minfo[0m] [1.659] g++   -o ../emulator/DataMem ../emulator/DataMem.o ../emulator/DataMem-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:11:58 2016
+inChannelName: 00009803.in
+outChannelName: 00009803.out
+cmdChannelName: 00009803.cmd
+SEED 1472501498626
+STARTING ../emulator/DataMem 
+DataMemTest: 0 / 0 passed !
+RAN 0 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.011] // COMPILING < (class MDRisc.BranchLogic)>(0)
+[[35minfo[0m] [0.013] giving names
+[[35minfo[0m] [0.015] executing custom transforms
+[[35minfo[0m] [0.015] convert masked writes of inline mems
+[[35minfo[0m] [0.015] adding clocks and resets
+[[35minfo[0m] [0.023] inferring widths
+[[35minfo[0m] [0.026] checking widths
+[[35minfo[0m] [0.027] lowering complex nodes to primitives
+[[35minfo[0m] [0.027] removing type nodes
+[[35minfo[0m] [0.028] compiling 51 nodes
+[[35minfo[0m] [0.028] computing memory ports
+[[35minfo[0m] [0.028] resolving nodes to the components
+[[35minfo[0m] [0.036] creating clock domains
+[[35minfo[0m] [0.036] pruning unconnected IOs
+[[35minfo[0m] [0.037] checking for combinational loops
+[[35minfo[0m] [0.037] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.051] populating clock domains
+CppBackend::elaborate: need 0, redundant 0 shadow registers
+[[35minfo[0m] [0.066] generating cpp files
+CppBackend: createCppFile BranchLogic.cpp
+[[35minfo[0m] [0.896] g++ -c -o ../emulator/BranchLogic-emulator.o  -I../ -I/csrc/  ../emulator/BranchLogic-emulator.cpp RET 0
+[[35minfo[0m] [1.513] g++ -c -o ../emulator/BranchLogic.o  -I../ -I/csrc/  ../emulator/BranchLogic.cpp RET 0
+[[35minfo[0m] [1.595] g++   -o ../emulator/BranchLogic ../emulator/BranchLogic.o ../emulator/BranchLogic-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:12:00 2016
+inChannelName: 00009827.in
+outChannelName: 00009827.out
+cmdChannelName: 00009827.cmd
+SEED 1472501498626
+STARTING ../emulator/BranchLogic 
+BranchLogicTest: passed !
+BranchLogicTest: TO DO : Check the BranchLogic !
+RAN 0 CYCLES PASSED
+CPP elaborate
+[[35minfo[0m] [0.105] // COMPILING < (class MDRisc.Core)>(11)
+[[35minfo[0m] [0.184] giving names
+[[35minfo[0m] [0.257] executing custom transforms
+[[35minfo[0m] [0.257] convert masked writes of inline mems
+[[35minfo[0m] [0.261] adding clocks and resets
+[[35minfo[0m] [0.270] inferring widths
+[[35minfo[0m] [0.307] checking widths
+[[35minfo[0m] [0.321] lowering complex nodes to primitives
+[[35minfo[0m] [0.321] removing type nodes
+[[35minfo[0m] [0.330] compiling 869 nodes
+[[35minfo[0m] [0.330] computing memory ports
+[[35minfo[0m] [0.336] resolving nodes to the components
+[[35minfo[0m] [0.397] creating clock domains
+[[35minfo[0m] [0.402] pruning unconnected IOs
+[[35minfo[0m] [0.404] checking for combinational loops
+[[35minfo[0m] [0.414] NO COMBINATIONAL LOOP FOUND
+[[35minfo[0m] [0.429] populating clock domains
+CppBackend::elaborate: need 1, redundant 3 shadow registers
+[[35minfo[0m] [0.525] generating cpp files
+CppBackend: createCppFile Core.cpp
+[[35minfo[0m] [1.245] g++ -c -o ../emulator/Core-emulator.o  -I../ -I/csrc/  ../emulator/Core-emulator.cpp RET 0
+[[35minfo[0m] [2.211] g++ -c -o ../emulator/Core.o  -I../ -I/csrc/  ../emulator/Core.cpp RET 0
+[[35minfo[0m] [2.289] g++   -o ../emulator/Core ../emulator/Core.o ../emulator/Core-emulator.o RET 0
+sim start on marcel-X55VD at Mon Aug 29 23:12:03 2016
+inChannelName: 00009852.in
+outChannelName: 00009852.out
+cmdChannelName: 00009852.cmd
+SEED 1472501498626
+STARTING ../emulator/Core 
+Core: BIG TO DO !
+Core: not passed... yet !
+RAN 0 CYCLES PASSED
+[0m[[32msuccess[0m] [0mTotal time: 52 s, completed Aug 29, 2016 11:12:04 PM[0m
