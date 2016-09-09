@@ -33,7 +33,7 @@ class BranchLogic ( val expr_len : Int ) extends Module {
 class BranchLogicTest ( c : BranchLogic, val steps : Int ) extends Tester (c) {
 
 	var steps_passed	= 0 
-
+	
 	for ( i <- 0 until steps) {
 		
 	}//for

@@ -92,33 +92,148 @@ class Decoder (val expr_len : Int) extends Module {
 }
 class DecoderTest ( c : Decoder, val steps : Int ) extends Tester (c) {
 
-	var steps_passed	= 0 
+	var steps_passed = 0
+
 	var instr = Array (
-		0xFFFFFF37 , 0xFFFFFF17, 
-		0xFFFFFF6F , 0xFFFF0F67,
-		0xFFFF1F63 , 0XFFFF4F63, 
-		0XFFFF
+		0xFFFFFF37 ,0xFFFFFFB7,0xFFFFFFC7,0xFFFFFF57, // LUI TEST 
+		0xFFFFFF17 ,0XFFFF4F97,0xFFFFFF87,0xFFFFFFA7, // AUIPC 
+		0xFFFFFF6F ,0XFFFFEF97,0xFFFFFF6F,0xFFFFFF67, // JAL 
+		0xFFFF8F63 ,0XFFFF8FE3,0xFFFF0FE3,0xFFFF1F63, // JALR 
+		0xFFFF9F63 ,0XFFFFAFE3,0xFFFFBFE3,0xFFFFCF63, // BRANCH 
+		0xFFFF1F63 ,0XFFFF2FE3,0xFFFF3FE3,0xFFFF4F63,
+		0xFFFF5F63 ,0XFFFF6FE3,0xFFFF7FE3,0xFFFF8F63,
+		0xFFFFFF17 ,0XFFFF4F97,0xFFFFFF87,0xFFFFFFA7, // BRANCH 
+
+		0x12340F03 ,0x12348F03,0x53429f03,0x54338F83,
+		0x12340F13 ,0x12348F23,0x53429f43,0x54338F53, // 
+		0x12340F83 ,0x12340D83,0x12348303,0x12340203,
+		0x1234FF83 ,0x1234ED83,0x1234D303,0x12320203,
+		0x12341F83 ,0x12342D83,0x12343303,0x12344203,
+		0x12345F83 ,0x12346D83,0x12347303,0x12328203,
+		
+		0x12349F83 ,0x1234AD83,0x1234B303,0x1232C203,
+		0x1234AF83 ,0x1234ED83,0x1234E303,0x1232F203,
+
+		0x1234FFA3 ,0x1234ED23,0x1234D3A3,0x12320223 
+
+
+
+
+		//0xFFFFFF6F , 0xFFFF0F67,
+		//0xFFFF1F63 , 0XFFFF4F63, 
+		//0xABCD1234 , 0xABCD4003
 	)
-	instr.foreach {e => poke ( c.io.dec_instr, e )
-		peek ( c.io.ctl_val_inst)
-		peek ( c.io.ctl_br_type)
-		peek ( c.io.ctl_opa_sel)
-		peek ( c.io.ctl_opb_sel)
-		peek ( c.io.ctl_alu_func)
-		peek ( c.io.ctl_wb_sel)
-		peek ( c.io.ctl_rf_wen)
-		peek ( c.io.ctl_mem_en)
-		peek ( c.io.ctl_mem_func)
-		peek ( c.io.ctl_msk_sel)
-		peek ( c.io.ctl_csr_cmd)
+	// 00110111
+	// ???????????????? ?000 ???? ?110 0011
+    // if ( (instr(0) & 0x37 ) == 0x37 ) println (s"LUI operation")
+    // if ( (instr(1) & 0x17 ) == 0x17 ) println (s"AUIPC operation"
+
+
+	instr.foreach { inst => 
+ 		if ( (inst & 0x7F ) == 0x37 )	   println (s"LUI operation")
+    	else if ( (inst & 0x7F ) == 0x17 ) println (s"AUIPC operation")
+    	else if ( (inst & 0x7F ) == 0x6F ) println (s"JAL operation")
+    	else if ( (inst & 0x7F ) == 0x67 && ((inst >> 12) & 0x7) == 0) println (s"JALR operation")
+    	
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 0) println (s"BEQ operation")
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 1) println (s"BNE operation")
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 4) println (s"BLT operation")
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 5) println (s"BGE operation")
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 6) println (s"BLTU operation")
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 7) println (s"BGEU operation")
+
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 0) println (s"LB operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 1) println (s"LH operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 2) println (s"LW operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 3) println (s"LD operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 4) println (s"LBU operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 5) println (s"LHU operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 6) println (s"LWU operation")
+
+    	else if ( (inst & 0x7F ) == 0x23 && ((inst >> 12) & 0x7) == 0) println (s"SB operation")
+    	else if ( (inst & 0x7F ) == 0x23 && ((inst >> 12) & 0x7) == 1) println (s"SH operation")
+    	else if ( (inst & 0x7F ) == 0x23 && ((inst >> 12) & 0x7) == 2) println (s"SW operation")
+    	else if ( (inst & 0x7F ) == 0x23 && ((inst >> 12) & 0x7) == 3) println (s"SD operation")
+
+    	else if ( (inst & 0x7F ) == 0x13 && ((inst >> 12) & 0x7) == 0) println (s"ADDI operation")
+    	else if ( (inst & 0x7F ) == 0x13 && ((inst >> 12) & 0x7) == 2) println (s"SLTI operation")
+    	else if ( (inst & 0x7F ) == 0x13 && ((inst >> 12) & 0x7) == 3) println (s"SLTIU operation")
+    	else if ( (inst & 0x7F ) == 0x13 && ((inst >> 12) & 0x7) == 4) println (s"XORI operation")
+    	else if ( (inst & 0x7F ) == 0x13 && ((inst >> 12) & 0x7) == 6) println (s"ORI operation")
+    	else if ( (inst & 0x7F ) == 0x13 && ((inst >> 12) & 0x7) == 7) println (s"ANDI operation")
+
+    	else if ( (inst & 0x7F ) == 0x13 && ((inst >> 12) & 0x7) == 1 && ((inst >> 26) & 0x3F ) == 0x00 ) println (s"SLLI operation") 
+    	else if ( (inst & 0x7F ) == 0x13 && ((inst >> 12) & 0x7) == 5 && ((inst >> 26) & 0x3F ) == 0x00 ) println (s"SRLI operation")
+    	else if ( (inst & 0x7F ) == 0x13 && ((inst >> 12) & 0x7) == 5 && ((inst >> 26) & 0x3F ) == 0x10 ) println (s"SRAI operation")
+
+    	else if ( (inst & 0x7F ) == 0x33 && ((inst >> 12) & 0x7) == 0 && ((inst >> 25) & 0x7F ) == 0x00 ) println (s"ADD operation")
+    	else if ( (inst & 0x7F ) == 0x33 && ((inst >> 12) & 0x7) == 0 && ((inst >> 25) & 0x7F ) == 0x40 ) println (s"SUB operation")
+    	else if ( (inst & 0x7F ) == 0x33 && ((inst >> 12) & 0x7) == 1 && ((inst >> 25) & 0x7F ) == 0x00 ) println (s"SLL operation")
+    	else if ( (inst & 0x7F ) == 0x33 && ((inst >> 12) & 0x7) == 2 && ((inst >> 25) & 0x7F ) == 0x00 ) println (s"SLT operation")
+    	else if ( (inst & 0x7F ) == 0x33 && ((inst >> 12) & 0x7) == 3 && ((inst >> 25) & 0x7F ) == 0x00 ) println (s"SLTU operation")
+    	else if ( (inst & 0x7F ) == 0x33 && ((inst >> 12) & 0x7) == 4 && ((inst >> 25) & 0x7F ) == 0x00 ) println (s"XOR operation")
+    	else if ( (inst & 0x7F ) == 0x33 && ((inst >> 12) & 0x7) == 5 && ((inst >> 25) & 0x7F ) == 0x00 ) println (s"SRL operation")
+    	else if ( (inst & 0x7F ) == 0x33 && ((inst >> 12) & 0x7) == 5 && ((inst >> 25) & 0x7F ) == 0x40 ) println (s"SRA operation")
+    	else if ( (inst & 0x7F ) == 0x33 && ((inst >> 12) & 0x7) == 6 && ((inst >> 25) & 0x7F ) == 0x00 ) println (s"OR operation")
+    	else if ( (inst & 0x7F ) == 0x33 && ((inst >> 12) & 0x7) == 7 && ((inst >> 26) & 0x7F ) == 0x00 ) println (s"AND operation")
+
+
+    	else println (s"Unknown operation")
+		poke ( c.io.dec_instr, inst )
+		// peek ( c.io.ctl_val_inst)
+		// peek ( c.io.ctl_br_type)
+		// peek ( c.io.ctl_opa_sel)
+		// peek ( c.io.ctl_opb_sel)
+		// peek ( c.io.ctl_alu_func)
+		// peek ( c.io.ctl_wb_sel)
+		// peek ( c.io.ctl_rf_wen)
+		// peek ( c.io.ctl_mem_en)
+		// peek ( c.io.ctl_mem_func)
+		// peek ( c.io.ctl_msk_sel)
+		// peek ( c.io.ctl_csr_cmd)
 		step(1)
 	}
 
-
 	for ( i <- 0 until steps) {
-		
+		var inst = rnd.nextInt() 
+		if ( (inst & 0x7F ) == 0x37 )	   println (s"LUI operation")
+    	else if ( (inst & 0x7F ) == 0x17 ) println (s"AUIPC operation")
+    	else if ( (inst & 0x7F ) == 0x6F ) println (s"JAL operation")
+    	else if ( (inst & 0x7F ) == 0x67 ) println (s"JALR operation")
+    	
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 0) println (s"BEQ operation")
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 1) println (s"BNE operation")
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 4) println (s"BLT operation")
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 5) println (s"BGE operation")
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 6) println (s"BLTU operation")
+    	else if ( (inst & 0x7F ) == 0x63 && ((inst >> 12) & 0x7) == 7) println (s"BGEU operation")
+
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 0) println (s"LB operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 1) println (s"LH operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 2) println (s"LW operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 3) println (s"LD operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 4) println (s"LBU operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 5) println (s"LHU operation")
+    	else if ( (inst & 0x7F ) == 0x03 && ((inst >> 12) & 0x7) == 6) println (s"LWU operation")
+
+    	else println (s"Unknown operation")
+
+		poke ( c.io.dec_instr, inst )
+		// peek ( c.io.ctl_val_inst)
+		// peek ( c.io.ctl_br_type)
+		// peek ( c.io.ctl_opa_sel)
+		// peek ( c.io.ctl_opb_sel)
+		// peek ( c.io.ctl_alu_func)
+		// peek ( c.io.ctl_wb_sel)
+		// peek ( c.io.ctl_rf_wen)
+		// peek ( c.io.ctl_mem_en)
+		// peek ( c.io.ctl_mem_func)
+		// peek ( c.io.ctl_msk_sel)
+		// peek ( c.io.ctl_csr_cmd)
+		step(1)
 		//if ( expect (c.io.opa_alu_in, exp_out) ) steps_passed += 1
 	}//for
+
 	println (s"TO DO Maybe check the Decoder ?")
 	println (s"DecoderTest: passed ")
 

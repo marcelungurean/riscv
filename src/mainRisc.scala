@@ -24,7 +24,7 @@ object mainRisc {
     	 case "MuxPC" 	 => chiselMainTest(runArgs, () => Module(new MuxPC(32) )		){ c => new MuxPCTest(c,steps)}
     	 case "MuxWB"    => chiselMainTest(runArgs, () => Module(new MuxWB(32) )		){ c => new MuxWBTest(c,steps)}
     	 case "ImmGen"   => chiselMainTest(runArgs, () => Module(new ImmGen(32) )	){ c => new ImmGenTest(c,steps)}
-    	 case "Decoder"  => chiselMainTest(runArgs, () => Module(new Decoder(32) ) ){ c => new DecoderTest(c,steps)}
+    	 case "Decoder"  => chiselMainTest(runArgs, () => Module(new Decoder(32) ) ){ c => new DecoderTest(c,steps*10)}
        case "InstructionMem"  => chiselMainTest(runArgs, () => Module(new InstructionMem(32,32))) { c => new InstructionMemTest(c,steps)}
        case "DataMem"         => chiselMainTest(runArgs, () => Module(new DataMem(32,32)))        { c => new DataMemTest(c,steps)}
        case "BranchLogic"     => chiselMainTest(runArgs, () => Module(new BranchLogic(32)))    { c => new BranchLogicTest(c,steps)}
