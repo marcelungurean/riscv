@@ -29,7 +29,7 @@ class Decoder (val expr_len : Int) extends Module {
 									List( NO  , BR_NXT 	, OPA_X		, OPB_X 	, ALU_X 	, WB_X		, RF_WEN_0	, MEM_EN_0 	, MEM_RD	, MSK_X	, CSR ),
 						Array (
 						LUI 	->	List( YES , BR_NXT 	, OPA_IMU	, OPB_X 	, ALU_COPYA	, WB_ALU	, RF_WEN_1 	, MEM_EN_0 	, MEM_X	 	, MSK_X , CSR ),
-						AUIPC 	->	List( YES , BR_NXT 	, OPA_IMU	, OPB_X 	, ALU_ADD	, WB_ALU	, RF_WEN_1 	, MEM_EN_0 	, MEM_X	 	, MSK_X , CSR ),
+						AUIPC 	->	List( YES , BR_NXT 	, OPA_IMU	, OPB_PC 	, ALU_ADD	, WB_ALU	, RF_WEN_1 	, MEM_EN_0 	, MEM_X	 	, MSK_X , CSR ),
 
 						JAL 	->	List( YES , BR_J 	, OPA_X		, OPB_X 	, ALU_X 	, WB_PC4	, RF_WEN_1 	, MEM_EN_0 	, MEM_X	 	, MSK_X , CSR ),
 						JALR 	->	List( YES , BR_JR 	, OPA_RSA	, OPB_IMI 	, ALU_X 	, WB_PC4	, RF_WEN_1 	, MEM_EN_0 	, MEM_X	 	, MSK_X , CSR ),

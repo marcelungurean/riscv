@@ -19,8 +19,8 @@ class Core ( val addrw : Int , val expr_len : Int ) extends Module {
 
 		val alu 			= Module(new Alu 		( expr_len ))
 
-		val instr_mem		= Module(new InstructionMem 	(  addrw , expr_len ))
-		val data_mem 	 	= Module(new DataMem 			(  addrw , expr_len ))
+		val instr_mem		= Module(new InstructionMem 	(  addr_width = 10 , expr_len ))
+		val data_mem 	 	= Module(new DataMem 			(  addr_width = 10 , expr_len ))
 
 		val mux_wb 			= Module(new MuxWB 	( expr_len ))
 
@@ -28,8 +28,10 @@ class Core ( val addrw : Int , val expr_len : Int ) extends Module {
 	}
 
 	// Control Path 
-	val stall 				= io.decoder.io.ctl_mem_en			// for now 
-	val kill_the_fetch  	= !(io.br_logic.io.pc_sel === PC_PC4)
+	val kill_the_fetch  	= !(io.br_logic.io.pc_sel === PC_PC4 )
+	val stall 				= !(io.decoder.io.ctl_val_inst)	//( io.decoder.io.ctl_mem_en  ) 		// for now 
+ 
+	val halt 				= !(io.decoder.io.ctl_val_inst) 
 	// Data Path 
 
 	// Pipeline Registers 
@@ -47,15 +49,18 @@ class Core ( val addrw : Int , val expr_len : Int ) extends Module {
 	}
 	val fetch_pc4_reg		= (fetch_pc_reg + (UInt(1,expr_len)))
 
-	io.instr_mem.io.addr 	:= fetch_pc_reg
-	val fetch_instr 		=  io.instr_mem.io.data 
+	io.instr_mem.io.addr 		:= fetch_pc_reg
+	val fetch_instr 			= io.instr_mem.io.data 
 
 	when ( stall ) { 
 		exec_instr_reg 	:= exec_instr_reg
 		exec_pc_reg 	:= exec_pc_reg
-	} .elsewhen (kill_the_fetch ) {
+	} .elsewhen (kill_the_fetch && !halt) {
 		exec_instr_reg 	:= BUBBLE
 		exec_pc_reg 	:= UInt(0,expr_len)
+	} .elsewhen (kill_the_fetch && halt) {
+		exec_instr_reg 	:= exec_instr_reg
+		exec_pc_reg 	:= exec_pc_reg
 	} .otherwise {
 		exec_instr_reg 	:= fetch_instr 
 		exec_pc_reg 	:= fetch_pc_reg 
@@ -67,7 +72,7 @@ class Core ( val addrw : Int , val expr_len : Int ) extends Module {
 
 	//  < Reg file 
 	val rsa_addr = exec_instr_reg (RSA_MSB,RSA_LSB)
-	val rsb_addr = exec_instr_reg (RSB_MSB,RSA_LSB)
+	val rsb_addr = exec_instr_reg (RSB_MSB,RSB_LSB)
 	val rd_addr  = exec_instr_reg (RD_MSB ,RD_LSB )
 	val rd_data  = Bits ( width = expr_len )
 
@@ -85,27 +90,27 @@ class Core ( val addrw : Int , val expr_len : Int ) extends Module {
 	io.imm_generator.io.instr := exec_instr_reg 
 
 	// Mux A IN 
-	io.mux_op_a.io.opa_sel 	:= io.decoder.ctl_opa_sel
+	io.mux_op_a.io.opa_sel 	:= io.decoder.io.ctl_opa_sel
 	io.mux_op_a.io.opa_rsa 	:= rsa_data
 	io.mux_op_a.io.opa_imz  := io.imm_generator.io.immu_sxt // TODO change this to immz
 	io.mux_op_a.io.opa_imu  := io.imm_generator.io.immu_sxt 
 
 	// Mux B IN 
-	io.mux_op_b.io.opb_sel  := io.decoder.ctl_opb_sel 
+	io.mux_op_b.io.opb_sel  := io.decoder.io.ctl_opb_sel 
 	io.mux_op_b.io.opb_rsb  := rsb_data 
 	io.mux_op_b.io.opb_imi 	:= io.imm_generator.io.immi_sxt 
 	io.mux_op_b.io.opb_ims	:= io.imm_generator.io.imms_sxt 
 	io.mux_op_b.io.opb_pc 	:= exec_pc_reg
 
 	// Alu IN 
-	io.alu.io.op 	:= io.decoder.ctl_alu_func
+	io.alu.io.op 	:= io.decoder.io.ctl_alu_func
 	io.alu.io.a 	:= io.mux_op_a.io.opa_alu_in 
 	io.alu.io.b 	:= io.mux_op_b.io.opb_alu_in 
 	val alu_result 	= io.alu.io.out
 	val alu_zero 	= io.alu.io.zero 
 	// 
 
-	io.mux_wb.io.wb_sel 	:= io.decoder.ctl_wb_sel 
+	io.mux_wb.io.wb_sel 	:= io.decoder.io.ctl_wb_sel 
 	io.mux_wb.io.wb_alu	 	:= alu_result 
 	io.mux_wb.io.wb_pc4 	:= exec_pc4_reg
 	io.mux_wb.io.wb_csr 	:= alu_result 			//TODO Change to csr when available 
@@ -113,8 +118,8 @@ class Core ( val addrw : Int , val expr_len : Int ) extends Module {
 
 	//Branch Cond Generator 
 
-	//io.br_logic.io.excp 	:= 
-	io.br_logic.io.ctl_br_type := io.decoder.io.ctl_br_type
+	io.br_logic.io.excp 		:= halt
+	io.br_logic.io.ctl_br_type 	:= io.decoder.io.ctl_br_type
 	io.br_logic.io.br_eq 	:= ( rsa_data === rsb_data ) 
 	io.br_logic.io.br_lt	:= ( rsa_data.toSInt < rsb_data.toSInt )
 	io.br_logic.io.br_ltu	:= ( rsa_data.toUInt < rsb_data.toUInt )
@@ -123,6 +128,7 @@ class Core ( val addrw : Int , val expr_len : Int ) extends Module {
 	val exec_pc_br 	= exec_pc_reg + io.imm_generator.io.immb_sxt 
 	val exec_pc_jmp = exec_pc_reg + io.imm_generator.io.immj_sxt
 	val exec_pc_jalr= (rsa_data.toUInt + io.imm_generator.io.immi_sxt) 
+
 	io.mux_pc.io.pc_sel 	:= io.br_logic.io.pc_sel
 	io.mux_pc.io.pc_pc4		:= fetch_pc4_reg
 	io.mux_pc.io.pc_br 		:= exec_pc_br
@@ -131,146 +137,266 @@ class Core ( val addrw : Int , val expr_len : Int ) extends Module {
 	io.mux_pc.io.pc_excp 	:= UInt(0)  			//TODO CSr
 
 	io.decoder.io.dec_instr := exec_instr_reg 
+
+	io.data_mem.io.addr 	:= alu_result 
+	io.data_mem.io.wr_data  := io.register_file.io.rf_rd2
+	io.data_mem.io.mem_func := io.decoder.io.ctl_mem_func
+	io.data_mem.io.mem_en 	:= io.decoder.io.ctl_mem_en
+
 }
 
 class CoreTest ( c : Core, val steps : Int ) extends Tester (c) {
 
 	var steps_passed = 0 
 	var j = 0
-	var instr = Array (
-		0xFFFFFF37 ,0xFFFFFFB7,0xFFFFFFC7,0xFFFFFF57, // LUI TEST 
-		0xFFFFFF17 ,0XFFFF4F97,0xFFFFFF87,0xFFFFFFA7, // AUIPC 
-		0xFFFFFF6F ,0XFFFFEF97,0xFFFFFF6F,0xFFFFFF67, // JAL 
-		0xFFFF8F63 ,0XFFFF8FE3,0xFFFF0FE3,0xFFFF1F63, // JALR 
-		0xFFFF9F63 ,0XFFFFAFE3,0xFFFFBFE3,0xFFFFCF63, // BRANCH 
-		0xFFFF1F63 ,0XFFFF2FE3,0xFFFF3FE3,0xFFFF4F63,
-		0xFFFF5F63 ,0XFFFF6FE3,0xFFFF7FE3,0xFFFF8F63,
-		0xFFFFFF17 ,0XFFFF4F97,0xFFFFFF87,0xFFFFFFA7, // BRANCH 
 
-		0x12340F03 ,0x12348F03,0x53429f03,0x54338F83,
-		0x12340F13 ,0x12348F23,0x53429f43,0x54338F53, // 
-		0x12340F83 ,0x12340D83,0x12348303,0x12340203,
-		0x1234FF83 ,0x1234ED83,0x1234D303,0x12320203,
-		0x12341F83 ,0x12342D83,0x12343303,0x12344203,
-		0x12345F83 ,0x12346D83,0x12347303,0x12328203,
-		
-		0x12349F83 ,0x1234AD83,0x1234B303,0x1232C203,
-		0x1234AF83 ,0x1234ED83,0x1234E303,0x1232F203,
-
-		0x1234FFA3 ,0x1234ED23,0x1234D3A3,0x12320223 
-
-		//0xFFFFFF6F , 0xFFFF0F67,
-		//0xFFFF1F63 , 0XFFFF4F63, 
-		//0xABCD1234 , 0xABCD4003
-	)
-/*
-	instr.foreach {
-		d => 		
-		pokeAt(c.io.instr_mem.mem,d,j)
-		step(1)
-		peek(c.fetch_pc_reg)
-		peek(c.exec_pc_reg)
-		peek(c.exec_pc4_reg)
-		peek(c.exec_instr_reg)
-		peekAt(c.io.instr_mem.mem,j)
-		peek(c.io.decoder.io.ctl_val_inst)
-		peek(c.io.decoder.io.ctl_br_type)
-		peek(c.io.decoder.io.ctl_opa_sel)
-		peek(c.io.decoder.io.ctl_opb_sel)
-		peek(c.io.decoder.io.ctl_alu_func)
-		peek(c.io.decoder.io.ctl_wb_sel)
-		peek(c.io.mux_pc.io.pc_sel)
-		j = j + 1 
+	def build_I_ADDI (imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x13): BigInt = {
+		var instr = 0x00000000
+		// printf ("imm_val:%4d rs:%2d func:%d rd:%2d opcode:%8x \n", imm_val & 0xFFF,rs & 0x01F, func & 0x007, rd & 0x01F, opcode & 0x07F )
+		instr = ((( imm_val & 0xFFF) << 20) | instr)
+		instr = ((( rs 	    & 0x01F) << 15) | instr)
+		instr = ((( func    & 0x007) << 12) | instr)
+		instr = ((( rd 	    & 0x01F) << 7 ) | instr)
+		instr = (( opcode   & 0x07F )       | instr)
+ 		instr 
 	}
-*/
-	var addi_test = Array (
-		0x00108113,  0x00110193,  0x00118213,  0x00820293
-	)
-	var andi_test = Array (
-		0x00108113,  0x00110193,  0x00118213,  0x00820293
-	)
-	var ori_test = Array (
-		0x00108113,  0x00110193,  0x00118213,  0x00820293
-	)
-	var xori_test = Array (
-		0x00108113,  0x00110193,  0x00118213,  0x00820293
-	)
-	addi_test.foreach {
-		d => 		
-		pokeAt(c.io.instr_mem.mem,d,j)
-		step(1)
-		peekAt(c.io.instr_mem.mem,j)
+	def build_I_Reg_Imm (imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x13): BigInt = {
+		// functions : 0 	2    3     4    6   7 
+		//			   ADDI SLTI SLTIU XORI ORI ANDI
+		var instr = 0x00000000
+		// printf ("imm_val:%4d rs:%2d func:%d rd:%2d opcode:%8x \n", imm_val & 0xFFF,rs & 0x01F, func & 0x007, rd & 0x01F, opcode & 0x07F )
+		instr = ((( imm_val & 0xFFF) << 20) | instr)
+		instr = ((( rs 	    & 0x01F) << 15) | instr)
+		instr = ((( func    & 0x007) << 12) | instr)
+		instr = ((( rd 	    & 0x01F) << 7 ) | instr)
+		instr = (( opcode   & 0x07F )       | instr)
+ 		instr 
+	}
+	def build_I_Reg_Imm_Shift(b30:Boolean=false, shft_val:Int=0x0, rs:Int=0x0, func:Int=0, rd:Int=0, opcode:Int=0x13): BigInt = {
+		// functions : 1    5  	 5 & b30 
+		// 			   SLLI SRLI SRAI
+		var instr = 0x00000000
+		if (b30) instr = 0x40000000
+		printf ("shft_val:%d rs:%2d func:%d rd:%2d opcode:%8x \n", shft_val & 0x01F,rs & 0x01F, func & 0x007, rd & 0x01F, opcode & 0x07F )
+		instr = ((( shft_val & 0x01F) << 20) | instr)
+		instr = ((( rs 	     & 0x01F) << 15) | instr)
+		instr = ((( func     & 0x007) << 12) | instr)
+		instr = ((( rd 	     & 0x01F) << 7 ) | instr)
+		instr = (( opcode    & 0x07F )       | instr)
+ 		instr 
+	}
+	def build_I_Load (imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x03): BigInt = {
+		// returns a instruction with Load format 
+		// functions : 0  1  2  4   5
+		//			   LB LH LW LBU LHU 
+		var instr = 0x00000000
+		printf ("imm_val:%4d rs:%2d func:%d rd:%2d opcode:%8x \n", imm_val & 0xFFF,rs & 0x01F, func & 0x007, rd & 0x01F, opcode & 0x07F )
+		instr = ((( imm_val & 0xFFF) << 20) | instr)
+		instr = ((( rs 	    & 0x01F) << 15) | instr)
+		instr = ((( func    & 0x007) << 12) | instr)
+		instr = ((( rd 	    & 0x01F) << 7 ) | instr)
+		instr = (( opcode   & 0x07F )       | instr)
+ 		instr 
+	}
+	def build_U_LUI (imm_val:Int = 0x0, rd:Int=0, opcode:Int=0x37): BigInt = {
+		var instr = 0x00000000
+		// printf ("imm_val:%4d rs:%2d func:%d rd:%2d opcode:%8x \n", imm_val & 0xFFF,rs & 0x01F, func & 0x007, rd & 0x01F, opcode & 0x07F )
+		instr = ((( imm_val & 0xFFFFF) << 12) | instr)
+		instr = ((( rd 	    & 0x01F)   << 7 ) | instr)
+		instr = (( opcode   & 0x07F)          | instr)
+ 		instr 
+	}
+	def build_U_AUIPC (imm_val:Int = 0x0, rd:Int=0, opcode:Int=0x17): BigInt = {
+		var instr = 0x00000000
+		// printf ("imm_val:%4d rs:%2d func:%d rd:%2d opcode:%8x \n", imm_val & 0xFFF,rs & 0x01F, func & 0x007, rd & 0x01F, opcode & 0x07F )
+		instr = ((( imm_val & 0xFFFFF) << 12) | instr)
+		instr = ((( rd 	    & 0x01F)   << 7 ) | instr)
+		instr = (( opcode   & 0x07F)          | instr)
+ 		instr 
+	}
+	def build_UJ_JAL(imm_val:Int = 0x0, rd:Int=0, opcode:Int=0x6F): BigInt = {
+		var instr = 0x00000000
+		// printf ("imm_val:%4d rs:%2d func:%d rd:%2d opcode:%8x \n", imm_val & 0xFFF,rs & 0x01F, func & 0x007, rd & 0x01F, opcode & 0x07F )
+		
+		instr = ((( imm_val & 0x80000) << 12) | instr)
+		instr = ((( imm_val & 0x003FF) << 21) | instr)
+		instr = ((( imm_val & 0x00400) << 10) | instr)
+		instr = ((( imm_val & 0x7F800) << 1 ) | instr)
+		instr = ((( rd 	    & 0x01F)   << 7 ) | instr)
+		instr = (( opcode   & 0x07F)          | instr)
+ 		instr 
+	}
+	def build_I_JALR(imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x67): BigInt = {
+		var instr = 0x00000000
+		// printf ("imm_val:%4d rs:%2d func:%d rd:%2d opcode:%8x \n", imm_val & 0xFFF,rs & 0x01F, func & 0x007, rd & 0x01F, opcode & 0x07F )
+		instr = ((( imm_val & 0xFFF) << 20) | instr)
+		instr = ((( rs 	    & 0x01F) << 15) | instr)
+		// instr = ((( func    & 0x007) << 12) | instr)
+		instr = ((( rd 	    & 0x01F) << 7 ) | instr)
+		instr = (( opcode   & 0x07F )       | instr)
+ 		instr 
+	}
+	def build_SB_Branch( imm_val:Int = 0x0, rs2:Int = 0x0 , rs1:Int=0, func:Int=0, opcode:Int=0x63): BigInt = { 
+		var instr = 0x00000000
+		// functions: 0   1   4   5   6    7 
+		// 			  BEQ BNE BLT BGE BLTU BGEU 
+		instr = ((( imm_val & 0x800) << 20) | instr)
+		instr = ((( imm_val & 0x3F0) << 21) | instr)
+		instr = ((( rs2	    & 0x01F) << 20) | instr)
+		instr = ((( rs1	    & 0x01F) << 15) | instr)
+		instr = ((( func    & 0x007) << 12) | instr)
+		instr = ((( imm_val & 0x00F) << 8 ) | instr)
+		instr = ((( imm_val & 0x400) >> 3 ) | instr)
+		instr = (( opcode   & 0x07F )       | instr)
+ 		instr 
+	}
+	def build_S_Store (imm_val:Int = 0x0, rs2:Int = 0x0 , rs1:Int = 0, func:Int=0, opcode:Int=0x23): BigInt = { 
+		var instr = 0x00000000
+		// functions: 0   1   2 
+		//			  SB  SH  SW 
+		instr = ((( imm_val & 0xFE0) << 20) | instr)
+		instr = ((( rs2	    & 0x01F) << 20) | instr)  
+		instr = ((( rs1	    & 0x01F) << 15) | instr) 
+		instr = ((( func    & 0x007) << 12) | instr)
+		instr = ((( imm_val & 0x01F) << 7 ) | instr)
+		instr = (( opcode   & 0x07F )       | instr)
+ 		instr 
+	}
+	def build_R_Reg_Reg(b30:Boolean=false, rs2:Int=0x0, rs1:Int=0x0, func:Int=0, rd:Int=0, opcode:Int=0x33): BigInt = { 
+		var instr = 0x00000000
+		if (b30) 
+			instr = 0x40000000
+		// functions 0   0&b30 1   2   3    4   5   5&b30 6  7 
+		//			 ADD SUB   SLL SLT SLTU XOR SRL SRA   OR AND
+		instr = ((( rs2	    & 0x01F) << 20) | instr)  
+		instr = ((( rs1	    & 0x01F) << 15) | instr) 
+		instr = ((( func    & 0x007) << 12) | instr)
+		instr = ((( rd 		& 0x01F) << 7 ) | instr)
+		instr = (( opcode   & 0x07F )       | instr)
+ 		instr 
+	}
+
+	def get_nop () : BigInt = {
+		var x = build_I_Reg_Imm()
+		x
+	}
+	// def build_I_ADDI 		(imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x13): BigInt = {
+	// def build_I_Reg_Imm 		(imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x13): BigInt = {
+	// def build_I_Reg_Imm_Shift(b30:Boolean=false, shft_val:Int=0x0, rs:Int=0x0, func:Int=0, rd:Int=0, opcode:Int=0x13): BigInt = {
+	// def build_I_Load (imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x03): BigInt = {
+	// def build_U_LUI (imm_val:Int = 0x0, rd:Int=0, opcode:Int=0x37): BigInt = {
+	// def build_U_AUIPC (imm_val:Int = 0x0, rd:Int=0, opcode:Int=0x17): BigInt = {
+	// def build_UJ_JAL(imm_val:Int = 0x0, rd:Int=0, opcode:Int=0x6F): BigInt = {
+	// def build_I_JALR(imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x67): BigInt = {
+	// def build_SB_Branch( imm_val:Int = 0x0, rs2:Int = 0x0 , rs1:Int=0, func:Int=0, opcode:Int=0x63): BigInt = { 
+	// def build_S_Store (imm_val:Int = 0x0, rs2:Int = 0x0 , rs1:Int = 0, func:Int=0, opcode:Int=0x23): BigInt = { 
+	// def build_R_Reg_Reg(b30:Boolean=false, rs2:Int=0x0, rs1:Int=0x0, func:Int=0, rd:Int=0, opcode:Int=0x33): BigInt = { 
+	// for ( i <- 0 until 32 ) {
+	// 	var x = build_I_Reg_Imm ( imm_val=3, rs=i, func=0, rd=i+1 )
+	// 	pokeAt(c.io.instr_mem.mem,x,i)
+	// }
+
+	var idx=0
+
+	// test of regImm 
+	/*
+	var y = build_I_Reg_Imm (imm_val=5, rs=2, func=0, rd=3) // exp 5 
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = build_I_Reg_Imm (imm_val=2, rs=3, func=2, rd=4)		// exp 1
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1
+	y = build_I_Reg_Imm (imm_val=6, rs=3, func=3, rd=5)		// exp 0 
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1
+	y = build_I_Reg_Imm (imm_val=0xC, rs=3, func=4, rd=6)	// exp 4 
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1
+	y = build_I_Reg_Imm (imm_val=0xB, rs=3, func=6, rd=7)	// exp F 
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1
+	y = build_I_Reg_Imm (imm_val=0x3A, rs=7, func=7, rd=2)	// exp A
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1
+	for ( i <- 0 until 32 ) { peekAt(c.io.register_file.rf_reg_file,i)	}
+	*/
+
+	// test of imm shifting 
+	/*
+	var y = build_I_Reg_Imm (imm_val=0x404, rs=0, func=0, rd=1) // exp 5 
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = build_I_Reg_Imm_Shift (shft_val=21,rs=1,func=1,rd=2)
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = build_I_Reg_Imm_Shift (shft_val=3,rs=2,func=5,rd=3)
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = build_I_Reg_Imm_Shift (b30=true,shft_val=3,rs=2,func=5,rd=4)
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = build_I_Reg_Imm ()		//NOP OPERATION 
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = build_I_Reg_Imm () 		//NOP OPERATION 
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	*/
+
+	// test LUI and AUIPC 
+	/*
+	var y = build_U_LUI ( imm_val=0x1234ABCD, rd=2 )
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = build_U_LUI ( imm_val=0xAB123CBD, rd=3 )
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+
+	y = build_U_AUIPC (imm_val=0x4,rd=4)
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+
+	y = build_U_AUIPC (imm_val=0x8,rd=5)
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	*/
+	
+	//test load and store 
+	var y = build_U_LUI ( imm_val=0x1234ABCD, rd=2 )
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = build_U_LUI ( imm_val=0xAB123CBD, rd=3 )
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+
+	y = build_S_Store (imm_val=0x2,rs2=2,rs1=0,func=2) 
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+
+	y = build_S_Store (imm_val=0x4,rs2=3,rs1=0,func=2) 
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+
+	y = build_I_Load (imm_val=0x4,rs=0,func=2,rd=10)
+	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	
+	for ( i <- 0 until 10 ) {
+		peek(c.io.mux_pc.io.pc_sel)
 		peek(c.fetch_pc_reg)
 		peek(c.exec_pc_reg)
 		peek(c.exec_pc4_reg)
 		peek(c.exec_instr_reg)
+
 		peek(c.io.decoder.io.ctl_val_inst)
-		peek(c.io.decoder.io.ctl_opa_sel)
-		peek(c.io.decoder.io.ctl_opb_sel)
+		peek(c.io.register_file.io.rf_ra1)
+		peek(c.io.register_file.io.rf_ra2)		
+		
 		peek(c.io.decoder.io.ctl_alu_func)
 		peek(c.io.decoder.io.ctl_wb_sel)
-
 		peek(c.io.alu.io.out)
 		
 		peek(c.io.mux_wb.io.wb_alu)
-		peek(c.io.mux_wb.io.wb_alu)
-
+		
 		peek(c.io.register_file.io.rf_wa)
 		peek(c.io.register_file.io.rf_wen)
 		peek(c.io.register_file.io.rf_wd)
 
-		peek(c.io.mux_pc.io.pc_sel)
-		j = j + 1 
+		peek(c.io.data_mem.io.addr)
+		peek(c.io.data_mem.io.wr_data)
+		peek(c.io.data_mem.io.mem_en)
+		peek(c.io.data_mem.io.mem_func)
+
+		step(1)
+		for ( i <- 0 until 32 ) { peekAt(c.io.register_file.rf_reg_file,i)	}
 	}
-	step(2)
-	// for ( i <- 0 until 32 ) { 
-	// 	peekAt(c.io.register_file.rf_reg_file,i)
-	// }
+	for ( i <- 0 until 32 ) { peekAt(c.io.register_file.rf_reg_file,i)	}
+	for ( i <- 0 until 32 ) { peekAt(c.io.data_mem.mem,i)	}
 
-	// for ( i <- 0 until 10 ){ 
-	// 	var d = rnd.nextInt()
-	// 	pokeAt(c.io.instr_mem.mem,d,i)
-	// 	step(1)
-	// 	peek(c.fetch_pc_reg)
-	// 	peek(c.exec_pc_reg)
-	// 	peek(c.exec_pc4_reg)
-	// 	peek(c.exec_instr_reg)
-
-	// 	peekAt(c.io.instr_mem.mem,i)
-	// 	peek(c.io.decoder.io.ctl_val_inst)
-	// 	peek(c.io.decoder.io.ctl_br_type)
-	// 	peek(c.io.decoder.io.ctl_opa_sel)
-	// 	peek(c.io.decoder.io.ctl_opb_sel)
-	// 	peek(c.io.decoder.io.ctl_alu_func)
-	// 	peek(c.io.decoder.io.ctl_wb_sel)
-	// 	peek(c.io.mux_pc.io.pc_sel)
-
-	// 	// peek(c.io.decoder.io.ctl_rf_wen)
-	// 	// peek(c.io.decoder.io.ctl_mem_en)
-	// 	// peek(c.io.decoder.io.ctl_mem_func)
-	// 	// peek(c.io.decoder.io.ctl_msk_sel)
-	// 	// peek(c.io.decoder.io.ctl_csr_cmd)	
-	// }
-
-	for ( i <- 0 until 32 ) { 
-		peekAt(c.io.register_file.rf_reg_file,i)
-	}
 	println (s"Core: BIG TO DO !" )
 	println (s"Core: not passed... yet !" )
 }
-
-/* 
-	ADDI 
-	opcode = 0x13 
-	func   = 0 
-				imm		   rs    f	  rd   opcode
- 	ADDI   b????????????   ????? 000 ????? 0010011"
-	ADDI 	0000 0000 0000 00001 000 00010 0010011  = 0x00008113,
-	ADDI 	0000 0000 0000 00010 000 00011 0010011	= 0x00010193,
-	ADDI 	0000 0000 0000 00011 000 00100 0010011  = 0x00018213,
-	ADDI 	0000 0000 1000 00100 000 00100 0010011  = 0x00820293,
-	
-	ADDI 	0000 0000 0000 0000 1000  0001 0001 0011 = 0x00008113 
-	
-	
-*/

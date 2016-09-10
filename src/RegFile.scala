@@ -25,6 +25,7 @@ class RegFile ( val	 addrw : Int , val expr_len : Int ) extends Module {
 	io.rf_rd1 := Mux ( ( io.rf_ra1 != UInt (0) ), 
 							rf_reg_file(io.rf_ra1 ), 
 							UInt (0, expr_len) )
+	
 	io.rf_rd2 := Mux ( ( io.rf_ra2 != UInt (0) ),
 							rf_reg_file(io.rf_ra2 ),
 							UInt (0, expr_len) )
