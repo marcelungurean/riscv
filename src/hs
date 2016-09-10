@@ -1,0 +1,1000 @@
+  516  sbt run
+  517  gg mux4.scala 
+  518  sbt run
+  519  ll 
+  520  cd ..
+  521  cd test/
+  522  ll
+  523  gg Gcd
+  524  ll
+  525  gcd.scala
+  526  gg gcd.scala
+  527  sbt run 
+  528  make gcd.out
+  529  make GCD.out
+  530  sbt run 
+  531  sudo apt_get update
+  532  sbt run 
+  533  cd ..
+  534  tree
+  535  tree .
+  536  cd ..
+  537  ll 
+  538  cd Diploma/ 
+  539  cp mul/build.sbt mux4/
+  540  ll 
+  541  cd ,,
+  542  cd ..
+  543  cd Diploma/mux4/
+  544  ll
+  545  sbt run 
+  546  bg
+  547  gg build.sbt 
+  548  scala version
+  549  scala
+  550  ll
+  551  sbt run
+  552  cd ../test/
+  553  ll
+  554  rm -rf gcd.scala 
+  555  gg test.scala
+  556  cp ../mux4/build.sbt .
+  557  gg build.sbt 
+  558  sbt run
+  559  gg test.scala 
+  560  sbt run
+  561  ll
+  562  rm -rf HelloModule*
+  563  ll
+  564  gg test.scala 
+  565  sbt run
+  566  gg test.scala 
+  567  sbt run
+  568  gg test.scala 
+  569  sbt run
+  570  sbt run test.scala 
+  571  sbt run 
+  572  gg test.scala 
+  573  sbt run 
+  574  sbt run --test
+  575  sbt run 
+  576  sbt run -feature
+  577  ll
+  578  gg emul_api.h 
+  579  gg emulator.h Mux*
+  580  sbt run 
+  581  sbt run Mux2
+  582  sbt run
+  583  gg test2.scala
+  584  rm test.scala 
+  585  ll
+  586  sbt run  
+  587  sbt run 
+  588  ll 
+  589  rm emul*
+  590  rm -rf project/ target/
+  591  rm -rf G* 
+  592  ll
+  593  ll 
+  594  rm -f sim_api.h Mu* 
+  595  ll
+  596  gg test2.scala 
+  597  sbt run 
+  598  ll
+  599  rm -rf project/ target/
+  600  ll 
+  601  sbt run 
+  602  ll
+  603  sbt run 
+  604  ll
+  605  gg Mux2.v 
+  606  man mv
+  607  cd 
+  608  gg .bashrc
+  609  apt-get
+  610  update
+  611  ll 
+  612  cd Diploma/RiscV/tryouts/
+  613  ll
+  614  cd mux/
+  615  ll
+  616  cd ..
+  617  cd mux/
+  618  ll
+  619  gg mux4.scala 
+  620  ll
+  621  gg 
+  622  cd Diploma/RiscV/tryouts/mux/
+  623  cd ..
+  624  path
+  625  now
+  626  nowtime 
+  627  nowdate 
+  628  h
+  629  hs Diploma
+  630  cd..
+  631  cd ..
+  632  cd
+  633  riscv
+  634  cd tryouts/
+  635  ll
+  636  cd mux/
+  637  ll
+  638  sbt run 
+  639  ll
+  640  cd ..
+  641  ;;
+  642  rm mux/mux4.scala 
+  643  ll
+  644  gg ../../test/test2.scala 
+  645  riscv 
+  646  cp ../test/test2.scala tryouts/
+  647  ll
+  648  cd tryouts/
+  649  ll
+  650  mv test2.scala mux/
+  651  ll
+  652  cd mux/
+  653  ll
+  654  rm -rf project/ target/
+  655  ll
+  656  gg test2.scala 
+  657  bg
+  658  sbt run 
+  659  ll
+  660  gg Mux2-harness.v 
+  661  gg vpi*
+  662  sbt run 
+  663  ll
+  664  cd ..
+  665  mkdir alu
+  666  gg alu/alu.scala
+  667  ll
+  668  cd alu/
+  669  ll
+  670  val n = 8
+  671  gg alu.scala
+  672  cd riscv
+  673  cd risc
+  674  ll
+  675  cd Diploma/
+  676  ll 
+  677  cd RiscV/
+  678  ll
+  679  cd tryouts/
+  680  ll
+  681  cd mux/
+  682  ll
+  683  sbt run
+  684  fdisk -l
+  685  fdisk
+  686  fdisk -l 
+  687  update-grub
+  688  sudo fdsik -l
+  689  sudo update-grub
+  690  reboot
+  691  sudo reboot
+  692  riscv 
+  693  ll 
+  694  cd tryouts/
+  695  ll
+  696  cd ..
+  697  ll
+  698  gg riscv_readme
+  699  ll
+  700  perl
+  701  perl -v 
+  702  echo perl
+  703  riscv 
+  704  ll
+  705  cd tryouts/
+  706  c
+  707  ll
+  708  cd alu/
+  709  ll
+  710  sbt run 
+  711  cd ../mux/
+  712  ll
+  713  gg 
+  714  bg
+  715  gg Mux2* 
+  716  h
+  717  cd ..
+  718  gg readme 
+  719  li
+  720  ll
+  721  cd tryouts/
+  722  mkdir test_mux 
+  723  cp mux/test2.scala 
+  724  cp mux/test2.scala test_mux/
+  725  cd test_mux/
+  726  ll
+  727  gg test2.scala 
+  728  gnome-terminal
+  729  editor
+  730  ll
+  731  riscv
+  732  ll
+  733  gvim 
+  734  gvim tryouts/test_mux/test2.scala 
+  735  ll
+  736  ct tryouts/test_mux/
+  737  cd tryouts/test_mux/
+  738  ll
+  739  mv test2.scala mux.scala 
+  740  ll
+  741  gg mux.scala & 
+  742  cp ../mux/build.sbt . 
+  743  ll
+  744  h
+  745  grep make | history 
+  746  history | grep "make"  
+  747  head build.sbt 
+  748  head mux.scala 
+  749  head 50 mux.scala 
+  750  man head 
+  751  head -n 100 mux.scala 
+  752  gt
+  753  ll
+  754  grep make | history 
+  755  h
+  756  h 
+  757  h | grep make
+  758  h | grep "make|sbt|run"
+  759  "
+  760  h | grep sbt
+  761  ll
+  762  sbt run 
+  763  sbt run -feature 
+  764  ll
+  765  ll project/
+  766  ll project/target/config-classes/
+  767  ..
+  768  ll
+  769  ll target/
+  770  rm -rf mux2* 
+  771  ll
+  772  rm -rf project/ target/ em* sim_api.h 
+  773  ll
+  774  git clone https://github.com/ucb-bar/chisel.git 
+  775  ll
+  776  cd chisel/
+  777  ll
+  778  cd src/
+  779  ll
+  780  cd main/
+  781  ll
+  782  cd scala/
+  783  ll
+  784  gg Verilog.scala & 
+  785  ll
+  786  ....
+  787  up
+  788  source /home/marcel/.bashrc 
+  789  ....
+  790  ..
+  791  ...
+  792  ..
+  793  cd test_mux/
+  794  ll
+  795  make clean test publish-local 
+  796  make clean test publish-local
+  797  make test publish-local 
+  798  make
+  799  make test 
+  800  ll
+  801  cd chisel/
+  802  ll
+  803  make clean test publish-local 
+  804  ll
+  805  cd test-outputs/
+  806  ll
+  807  ..
+  808  ll
+  809  ..
+  810  l
+  811  ..
+  812  ll
+  813  cd test_mux/
+  814  ll
+  815  sbt run 
+  816  ll
+  817  make mux2
+  818  gg mux.scala 
+  819  sbt run 
+  820  ll
+  821  mkdir out 
+  822  ll
+  823  path
+  824  ll
+  825  sbt run 
+  826  l
+  827  cd out/
+  828  ll
+  829  ..
+  830  l
+  831  ..
+  832  ll
+  833  cd test_mux/
+  834  ll
+  835  sbt
+  836  ll
+  837  cd ..
+  838  ll
+  839  cd sim/
+  840  ll
+  841  make
+  842  make mux2
+  843  ll
+  844  cd ..
+  845  cd test_mux/chisel/
+  846  ll
+  847  find examples
+  848  cd src/
+  849  ll
+  850  ..
+  851  ll
+  852  rm -rf mux2* 
+  853  rm -rf sim_api.h out/ project/ target/ emul* 
+  854  ll
+  855  sbt run 
+  856  ll
+  857  sbt run 
+  858  ll
+  859  cd out/
+  860  ll
+  861  ll 
+  862  cd ..
+  863  rm -rf mux2* sim_api.h emul* 
+  864  ll
+  865  cd ..
+  866  ll
+  867  ..
+  868  ;;
+  869  ll
+  870  cd tryouts/
+  871  ;;
+  872  ll 
+  873  gg readme_chisel
+  874  ll 
+  875  cd .. 
+  876  cd Work/
+  877  ll
+  878  mkdir mux
+  879  ll
+  880  cd mux/
+  881  gg -i mux_classes.scala 
+  882  bg 
+  883  scala 
+  884  ll
+  885  cp ../../tryouts/test_mux/build.sbt . 
+  886  cp ../../tryouts/test_mux/build.sbt ../../
+  887  ...
+  888  l
+  889  ll 
+  890  sbt run 
+  891  sbt run mux_test
+  892  sbt run 
+  893  ll
+  894  cd Work/mux/
+  895  ll
+  896  sbt run 
+  897  gg -i mux_classes.scala 
+  898  bg
+  899  sbt run 
+  900  cd .. 
+  901  ll
+  902  cd ,,
+  903  ..
+  904  ll
+  905  cd tryouts/test_mux/
+  906  cd chisel/src/main/
+  907  ll
+  908  ll resources/
+  909  ll scala/
+  910  gg scala/Tester.scala 
+  911  ll
+  912  cd ,,
+  913  ll
+  914  ..
+  915  ll
+  916  cd test/scala/SysCTest/
+  917  ll
+  918  gg FullAdder.scala 
+  919  gg *
+  920  ...
+  921  ;;
+  922  ll
+  923  cd test_mux/
+  924  ;;
+  925  cd ../../Work/mux/
+  926  ll
+  927  sbt run 
+  928  ll
+  929  cd 
+  930  cd .cshrc
+  931  gg .config/
+  932  cat .ssh 
+  933  cd .ssh/
+  934  ll
+  935  cd ..
+  936  ll
+  937  gvim .cshrc 
+  938  source .cshrc 
+  939  ll
+  940  gvim .bashrc 
+  941  ll
+  942  cd 
+  943  ..
+  944  source .bashrc 
+  945  bootenv 
+  946  source .bashrc 
+  947  ll
+  948  riscv 
+  949  ..
+  950  set  alias .. = 'cd ..' 
+  951  riscv 
+  952  source .bashrc 
+  953  gvim .bash 
+  954  gvim .bashrc 
+  955  ll
+  956  source .bashrc 
+  957  ll
+  958  riscv
+  959  up
+  960  ..
+  961  ll
+  962  cd 
+  963  ll
+  964  gg .bashrc 
+  965  ll
+  966  man geany 
+  967  gg -i 
+  968  gg & -i 
+  969  gg 
+  970  gg .bashrc 
+  971  ll
+  972  gg .bashrc -i 
+  973  bg
+  974  source .bashrc 
+  975  ll
+  976  gg .bashrc 
+  977  source .bashrc 
+  978  gg .bashrc 
+  979  bg
+  980  gg .bashrc 
+  981  cd $HOME
+  982  riscv 
+  983  ll
+  984  riscv
+  985  ll
+  986  cd Work/
+  987  ll
+  988  cd ../tryouts/
+  989  l 
+  990  gg readme_chisel 
+  991  riscv 
+  992  ll
+  993  cd tryouts/test_mux/chisel/src/test/scala/SysCTest/
+  994  ll
+  995  gg FullAdder.scala -i & 
+  996  sbt 
+  997  ll
+  998  h
+  999  sbt 
+ 1000  cp ../../../../../build.sbt .
+ 1001  ll
+ 1002  sbt run 
+ 1003  ll
+ 1004  sbt 
+ 1005  ll
+ 1006  gg FullAdder.v 
+ 1007  sudo get-apt install panic 
+ 1008  riscv 
+ 1009  ll
+ 1010  cd Work/mux/
+ 1011  ll
+ 1012  gg build.sbt 
+ 1013  bg 
+ 1014  gg mux_classes.scala 
+ 1015  ll
+ 1016  sbt run 
+ 1017  gt
+ 1018  ll
+ 1019  gg .cshrc 
+ 1020  gg .bashrc 
+ 1021  source .bashrc 
+ 1022  gt
+ 1023  sudo add-apt-repository ppa:webupd8team/sublime-text-3
+ 1024  sudo apt-get update 
+ 1025  sudo apt-get install sublime-text-installer
+ 1026  sublime 
+ 1027  ll
+ 1028  wget http://c758482.r82.cf2.rackcdn.com/Sublime\ Text\ 2.0.2\ x64.tar.bz2
+ 1029  tar vxjf Sublime\ Text\ 2.0.2\ x64.tar.bz2
+ 1030  sudo mv Sublime\ Text\ 2 /opt/
+ 1031  sudo ln -s /opt/Sublime\ Text\ 2/sublime_text /usr/bin/sublime
+ 1032  sublime
+ 1033  cd - 
+ 1034  cd 
+ 1035  wget http://c758482.r82.cf2.rackcdn.com/Sublime\ Text\ 2.0.2.tar.bz2
+ 1036  wget http://c758482.r82.cf2.rackcdn.com/Sublime\ Text\ 2.0.2\ x64.tar.bz2
+ 1037  sudo mv Sublime\ Text\ 2 /opt/
+ 1038  sudo mv Sublime\ Text\ 2.0.2 /opt/
+ 1039  ll
+ 1040  tar vxjf Sublime\ Text\ 2.0.2 x64.tar.bz2
+ 1041  ll S* 
+ 1042  rm -rf Sublime\ Text\ 2.0.2*
+ 1043  ll
+ 1044  cd - 
+ 1045  ll 
+ 1046  # wget http://c758482.r82.cf2.rackcdn.com/Sublime\ Text\ 2.0.2\ x64.tar.bz2
+ 1047  wget http://c758482.r82.cf2.rackcdn.com/Sublime\ Text\ 2.0.2\ x64.tar.bz2
+ 1048  ll
+ 1049  tar vxjf Sublime\ Text\ 2.0.2\ x64.tar.bz2 
+ 1050  ll
+ 1051  mv Sublime\ Text\ 2 /opt/
+ 1052  sudo mv Sublime\ Text\ 2 /opt/
+ 1053  sudo mv -r Sublime\ Text\ 2 /opt/
+ 1054  man mov 
+ 1055  man mv 
+ 1056  sudo mv -r Sublime\ Text\ 2 /opt/
+ 1057  sudo mv Sublime\ Text\ 2 /opt/
+ 1058  ll /opt/
+ 1059  rm Sublime\ Text\ 2 
+ 1060  rm /opt/Sublime\ Text\ 2 -rf
+ 1061  sudo rm /opt/Sublime\ Text\ 2 -rf
+ 1062  ll
+ 1063  sudo rm /opt/Sublime\ Text\ 2 -rf
+ 1064  ll
+ 1065  ll /opt/
+ 1066  sudo mv Sublime\ Text\ 2 /opt/
+ 1067  ll
+ 1068  sudo -ln -s /opt/Sublime\ Text\ 2/sublime_text /usr/bin/sublime 
+ 1069  sudo sublime /usr/share/applications/sublime.desktop 
+ 1070  bg
+ 1071  subl 
+ 1072  sum1 , 2
+ 1073  sum 
+ 1074  ll
+ 1075  sbm 
+ 1076  sublime .bashrc 
+ 1077  bg
+ 1078  source .bashrc 
+ 1079  ll
+ 1080  sbm 
+ 1081  source .bashrc 
+ 1082  ll
+ 1083  sm
+ 1084  sbm 
+ 1085  source .bashrc 
+ 1086  alias 
+ 1087  sudo add-apt-repository ppa:webupd8team/sublime-text-3
+ 1088  sudo apt-get update
+ 1089  sudo apt-get install sublime-text-installer
+ 1090  subime
+ 1091  sublime 
+ 1092  ll
+ 1093  sublime .bashrc 
+ 1094  sbm .bashrc 
+ 1095  gg .bashrc 
+ 1096  bg
+ 1097  source .bashrc 
+ 1098  sblm 
+ 1099  alias 
+ 1100  sblm 
+ 1101  sublime 
+ 1102  sblm 
+ 1103  sublime 
+ 1104  alias 
+ 1105  sbm
+ 1106  sublime .bashrc
+ 1107  sblm .bashrc
+ 1108  source .bashrc 
+ 1109  ll
+ 1110  sbm 
+ 1111  ll
+ 1112  rm -rf Sublime\ Text\ 2.0.2\ x64.tar.bz2 
+ 1113  ll 
+ 1114  ll
+ 1115  rm -rf /opt/Sublime\ Text\ 2/
+ 1116  sudo rm -rf /opt/Sublime\ Text\ 2/
+ 1117  ll
+ 1118  wget https://download.sublimetext.com/sublime_text_3_build_3114_x64.tar.bz2
+ 1119  h | grep tar
+ 1120  tar vxjf sublime_text_3_build_3114_x64.tar.bz2 
+ 1121  ll
+ 1122  mv sublime_text_3 /opt/
+ 1123  sudo mv sublime_text_3 /opt/
+ 1124  ll
+ 1125  sublime
+ 1126  ll
+ 1127  sudo ln -s /opt/sublime_text_3/sublime_text /usr/bin/sublime 
+ 1128  rm /usr/bin/sublime 
+ 1129  sudo rm /usr/bin/sublime 
+ 1130  sudo ln -s /opt/sublime_text_3/sublime_text /usr/bin/sublim 
+ 1131  sudo ln -s /opt/sublime_text_3/sublime_text /usr/bin/sublime 
+ 1132  ll
+ 1133  sublime
+ 1134  sublime .bashrc  
+ 1135  source .bashrc 
+ 1136  ll
+ 1137  sublime 
+ 1138  restore
+ 1139  sublime 
+ 1140  sublime version 
+ 1141  sudo add-apt-repository ppa:kilian/f.lux
+ 1142  sudo apt-get update
+ 1143  sudo apt-get install fluxgui
+ 1144  flux
+ 1145  fluxgui
+ 1146  riscv
+ 1147  ll
+ 1148  ll 
+ 1149  h | grep git 
+ 1150  home 
+ 1151  riscv
+ 1152  ll
+ 1153  cd Work/
+ 1154  ll
+ 1155  ll 
+ 1156  ll
+ 1157  git man
+ 1158  man git 
+ 1159  git clone https://github.com/ucb-bar/chisel.git 
+ 1160  h 
+ 1161  h | grep chisel 
+ 1162  ll
+ 1163  git clone https://github.com/ucb-bar/chisel-tutorial.git 
+ 1164  ll
+ 1165  gt 
+ 1166  h | grep make
+ 1167  cd chisel-tutorial/
+ 1168  ll
+ 1169  cd src/
+ 1170  ll 
+ 1171  ll
+ 1172  cd .. 
+ 1173  ll
+ 1174  cd solutions/
+ 1175  ll
+ 1176  cd ..
+ 1177  ll
+ 1178  sublime src/
+ 1179  ll 
+ 1180  sublime .
+ 1181  ll
+ 1182  cd hello/ 
+ 1183  ll 
+ 1184  make 
+ 1185  ll
+ 1186  sbt "run Hello -backend c --compile --test --genHarness"
+ 1187  ll
+ 1188  cd .. 
+ 1189  ll
+ 1190  cd ..
+ 1191  cd chisel-tutorial/
+ 1192  make clean
+ 1193  ll
+ 1194  sb
+ 1195  sublime suffix.mk 
+ 1196  ll
+ 1197  cd examples/
+ 1198  ll
+ 1199  sbt run 
+ 1200  ll
+ 1201  last compile:run
+ 1202  make 
+ 1203  ll
+ 1204  cd ..
+ 1205  ll
+ 1206  cd problems/
+ 1207  ll
+ 1208  sbt 
+ 1209  sublime .
+ 1210  sbt 
+ 1211  ll
+ 1212  sbt "run Mux4 --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1213  ll
+ 1214  cd .. 
+ 1215  ll
+ 1216  cd ..
+ 1217  grep -rsni "func.*expect" chisel-tutorial/
+ 1218  grep -rsni "Tester" chisel/
+ 1219  cd ..
+ 1220  cd - 
+ 1221  ll
+ 1222  cd chisel
+ 1223  cd src/main/resources/
+ 1224  ll
+ 1225  cd ..
+ 1226  cd scala/testers/
+ 1227  ll
+ 1228  cd ..
+ 1229  cd main/scala/
+ 1230  ll
+ 1231  sublime Tester.scala 
+ 1232  sbt "run Mux4 --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1233  ll
+ 1234  cd chisel
+ 1235  ll
+ 1236  make chisel 
+ 1237  make 
+ 1238  make clean test publish-local 
+ 1239  ll
+ 1240  cd ..
+ 1241  ll
+ 1242  cd chisel-tutorial/
+ 1243  ll
+ 1244  cd md_solutions/
+ 1245  ll
+ 1246  sublime Mux4.scala 
+ 1247  riscv 
+ 1248  ll
+ 1249  cd Work/ 
+ 1250  ll
+ 1251  cd md_risc/
+ 1252  ll 
+ 1253  cd src/
+ 1254  ll
+ 1255  sublime
+ 1256  ll
+ 1257  gt 
+ 1258  sublime consts.scala 
+ 1259  ll
+ 1260  sublime consts.scala 
+ 1261  sbt 
+ 1262  scala
+ 1263  gt
+ 1264  cd ..
+ 1265  cd chisel 
+ 1266  grep "def.*flip" . -rsni 
+ 1267  grep "def.*flip" * -rsni 
+ 1268  sublime src/main/scala/Bundle.scala
+ 1269  cd ../md_risc/src/
+ 1270  ll
+ 1271  h | grep sbt 
+ 1272  sbt "run Alu --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1273  ll
+ 1274  cd ..
+ 1275  sbt "run Alu --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1276  ll
+ 1277  cd .. 
+ 1278  ll
+ 1279  cd ..
+ 1280  ll
+ 1281  riscv 
+ 1282  cp build.sbt Work/md_risc/src/
+ 1283  cd Work/md_risc/src/
+ 1284  ll
+ 1285  sbt "run Alu --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1286  ll
+ 1287  riscv 
+ 1288  riscv
+ 1289  ll
+ 1290  cd ..
+ 1291  ..
+ 1292  cd chisel-tutorial/
+ 1293  cd solutions/
+ 1294  ll
+ 1295  sbt "run Adder --backend c --compile --test --genHarness" 
+ 1296  sublime solutions.scala 
+ 1297  h | grep sbt 
+ 1298  sbt "run Mux4 --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1299  ll
+ 1300  rm md_solutions.scala 
+ 1301  sbt "run Adder --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1302  cd ..
+ 1303  cd .
+ 1304  ..
+ 1305  ll
+ 1306  cd riscv-sodor/
+ 1307  ll
+ 1308  cd src/
+ 1309  ll
+ 1310  cd common/
+ 1311  ll
+ 1312  sublime -i * 
+ 1313  ll
+ 1314  sublime * 
+ 1315  cd.. 
+ 1316  cd .. 
+ 1317  ll
+ 1318  cd ..
+ 1319  src
+ 1320  cd src 
+ 1321  ll
+ 1322  grep ALU_ADD . -r 
+ 1323  ll
+ 1324  psg 
+ 1325  peg 
+ 1326  ps 
+ 1327  ps -l
+ 1328  ps -ls
+ 1329  ps -help
+ 1330  ps -all
+ 1331  man redshift 
+ 1332  redshift -O 6500
+ 1333   grep sbt 
+ 1334  h > grep sbt 
+ 1335  h | grep sbt 
+ 1336  sbt "run MuxOpB c" 
+ 1337  riscv 
+ 1338  ll
+ 1339  cd Work/md_risc/src/
+ 1340  ll
+ 1341  sbt "run MuxOpB c" 
+ 1342  sbt "run all c" 
+ 1343  sbt "run all c" -feature
+ 1344  sbt "run all c" onFailure
+ 1345  sbt "run RegFile c"
+ 1346  sbt "run RegFile c" | less 
+ 1347  sbt "run MuxPC c" | less 
+ 1348  sbt "run MuxPC c"
+ 1349  sbt "run MuxPC c" -deprecation 
+ 1350  sbt "run MuxPC c" onFailure
+ 1351  ll
+ 1352  sbt "run ImmGen c" onFailure
+ 1353  ip link ls 
+ 1354  riscv 
+ 1355  ll
+ 1356  sublime 
+ 1357  h | grep sbt 
+ 1358  sbt "run Adder --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1359  cd Work/md_risc/src/
+ 1360  ll 
+ 1361  ll
+ 1362  sbt "run Adder --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1363  sbt "run Alu --backend v --targetDir ../verilog --genHarness"
+ 1364  gt 
+ 1365  sbt "run Alu --backend v --targetDir ../verilog --genHarness"
+ 1366  rm Mux_Op_A.scala 
+ 1367  sbt "run Alu --backend v --targetDir ../verilog --genHarness"
+ 1368  sbt "run x --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1369  sbt "run Alu --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1370  sbt "run MuxOpA --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1371  sbt "run MuxOpB --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1372  sbt "run Alu --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1373  sbt "run MuxOpB c"
+ 1374  sbt "run MuxOpA c"
+ 1375  sbt "run MuxOpA v"
+ 1376  sbt "run MuxOpA c"
+ 1377  sbt "run MuxOpA v"
+ 1378  sudo apt-get install redshift redshift-gtk
+ 1379  redshift man 
+ 1380  man redshift
+ 1381  redshift -O 6000
+ 1382  redshift -O 6300
+ 1383  redshift -O 6500
+ 1384  redshift -O 6000
+ 1385  redshift -O 7000
+ 1386  man redshift 
+ 1387  redshift -t 6000 5500
+ 1388  redshift -t 6000:5500
+ 1389  cd ..
+ 1390  ll
+ 1391  cd riscv-sodor/
+ 1392  sublime src/
+ 1393  sublime src/*
+ 1394  sublime src/
+ 1395  cd ..
+ 1396  ll
+ 1397  cd chisel 
+ 1398  cd src/test/scala/
+ 1399  grep "def main" . -rsni 
+ 1400  cd ..
+ 1401  ll
+ 1402  cd verilog/
+ 1403  ll 
+ 1404  cd ..
+ 1405  ll
+ 1406  sublime verilog/ 
+ 1407  sudo add-apt-repository ppa:yannubuntu/boot-repair
+ 1408  sudo apt-get update 
+ 1409  boot-repair 
+ 1410  riscv 
+ 1411  cd Work/md_risc/
+ 1412  ll
+ 1413  cd src/
+ 1414  ll
+ 1415  sublime 
+ 1416  ll
+ 1417  h
+ 1418  sbt "run MuxOpB --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1419  sbt "run MuxOpA --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1420  ll
+ 1421  h
+ 1422  h | grep run 
+ 1423  ll 
+ 1424  sbt "run all --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1425  ll
+ 1426  sbt "run all --backend c --targetDir ../emulator --compile --test --genHarness" > ../tests.log 
+ 1427  sbt "run all --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1428  sbt "run all --backend c --targetDir ../emulator --compile --test --genHarness" > ../tests.log 
+ 1429  bg
+ 1430  grep "tests passed" -rsni ../tests.log 
+ 1431  grep "tests passed" ../tests.log -rsni --color 
+ 1432  grep "passed" ../tests.log -rsni --color 
+ 1433  grep "passed" ../tests.log -rsn --color | 
+ 1434  grep "passed" ../tests.log -rsn --color
+ 1435  sbt "run all --backend c --targetDir ../emulator --compile --test --genHarness" > ../tests.log 
+ 1436  ll
+ 1437  grep "passed" ../tests.log -rsn --color
+ 1438  ll
+ 1439  h
+ 1440  h | grep git 
+ 1441  h
+ 1442  riscv
+ 1443  ll
+ 1444  h git 
+ 1445  h 
+ 1446  h | grep git 
+ 1447  ll
+ 1448  man git 
+ 1449  ll
+ 1450  cd Work/md_risc/
+ 1451  ll
+ 1452  git remote
+ 1453  git remote -v 
+ 1454  git push origin master 
+ 1455  ll
+ 1456  sublime 
+ 1457  git push origin master 
+ 1458  git
+ 1459  git status 
+ 1460  git commit -a 
+ 1461  git status 
+ 1462  git 
+ 1463  git commit -a 
+ 1464  git push origin master 
+ 1465  git 
+ 1466  git add src/
+ 1467  git 
+ 1468  git commit -a
+ 1469  git add *
+ 1470  git add tests.log 
+ 1471  git commit -a 
+ 1472  git push origin master 
+ 1473  boot-repair 
+ 1474  riscv
+ 1475  h 
+ 1476  git 
+ 1477  risc 
+ 1478  riscv 
+ 1479  cd Work/md_risc/src/
+ 1480  git 
+ 1481  git status 
+ 1482  ll
+ 1483  rm ../verilog/* 
+ 1484  rm ../verilog/*.v 
+ 1485  ll
+ 1486  sbt "run all --backend c --targetDir ../emulator --compile --test --genHarness"
+ 1487  sublime 
+ 1488  riscv \
+ 1489  riscv 
+ 1490  ll
+ 1491  cd Work/md_risc/
+ 1492  ll
+ 1493  alias sbm 
+ 1494  ll\
+ 1495  ll
+ 1496  cd src/
+ 1497  ll
+ 1498  sulbime
+ 1499  sublime
+ 1500  riscv 
+ 1501  ll 
+ 1502  cd Work/ll
+ 1503  cd Work/
+ 1504  cd md_risc/src/
+ 1505  ll
+ 1506  h
+ 1507  h 
+ 1508  ll 
+ 1509  h 
+ 1510  h > hs 
+ 1511  sublime hs 
+ 1512  ll
+ 1513  rm -rf hs 
+ 1514  h
+ 1515  h > hs 
