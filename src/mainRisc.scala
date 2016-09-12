@@ -9,7 +9,7 @@ object mainRisc {
   	var tests_cnt 		= 3 
   	val steps 			= 20 
   	val expr_len 		= 32 
-  	val cArgs 	= s"$args(0) --backend c --targetDir ../emulator --compile --test --genHarness".split(" ")
+  	val cArgs 	= s"$args(0) --backend c --targetDir ../emulator --compile --vcd --test --genHarness".split(" ")
   	val vArgs 	= s"$args(0) --backend v --targetDir ../verilog --genHarness".split(" ")
 
     var runArgs = args.slice(1, args.length) 
@@ -43,8 +43,7 @@ object mainRisc {
               chiselMainTest(runArgs, () => Module(new DataMem(32,32)))        { c => new DataMemTest(c,steps)}
               chiselMainTest(runArgs, () => Module(new BranchLogic(32)))    { c => new BranchLogicTest(c,steps)}
 
-              chiselMainTest(runArgs, () => Module(new Core(5, 32)))           { c => new CoreTest(c,steps)}
-
+              chiselMainTest(runArgs, () => Module(new Core(5, 32)))           { c => new CoreTest(c,steps)}  
     	}
     }
     // println (s" $tests_passed / $tests_cnt tests PASSED !" )

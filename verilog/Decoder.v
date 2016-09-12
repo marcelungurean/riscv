@@ -500,7 +500,7 @@ module Decoder(
   assign T172 = io_dec_instr & 32'h707f;
   assign io_ctl_opb_sel = ctl_opb_sel;
   assign ctl_opb_sel = T48 ? 2'h0 : T173;
-  assign T173 = T46 ? 2'h0 : T174;
+  assign T173 = T46 ? 2'h1 : T174;
   assign T174 = T44 ? 2'h0 : T175;
   assign T175 = T42 ? 2'h2 : T176;
   assign T176 = T40 ? 2'h0 : T177;

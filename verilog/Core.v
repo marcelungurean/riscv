@@ -680,7 +680,7 @@ module Decoder(
   assign T172 = io_dec_instr & 32'h707f;
   assign io_ctl_opb_sel = ctl_opb_sel;
   assign ctl_opb_sel = T48 ? 2'h0 : T173;
-  assign T173 = T46 ? 2'h0 : T174;
+  assign T173 = T46 ? 2'h1 : T174;
   assign T174 = T44 ? 2'h0 : T175;
   assign T175 = T42 ? 2'h2 : T176;
   assign T176 = T40 ? 2'h0 : T177;
@@ -1044,13 +1044,12 @@ module Alu(
 endmodule
 
 module InstructionMem(input clk,
-    input [4:0] io_addr,
+    input [9:0] io_addr,
     output[31:0] io_data
 );
 
   wire[31:0] T0;
   reg [31:0] mem [1023:0];
-  wire[9:0] T1;
 
 `ifndef SYNTHESIS
 // synthesis translate_off
@@ -1064,12 +1063,11 @@ module InstructionMem(input clk,
 `endif
 
   assign io_data = T0;
-  assign T0 = mem[T1];
-  assign T1 = {5'h0, io_addr};
+  assign T0 = mem[io_addr];
 endmodule
 
 module DataMem(input clk,
-    input [4:0] io_addr,
+    input [9:0] io_addr,
     input [31:0] io_wr_data,
     input [1:0] io_mem_func,
     input  io_mem_en,
@@ -1078,7 +1076,7 @@ module DataMem(input clk,
 
   wire[31:0] T0;
   wire[31:0] T1;
-  reg [31:0] mem [31:0];
+  reg [31:0] mem [1023:0];
   wire[31:0] T2;
   wire T3;
   wire T4;
@@ -1090,7 +1088,7 @@ module DataMem(input clk,
   integer initvar;
   initial begin
     #0.002;
-    for (initvar = 0; initvar < 32; initvar = initvar+1)
+    for (initvar = 0; initvar < 1024; initvar = initvar+1)
       mem[initvar] = {1{$random}};
   end
 // synthesis translate_on
@@ -1229,42 +1227,49 @@ module Core(input clk, input reset,
   wire[31:0] T4;
   wire[31:0] T5;
   wire T6;
-  wire excp_illegal_instr;
+  wire halt;
   reg [31:0] exec_pc4_reg;
-  wire[31:0] T22;
+  wire[31:0] T30;
   wire[31:0] fetch_pc4_reg;
   reg [31:0] fetch_pc_reg;
-  wire[31:0] T23;
+  wire[31:0] T31;
   wire[31:0] T7;
   wire T8;
   wire stall;
-  wire[4:0] T24;
-  wire[4:0] T25;
+  wire[9:0] T32;
+  wire[9:0] T33;
   reg [31:0] exec_pc_reg;
-  wire[31:0] T26;
+  wire[31:0] T34;
   wire[31:0] T9;
   wire[31:0] T10;
   wire[31:0] T11;
-  wire T12;
-  wire kill_the_fetch;
+  wire[31:0] T12;
   wire T13;
   wire T14;
   wire T15;
+  wire kill_the_fetch;
   wire T16;
-  reg [31:0] exec_instr_reg;
-  wire[31:0] T27;
-  wire[31:0] T17;
-  wire[31:0] T18;
-  wire[31:0] T19;
+  wire T17;
+  wire T18;
+  wire T19;
   wire T20;
+  wire T21;
+  wire T22;
+  wire T23;
+  reg [31:0] exec_instr_reg;
+  wire[31:0] T35;
+  wire[31:0] T24;
+  wire[31:0] T25;
+  wire[31:0] T26;
+  wire[31:0] T27;
+  wire T28;
   wire[4:0] rd_addr;
-  wire[4:0] T28;
-  wire[9:0] rsb_addr;
+  wire[4:0] rsb_addr;
   wire[4:0] rsa_addr;
   wire[31:0] exec_pc_jmp;
   wire[31:0] exec_pc_br;
   wire[31:0] exec_pc_jalr;
-  wire[31:0] T21;
+  wire[31:0] T29;
   wire[31:0] MuxPC_io_pc_out;
   wire[31:0] RegFile_io_rf_rd1;
   wire[31:0] RegFile_io_rf_rd2;
@@ -1310,38 +1315,45 @@ module Core(input clk, input reset,
   assign T4 = RegFile_io_rf_rd2;
   assign T5 = RegFile_io_rf_rd1;
   assign T6 = RegFile_io_rf_rd1 == RegFile_io_rf_rd2;
-  assign excp_illegal_instr = Decoder_io_ctl_val_inst ^ 1'h1;
-  assign T22 = reset ? 32'h0 : fetch_pc4_reg;
+  assign halt = Decoder_io_ctl_val_inst ^ 1'h1;
+  assign T30 = reset ? 32'h0 : fetch_pc4_reg;
   assign fetch_pc4_reg = fetch_pc_reg + 32'h1;
-  assign T23 = reset ? 32'h0 : T7;
+  assign T31 = reset ? 32'h0 : T7;
   assign T7 = T8 ? MuxPC_io_pc_out : fetch_pc_reg;
   assign T8 = stall ^ 1'h1;
-  assign stall = Decoder_io_ctl_mem_en & excp_illegal_instr;
-  assign T24 = Alu_io_out[4:0];
-  assign T25 = fetch_pc_reg[4:0];
-  assign T26 = reset ? 32'h0 : T9;
-  assign T9 = T15 ? fetch_pc_reg : T10;
-  assign T10 = T12 ? 32'h0 : T11;
-  assign T11 = stall ? exec_pc_reg : exec_pc_reg;
-  assign T12 = T14 & kill_the_fetch;
-  assign kill_the_fetch = T13 ^ 1'h1;
-  assign T13 = BranchLogic_io_pc_sel == 3'h0;
-  assign T14 = stall ^ 1'h1;
-  assign T15 = T16 ^ 1'h1;
-  assign T16 = stall | kill_the_fetch;
-  assign T27 = reset ? 32'h4033 : T17;
-  assign T17 = T15 ? InstructionMem_io_data : T18;
-  assign T18 = T12 ? 32'h4033 : T19;
-  assign T19 = stall ? exec_instr_reg : exec_instr_reg;
-  assign T20 = stall ? 1'h0 : Decoder_io_ctl_rf_wen;
+  assign stall = Decoder_io_ctl_val_inst ^ 1'h1;
+  assign T32 = Alu_io_out[9:0];
+  assign T33 = fetch_pc_reg[9:0];
+  assign T34 = reset ? 32'h0 : T9;
+  assign T9 = T22 ? fetch_pc_reg : T10;
+  assign T10 = T18 ? exec_pc_reg : T11;
+  assign T11 = T13 ? 32'h0 : T12;
+  assign T12 = stall ? exec_pc_reg : exec_pc_reg;
+  assign T13 = T17 & T14;
+  assign T14 = kill_the_fetch & T15;
+  assign T15 = halt ^ 1'h1;
+  assign kill_the_fetch = T16 ^ 1'h1;
+  assign T16 = BranchLogic_io_pc_sel == 3'h0;
+  assign T17 = stall ^ 1'h1;
+  assign T18 = T20 & T19;
+  assign T19 = kill_the_fetch & halt;
+  assign T20 = T21 ^ 1'h1;
+  assign T21 = stall | T14;
+  assign T22 = T23 ^ 1'h1;
+  assign T23 = T21 | T19;
+  assign T35 = reset ? 32'h4033 : T24;
+  assign T24 = T22 ? InstructionMem_io_data : T25;
+  assign T25 = T18 ? exec_instr_reg : T26;
+  assign T26 = T13 ? 32'h4033 : T27;
+  assign T27 = stall ? exec_instr_reg : exec_instr_reg;
+  assign T28 = stall ? 1'h0 : Decoder_io_ctl_rf_wen;
   assign rd_addr = exec_instr_reg[11:7];
-  assign T28 = rsb_addr[4:0];
-  assign rsb_addr = exec_instr_reg[24:15];
+  assign rsb_addr = exec_instr_reg[24:20];
   assign rsa_addr = exec_instr_reg[19:15];
   assign exec_pc_jmp = exec_pc_reg + ImmGen_io_immj_sxt;
   assign exec_pc_br = exec_pc_reg + ImmGen_io_immb_sxt;
-  assign exec_pc_jalr = T21 + ImmGen_io_immi_sxt;
-  assign T21 = RegFile_io_rf_rd1;
+  assign exec_pc_jalr = T29 + ImmGen_io_immi_sxt;
+  assign T29 = RegFile_io_rf_rd1;
   MuxPC MuxPC(
        .io_pc_sel( BranchLogic_io_pc_sel ),
        .io_pc_pc4( fetch_pc4_reg ),
@@ -1353,9 +1365,9 @@ module Core(input clk, input reset,
   );
   RegFile RegFile(.clk(clk),
        .io_rf_ra1( rsa_addr ),
-       .io_rf_ra2( T28 ),
+       .io_rf_ra2( rsb_addr ),
        .io_rf_wa( rd_addr ),
-       .io_rf_wen( T20 ),
+       .io_rf_wen( T28 ),
        .io_rf_wd( MuxWB_io_wb_wd ),
        .io_rf_rd1( RegFile_io_rf_rd1 ),
        .io_rf_rd2( RegFile_io_rf_rd2 )
@@ -1405,11 +1417,11 @@ module Core(input clk, input reset,
        //.io_zero(  )
   );
   InstructionMem InstructionMem(.clk(clk),
-       .io_addr( T25 ),
+       .io_addr( T33 ),
        .io_data( InstructionMem_io_data )
   );
   DataMem DataMem(.clk(clk),
-       .io_addr( T24 ),
+       .io_addr( T32 ),
        .io_wr_data( RegFile_io_rf_rd2 ),
        .io_mem_func( Decoder_io_ctl_mem_func ),
        .io_mem_en( Decoder_io_ctl_mem_en ),
@@ -1424,7 +1436,7 @@ module Core(input clk, input reset,
        .io_wb_wd( MuxWB_io_wb_wd )
   );
   BranchLogic BranchLogic(
-       .io_excp( excp_illegal_instr ),
+       .io_excp( halt ),
        .io_ctl_br_type( Decoder_io_ctl_br_type ),
        .io_br_eq( T6 ),
        .io_br_lt( T3 ),
@@ -1445,18 +1457,22 @@ module Core(input clk, input reset,
     end
     if(reset) begin
       exec_pc_reg <= 32'h0;
-    end else if(T15) begin
+    end else if(T22) begin
       exec_pc_reg <= fetch_pc_reg;
-    end else if(T12) begin
+    end else if(T18) begin
+      exec_pc_reg <= exec_pc_reg;
+    end else if(T13) begin
       exec_pc_reg <= 32'h0;
     end else if(stall) begin
       exec_pc_reg <= exec_pc_reg;
     end
     if(reset) begin
       exec_instr_reg <= 32'h4033;
-    end else if(T15) begin
+    end else if(T22) begin
       exec_instr_reg <= InstructionMem_io_data;
-    end else if(T12) begin
+    end else if(T18) begin
+      exec_instr_reg <= exec_instr_reg;
+    end else if(T13) begin
       exec_instr_reg <= 32'h4033;
     end else if(stall) begin
       exec_instr_reg <= exec_instr_reg;
