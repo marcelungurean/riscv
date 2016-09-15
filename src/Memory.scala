@@ -14,7 +14,7 @@ class InstructionMem ( val addr_width: Int , val data_width : Int ) extends Modu
 	val io = new InstrMemPortIo ( 10 , data_width )
 
 	val mem = Mem (Bits ( width=data_width ) , 1024 )
-
+	// Sometimes I feel like the compiler ignores all my comments ...
 	io.data := mem(io.addr) 
 }	
 

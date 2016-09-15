@@ -11,7 +11,7 @@ class RegFile ( val	 addrw : Int , val expr_len : Int ) extends Module {
 		val rf_ra1 	= UInt ( INPUT , width = addrw)		// read address for $rs1 
 		val rf_ra2 	= UInt ( INPUT , width = addrw)		// read address for $rs2 
 		val rf_wa 	= UInt ( INPUT , width = addrw)		// write address 
-		val rf_wen 	= Bool ( INPUT )			// write enable 
+		val rf_wen 	= Bool ( INPUT )					// write enable 
 		val rf_wd 	= UInt ( INPUT , width = expr_len)	// write data 
 
 		val rf_rd1 	= UInt ( OUTPUT , width = expr_len) 	// read data from reg $rs1 
@@ -30,7 +30,7 @@ class RegFile ( val	 addrw : Int , val expr_len : Int ) extends Module {
 							rf_reg_file(io.rf_ra2 ),
 							UInt (0, expr_len) )
 	// write to rf  
-
+	
 	when ( (io.rf_wen) && (io.rf_wa != UInt(0) )) {      	// will need to add condition for csr exception 
 		rf_reg_file (io.rf_wa) := io.rf_wd   
 	}
