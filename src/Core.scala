@@ -4,6 +4,7 @@ import Chisel._
 import Node._ 
 
 import Constants._ 
+import java.io._
 
 class Core ( val addrw : Int , val expr_len : Int ) extends Module { 
 	val io = new Bundle {
@@ -280,26 +281,10 @@ class CoreTest ( c : Core, val steps : Int ) extends Tester (c) {
 		var x = build_I_Reg_Imm()
 		x
 	}
-	// def build_I_ADDI 		(imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x13): BigInt = {
-	// def build_I_Reg_Imm 		(imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x13): BigInt = {
-	// def build_I_Reg_Imm_Shift(b30:Boolean=false, shft_val:Int=0x0, rs:Int=0x0, func:Int=0, rd:Int=0, opcode:Int=0x13): BigInt = {
-	// def build_I_Load (imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x03): BigInt = {
-	// def build_U_LUI (imm_val:Int = 0x0, rd:Int=0, opcode:Int=0x37): BigInt = {
-	// def build_U_AUIPC (imm_val:Int = 0x0, rd:Int=0, opcode:Int=0x17): BigInt = {
-	// def build_UJ_JAL(imm_val:Int = 0x0, rd:Int=0, opcode:Int=0x6F): BigInt = {
-	// def build_I_JALR(imm_val:Int = 0x0, rs:Int = 0x0 , func:Int=0, rd:Int=0, opcode:Int=0x67): BigInt = {
-	// def build_SB_Branch( imm_val:Int = 0x0, rs2:Int = 0x0 , rs1:Int=0, func:Int=0, opcode:Int=0x63): BigInt = { 
-	// def build_S_Store (imm_val:Int = 0x0, rs2:Int = 0x0 , rs1:Int = 0, func:Int=0, opcode:Int=0x23): BigInt = { 
-	// def build_R_Reg_Reg(b30:Boolean=false, rs2:Int=0x0, rs1:Int=0x0, func:Int=0, rd:Int=0, opcode:Int=0x33): BigInt = { 
-	// for ( i <- 0 until 32 ) {
-	// 	var x = build_I_Reg_Imm ( imm_val=3, rs=i, func=0, rd=i+1 )
-	// 	pokeAt(c.io.instr_mem.mem,x,i)
-	// }
-
 	var idx=0
 
 	// test of regImm 
-	/*
+
 	var y = build_I_Reg_Imm (imm_val=5, rs=2, func=0, rd=3) // exp 5 
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
 	y = build_I_Reg_Imm (imm_val=2, rs=3, func=2, rd=4)		// exp 1
@@ -312,12 +297,15 @@ class CoreTest ( c : Core, val steps : Int ) extends Tester (c) {
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1
 	y = build_I_Reg_Imm (imm_val=0x3A, rs=7, func=7, rd=2)	// exp A
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1
-	for ( i <- 0 until 32 ) { peekAt(c.io.register_file.rf_reg_file,i)	}
-	*/
+	//for ( i <- 0 until 32 ) { peekAt(c.io.register_file.rf_reg_file,i)	}
+
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
 
 	// test of imm shifting 
-	/*
-	var y = build_I_Reg_Imm (imm_val=0x404, rs=0, func=0, rd=1) // exp 5 
+	 y = build_I_Reg_Imm (imm_val=0x404, rs=0, func=0, rd=1) // exp 5 
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
 	y = build_I_Reg_Imm_Shift (shft_val=21,rs=1,func=1,rd=2)
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
@@ -329,12 +317,16 @@ class CoreTest ( c : Core, val steps : Int ) extends Tester (c) {
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
 	y = build_I_Reg_Imm () 		//NOP OPERATION 
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
-	*/
+
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
 
 	// test LUI and AUIPC 
-	/*
-	var y = build_U_LUI ( imm_val=0x1234ABCD, rd=2 )
+	y = build_U_LUI ( imm_val=0x1234ABCD, rd=2 )
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+
 	y = build_U_LUI ( imm_val=0xAB123CBD, rd=3 )
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
 
@@ -343,10 +335,14 @@ class CoreTest ( c : Core, val steps : Int ) extends Tester (c) {
 
 	y = build_U_AUIPC (imm_val=0x8,rd=5)
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
-	*/
+
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
 	
 	//test load and store 
-	var y = build_U_LUI ( imm_val=0x1234ABCD, rd=2 )
+	y = build_U_LUI ( imm_val=0x1234ABCD, rd=2 )
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
 	y = build_U_LUI ( imm_val=0xAB123CBD, rd=3 )
 	pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
@@ -364,8 +360,9 @@ class CoreTest ( c : Core, val steps : Int ) extends Tester (c) {
 	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
 	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
 	y = get_nop() ; pokeAt(c.io.instr_mem.mem,y,idx) ; idx=idx+1 
+
 	
-	for ( i <- 0 until 10 ) {
+	for ( x <- 0 until 100 ) {
 		peek(c.io.mux_pc.io.pc_sel)
 		peek(c.fetch_pc_reg)
 		peek(c.exec_pc_reg)
@@ -395,8 +392,28 @@ class CoreTest ( c : Core, val steps : Int ) extends Tester (c) {
 		for ( i <- 0 until 32 ) { peekAt(c.io.register_file.rf_reg_file,i)	}
 	}
 	for ( i <- 0 until 32 ) { peekAt(c.io.register_file.rf_reg_file,i)	}
-	for ( i <- 0 until 32 ) { peekAt(c.io.data_mem.mem,i)	}
+	var m = new Array [BigInt](1024)
+	val buf = new StringBuilder 
+	val writer = new PrintWriter(new File("data_mem.txt" ))
 
-	println (s"Core: BIG TO DO !" )
+    
+      
+	for ( i <- 0 until 1024 ) { m(i) = peekAt(c.io.data_mem.mem,i)	}
+	for ( i <- 0 until 1024 ){
+		//sprintf(s,"%08x ",m(i));
+		// printf("%08s ",Integer.toHexString((m(i).toInt)) )
+		val x =m(i).toInt 
+		buf ++= "%08x ".format((m(i).toInt))
+		if ((i+1)%8 == 0 && i!=0 ) buf +='\n'
+	}
+	println(buf.toString)
+	writer.write(buf.toString)
+	// for ( i <- 0 until 1024 ) { m(i) = peekAt(c.io.instr_mem.mem,i)	}
+	for ( i <- 0 until 1024 ){
+		// printf("%08s ",Integer.toHexString((m(i).toInt)) )
+		// if ((i+1)%8 == 0 && i!=0 ) printf("\n")
+	}
+	writer.close()
+	println (s"Core !" )
 	println (s"Core: not passed... yet !" )
 }

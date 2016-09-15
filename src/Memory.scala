@@ -11,7 +11,7 @@ class InstrMemPortIo ( val addr_width : Int ,val data_width : Int ) extends Bund
 }
 
 class InstructionMem ( val addr_width: Int , val data_width : Int ) extends Module {
-	val io = new InstrMemPortIo ( addr_width , data_width )
+	val io = new InstrMemPortIo ( 10 , data_width )
 
 	val mem = Mem (Bits ( width=data_width ) , 1024 )
 
@@ -20,7 +20,7 @@ class InstructionMem ( val addr_width: Int , val data_width : Int ) extends Modu
 
 class DataMemPortIo ( val addr_width : Int , val data_width : Int ) extends Bundle {
 
-	val addr  		= Bits ( INPUT , addr_width )
+	val addr  		= Bits ( INPUT , 10 )
 	val wr_data	 	= Bits ( INPUT , data_width )
 	val mem_func 	= UInt ( INPUT , MEM_FUNC_WIDTH)
 	val mem_en 		= Bool ( INPUT )
@@ -29,8 +29,8 @@ class DataMemPortIo ( val addr_width : Int , val data_width : Int ) extends Bund
 }
 
 class DataMem ( val addr_width: Int ,val data_width : Int ) extends Module {
-	val io = new DataMemPortIo ( addr_width , data_width )
-	val mem = Mem (Bits (width = data_width) , 1 << addr_width )
+	val io = new DataMemPortIo ( 10 , data_width )
+	val mem = Mem (Bits (width = data_width) , 1024 )
 
 	io.rd_data := Mux ( ( io.mem_en && (io.mem_func === MEM_RD) ) , mem(io.addr), UInt(0x0,32) )
 	

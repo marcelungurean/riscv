@@ -1,5 +1,5 @@
 module test;
-  reg[31:0] io_addr = 0;
+  reg[9:0] io_addr = 0;
   reg[31:0] io_wr_data = 0;
   reg[1:0] io_mem_func = 0;
   reg[0:0] io_mem_en = 0;

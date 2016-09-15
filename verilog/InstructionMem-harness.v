@@ -1,5 +1,5 @@
 module test;
-  reg[31:0] io_addr = 0;
+  reg[9:0] io_addr = 0;
   wire[31:0] io_data;
   reg clk = 0;
   integer clk_len;

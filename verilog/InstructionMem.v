@@ -1,11 +1,10 @@
 module InstructionMem(input clk,
-    input [31:0] io_addr,
+    input [9:0] io_addr,
     output[31:0] io_data
 );
 
   wire[31:0] T0;
   reg [31:0] mem [1023:0];
-  wire[9:0] T1;
 
 `ifndef SYNTHESIS
 // synthesis translate_off
@@ -19,7 +18,6 @@ module InstructionMem(input clk,
 `endif
 
   assign io_data = T0;
-  assign T0 = mem[T1];
-  assign T1 = io_addr[9:0];
+  assign T0 = mem[io_addr];
 endmodule
 
